@@ -2,8 +2,6 @@
 @section('content')
 @include('layouts.include.body_header')
 
-
-
 <div class="container-fluid">
 
         @if ( Session::has('flash_message') )
@@ -21,21 +19,40 @@
                     <h3 class="c-graph-card__title">Best Staff</h3>
                     <div class="col-lg-12">
                         <div class="c-field u-mb-small">
-                            <label class="c-field__label" for="type">Start Date</label>
-                               <input id="datepicker_search1" name="start_date" class="date c-input"type="date" />
-                               <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
+                            <!--<label class="c-field__label" for="type">Start Date</label>-->
+                            <select class="c-select" id="month" name="month">
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                               <!--<input id="datepicker_search1" name="start_date" class="date c-input"type="date" />-->
+                               <!--<input class="c-input"s type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">--> 
 
                         </div>
                     </div>
                    <div class="col-lg-12">
                         <div class="c-field u-mb-small">
-                            <label class="c-field__label" for="type">End Date</label>
-                               <input id="datepicker_search2" name="end_date" class="date c-input" type="date" />
+                            <select class="c-select filter year" id="year" name="year">
+                                        @for($i=date('Y'); $i<=2050; $i++)
+                                            <option>{{ $i }}</option>
+                                         @endfor
+                                    </select>
+                            <!--<label class="c-field__label" for="type">End Date</label>-->
+                            <!--<input id="datepicker_search2" name="end_date" class="date c-input" type="date" />-->
                         </div>
                     </div>
                     <div class="col-lg-12">
                         <div class="col u-mb-medium">
-                             <label class="c-field__label" for="type">Action</label>
+                             <!--<label class="c-field__label" for="type">Action</label>-->
                             <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="Search">
                         </div>
                     </div>
@@ -52,26 +69,59 @@
             <div class="c-graph-card" data-mh="graph-cards">
                 <div class="c-graph-card__content">
                     <h3 class="c-graph-card__title">Design office</h3>
-                    <div class="col-lg-12">
-                        <div class="c-field u-mb-small">
-                            <label class="c-field__label" for="type">Start Date</label>
-                               <input id="datepicker_search3" name="start_date" class="date c-input"type="date" />
+                    <div class="col-lg-12" style="display: flex;margin-top: 5px;margin-left: -40px;">
+                        <div class="col-lg-4" style="flex: 0 0 48.333%; max-width: 48.333%;">
+                            
+                           <div class="c-field u-mb-small">
+<!--                            <label class="c-field__label" for="type">Start Date</label>
+                               <input id="datepicker_search3" name="start_date" class="date c-input"type="date" />-->
                                <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
+                               <select class="c-select" id="month1" name="month1">
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
 
+                        </div> 
                         </div>
+                        <div class="col-lg-4" style="flex: 0 0 48.333%; max-width: 48.333%;">
+                            <div class="c-field u-mb-small">
+                            <select class="c-select filter year" id="year1" name="year1">
+                                        @for($i=date('Y'); $i<=2050; $i++)
+                                            <option>{{ $i }}</option>
+                                         @endfor
+                                    </select>
+<!--                            <label class="c-field__label" for="type">End Date</label>
+                               <input id="datepicker_search4" name="end_date" class="date c-input" type="date" />-->
+                        </div>
+                        </div>
+                        <div class="col-lg-4" style="flex: 0 0 48.333%; max-width: 48.333%;">
+                                   <div class="col u-mb-medium">
+                                     <!--<label class="c-field__label" for="type">Action</label>-->
+                                     <button type="submit" class="c-btn c-btn--info"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                    <!--<input type="submit" class="c-btn c-btn--info" value="Search">-->
+                                </div>
+                               </div>
+                        
                     </div>
-                   <div class="col-lg-12">
-                        <div class="c-field u-mb-small">
-                            <label class="c-field__label" for="type">End Date</label>
-                               <input id="datepicker_search4" name="end_date" class="date c-input" type="date" />
-                        </div>
+<!--                   <div class="col-lg-12">
+                        
                     </div>
                     <div class="col-lg-12">
                         <div class="col u-mb-medium">
                              <label class="c-field__label" for="type">Action</label>
                             <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="Search">
                         </div>
-                    </div>
+                    </div>-->
                     <h4 class="c-graph-card__number center">Design office</h4>
                     <p class="c-graph-card__date center"><h4><b>Gotzkowskystrabe 10, 47559 Kranenburg</b></h4></p>
                     <p class="c-graph-card__date center"><h4><b>874</b>: hours</h4></p>
@@ -80,30 +130,70 @@
 <!--                     <canvas id="js-chart-earnings" width="300" height="74"></canvas> -->
                 </div>
             </div>
-        </div><div class="col-xl-4">
+        </div>
+        <div class="col-xl-4">
                         <div class="c-progress-card" data-mh="graph-cards">
                             <h3 class="c-progress-card__title">New Information</h3>
                             <!-- <p class="c-progress-card__date">Next 4 Weeks</p> -->
-                                                <div class="col-lg-12">
+                            <div class="col-lg-12" style="display: flex;margin-top: 5px;margin-left: -40px;">
+                                <div class="col-lg-4" style="flex: 0 0 48.333%; max-width: 48.333%;">  
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="type">Start Date</label>
-                                   <input id="datepicker_search5" name="start_date" class="date c-input"type="date" />
-                                   <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
+<!--                                <label class="c-field__label" for="type">Start Date</label>
+                                   <input id="datepicker_search5" name="start_date" class="date c-input"type="date" />-->
+                                   <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
+                                   <select class="c-select" id="month2" name="month2">
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
 
                             </div>
+                               </div>
+                               <div class="col-lg-4" style="flex: 0 0 48.333%; max-width: 48.333%;">
+                                   <div class="c-field u-mb-small">
+                                    <select class="c-select filter year" id="year2" name="year2">
+                                        @for($i=date('Y'); $i<=2050; $i++)
+                                            <option>{{ $i }}</option>
+                                         @endfor
+                                    </select>
+<!--                                    <label class="c-field__label" for="type">End Date</label>
+                                       <input id="datepicker_search6" name="end_date" class="date c-input" type="date" />-->
+                                </div>
+                               </div>
+                               <div class="col-lg-4" style="flex: 0 0 48.333%; max-width: 48.333%;">
+                                   <div class="col u-mb-medium">
+                                     <!--<label class="c-field__label" for="type">Action</label>-->
+                                     <button type="submit" class="c-btn c-btn--info"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                    <!--<input type="submit" class="c-btn c-btn--info" value="Search">-->
+                                </div>
+                               </div>
                             </div>
-                           <div class="col-lg-12">
+<!--                           <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
+                                    <select class="c-select filter year" id="year2" name="year2">
+                                        @for($i=date('Y'); $i<=2050; $i++)
+                                            <option>{{ $i }}</option>
+                                         @endfor
+                                    </select>
                                     <label class="c-field__label" for="type">End Date</label>
                                        <input id="datepicker_search6" name="end_date" class="date c-input" type="date" />
                                 </div>
-                            </div>
-                            <div class="col-lg-12">
+                            </div>-->
+<!--                            <div class="col-lg-12">
                                 <div class="col u-mb-medium">
                                      <label class="c-field__label" for="type">Action</label>
                                     <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="Search">
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="c-progress-card__item">
                                 <div class="c-progress-card__labels">Information 1</div>
                                 <button class="c-btn c-btn--success u-float-right">View</button>
