@@ -30,10 +30,7 @@ class AdminController extends Controller {
         $objUser = new Users();
         $userList = $objUser->gtBeststafflist();
         $data['arrBeststaff'] = $userList;
-
-        if ($request->isMethod('post')) {
-            echo "<script>alert('Hi');</script>";
-        }
+         $data['js'] = array('admin/customer.js');
         return view('admin.dashboard', $data);
 
     }
