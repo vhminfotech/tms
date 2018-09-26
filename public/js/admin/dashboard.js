@@ -10,7 +10,7 @@ var Dashboard = function(){
            var month = $('.staffMonths option:selected').val();
            var year = $('.staffYears option:selected').val();
        });
-   }
+   } 
    
     return {
         init : function(){

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 @include('layouts.include.body_header')
-
+ 
 <div class="container-fluid">
 
     @if ( Session::has('flash_message') )
