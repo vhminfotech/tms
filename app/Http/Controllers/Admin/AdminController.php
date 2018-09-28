@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\User;
 use App\Model\Users;
 use App\Model\Worker;
+use App\Model\Timesheet;
+use App\Model\workplaces;
 use App\Http\Controllers\Controller;
 use Auth;
 use Route;
@@ -15,7 +17,7 @@ use Illuminate\Http\Request;
 //use Illuminate\Http\Request;
 
 class AdminController extends Controller {
-            
+
     public function __construct() {
         parent::__construct();
 
@@ -29,10 +31,13 @@ class AdminController extends Controller {
         $data['detail'] = $this->loginUser;
         $objUser = new Users();
         $userList = $objUser->gtBeststafflist();
+        $objWorkplaces = new workplaces();
+        $data['getWorkPlace'] = $objWorkplaces->getWorkplaces();
         $data['arrBeststaff'] = $userList;
-         $data['js'] = array('admin/customer.js');
+        $data['css'] = array();
+        $data['js'] = array('admin/dashboard.js');
+        $data['funinit'] = array('Dashboard.init()');
         return view('admin.dashboard', $data);
-
     }
 
     public function getUserData() {
@@ -125,7 +130,30 @@ class AdminController extends Controller {
             case 'deleteUser':
                 $result = $this->deleteUser($request->input('data'));
                 break;
+            case 'getBestStaffData':
+                $objTimeheet = new Timesheet();
+                $arrTimeheet = $objTimeheet->getBestStaffData($request->input('data'));
+                echo json_encode($arrTimeheet);
+                exit;
+                break;
+            case 'getRestWorkPlace':
+                $objTimeheet = new Timesheet();
+                $arrTimeheet = $objTimeheet->getRestWorkplace($request->input('data'));
+                echo json_encode($arrTimeheet);
+                exit;
+                break;
+            case 'getWorkplaceListData':
+                $this->getWorkplaceList($request->input('data'));
+                break;
         }
+    }
+
+    public function getWorkplaceList($param) {
+        $objTimeheet = new Timesheet();
+        $data['arrTimeheet'] = $objTimeheet->getWorkplaceListData($param);
+        $resultList = view('admin.dashboard.workplace-list', $data)->render();
+        echo $resultList;
+        exit;
     }
 
 }
