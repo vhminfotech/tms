@@ -286,19 +286,16 @@
                         <h3 class="c-graph-card__title">Staff</h3>
                         <div class="row">
                             <div class="col u-mb-medium">
-                                <!--<label class="c-field__label" for="select1">Workplaces Select</label>-->
-                                <!-- Select2 jquery plugin is used -->
-                                <select class="c-select" id="select5">
-                                    <option>Select Staff</option>
-                                    <option>Ahemdabad</option>
-                                    <option>Gandhinagar</option>
-                                    <option>Baroda</option>
+                                <select class="c-select" name="staffId" id="staffId">
+                                    @foreach($getStaff as  $row => $val)
+                                    <option value="{{ $row }}">{{ $val }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col u-mb-medium">
-                                <select class="c-select" id="month5" name="month5">
+                                <select class="c-select" id="staffMonth" name="staffMonth">
                                     <option value="">Select Month</option>
                                     <option value="01">01</option>
                                     <option value="02">02</option>
@@ -317,7 +314,7 @@
                         </div>
                         <div class="row">
                             <div class="col u-mb-medium">
-                                <select class="c-select filter year" id="year5" name="year5">
+                                <select class="c-select filter staffYear" id="staffYear" name="staffYear">
                                     <option value="">Select Year</option>
                                     @for($i=date('Y'); $i<=2050; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
@@ -329,12 +326,12 @@
                             <div class="col u-mb-medium">
                                 <div class="c-btn-group">
                                     <div class="col-4">
-                                        <a class="c-btn c-btn--success" href="javascript:;">
+                                       <a data-toggle="modal" data-target="#staffPlaceList" class="c-btn c-btn--success getStaffData" href="javascript:;">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     </div>
                                     <div class="col-4">
-                                        <a class="c-btn c-btn--success" href="javascript:;">
+                                        <a class="c-btn c-btn--success printStaff" href="javascript:;">
                                             <i class="fa fa-print"></i>
                                         </a>
                                     </div>
@@ -369,6 +366,23 @@
             </div>
         </div>
     </div>
+    <div class="c-modal c-modal--huge modal fade" id="staffPlaceList" tabindex="-1" role="dialog" aria-labelledby="workPlaceList">
+        <div class="c-modal__dialog modal-dialog" role="document">
+            <div class="c-modal__content modal-content">
+                <div class="c-modal__header">
+                    <h3 class="c-modal__title">Staff List ( <b class="staffName"></b>)</h3>
+                    <span class="c-modal__close" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-close"></i>
+                    </span>
+                </div>
+                <div class="c-modal__body staffListAppend">
+                </div>
+                <!--                <footer class="c-modal__footer u-justify-center">
+                                    <a class="c-btn c-btn--green" href="#">Start your free trial</a>
+                                </footer>-->
+            </div>
+        </div>
+    </div>
     <div id='DivIdToPrint' style="display: none;">
         <div class="c-modal__dialog modal-dialog" role="document">
             <div class="c-modal__content modal-content">
@@ -379,6 +393,20 @@
                     </span>
                 </div>
                 <div class="c-modal__body">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id='staffToPrint' style="display: none;">
+         <div class="c-modal__dialog modal-dialog" role="document">
+            <div class="c-modal__content modal-content">
+                <div class="c-modal__header">
+                    <h3 class="c-modal__title">Staff List ( <b class="staffName"></b>)</h3>
+                    <span class="c-modal__close" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-close"></i>
+                    </span>
+                </div>
+                <div class="c-modal__body staffListAppendPrint">
                 </div>
             </div>
         </div>

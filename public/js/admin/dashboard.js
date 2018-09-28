@@ -74,6 +74,23 @@ var Dashboard = function() {
                 }
             });
         }
+
+        $('body').on('click', '.getStaffData', function() {
+            var staffId = $('#staffId option:selected').val();
+            var months = $('#staffMonth').val();
+            var year = $('#staffYear').val();
+            $('.staffName').text($('#staffId option:selected').text());
+            $.ajax({
+                type: "POST",
+                headers: {'X-CSRF-TOKEN': $('input[name="_token"]').val(), },
+                url: baseurl + "admin/dashboard/ajaxAction",
+                data: {'action': 'getStaffListData', 'data': {'months': months, 'staffId': staffId, 'year': year}},
+                success: function(data) {
+                    $('.staffListAppend').html(data);
+                }
+            });
+        });
+
         $('body').on('click', '.printDiv', function() {
             var name = $('#workplaceName').val();
             var months = $('#workplaceMonth').val();
@@ -89,6 +106,30 @@ var Dashboard = function() {
                 success: function(data) {
                     $('.c-modal__body').append(data);
                     var divToPrint = document.getElementById('DivIdToPrint');
+                    var newWin = window.open('', 'Print-Window');
+                    newWin.document.open();
+                    newWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</body></html>');
+                    newWin.document.close();
+                    setTimeout(function() {
+                        newWin.close();
+                    }, 10);
+                }
+            });
+        });
+
+        $('body').on('click', '.printStaff', function() {
+            var staffId = $('#staffId option:selected').val();
+            var months = $('#staffMonth').val();
+            var year = $('#staffYear').val();
+            $('.staffName').text($('#staffId option:selected').text());
+            $.ajax({
+                type: "POST",
+                headers: {'X-CSRF-TOKEN': $('input[name="_token"]').val(), },
+                url: baseurl + "admin/dashboard/ajaxAction",
+                data: {'action': 'getStaffListData', 'data': {'months': months, 'staffId': staffId, 'year': year}},
+                success: function(data) {
+                    $('.staffListAppendPrint').append(data);
+                    var divToPrint = document.getElementById('staffToPrint');
                     var newWin = window.open('', 'Print-Window');
                     newWin.document.open();
                     newWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</body></html>');

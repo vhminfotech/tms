@@ -103,13 +103,13 @@ class Timesheet extends Model {
                 ->join('users', 'timesheet.worker_id', '=', 'users.id')
                 ->groupBy('timesheet.worker_id');
         if (!empty($year) && empty($month)) {
-            $sql->orWhere(function($sql) use($year) {
+            $sql->where(function($sql) use($year) {
                         $sql->orWhere(function($sql) use($year) {
                                     $sql->whereBetween('timesheet.c_date', [date($year . '-01-01'), date($year . '-12-31')]);
                                 });
                     });
         } if (!empty($year) && !empty($month)) {
-            $sql->orWhere(function($sql) use($year, $month) {
+            $sql->where(function($sql) use($year, $month) {
                         $sql->orWhere(function($sql) use($year, $month) {
                                     $sql->whereBetween('timesheet.c_date', [date($year . '-' . $month . '-01'), date($year . '-' . $month . '-31')]);
                                 });
@@ -129,13 +129,13 @@ class Timesheet extends Model {
                 ->join('workplaces', 'workplaces.company', '=', 'timesheet.workplaces')
                 ->groupBy('timesheet.workplaces');
         if (!empty($year) && empty($month)) {
-            $sql->orWhere(function($sql) use($year) {
+            $sql->where(function($sql) use($year) {
                         $sql->orWhere(function($sql) use($year) {
                                     $sql->whereBetween('timesheet.c_date', [date($year . '-01-01'), date($year . '-12-31')]);
                                 });
                     });
         } if (!empty($year) && !empty($month)) {
-            $sql->orWhere(function($sql) use($year, $month) {
+            $sql->where(function($sql) use($year, $month) {
                         $sql->orWhere(function($sql) use($year, $month) {
                                     $sql->whereBetween('timesheet.c_date', [date($year . '-' . $month . '-01'), date($year . '-' . $month . '-31')]);
                                 });
@@ -151,22 +151,20 @@ class Timesheet extends Model {
 //        print_r($postData);exit;
         $month = $postData['months'];
         $year = $postData['year'];
-        $name = $postData['name'];
+        $staffId = $postData['staffId'];
         $sql = timesheet::select('timesheet.*','users.name', 'workplaces.adresses')
                 ->join('users', 'timesheet.worker_id', '=', 'users.id')
                 ->join('workplaces', 'workplaces.company', '=', 'timesheet.workplaces');
-         if ($name != "") {
-            $sql->where('timesheet.workplaces', 'LIKE', '%' . $name . '%');
-        }
+            $sql->where('timesheet.worker_id', $staffId);
         if (!empty($year) && empty($month)) {
-            $sql->orWhere(function($sql) use($year) {
+            $sql->where(function($sql) use($year) {
                         $sql->orWhere(function($sql) use($year) {
                                     $sql->whereBetween('timesheet.c_date', [date($year . '-01-01'), date($year . '-12-31')]);
                                 });
                     });
         } 
         if (!empty($year) && !empty($month)) {
-            $sql->orWhere(function($sql) use($year, $month) {
+            $sql->where(function($sql) use($year, $month) {
                         $sql->orWhere(function($sql) use($year, $month) {
                                     $sql->whereBetween('timesheet.c_date', [date($year . '-' . $month . '-01'), date($year . '-' . $month . '-31')]);
                                 });

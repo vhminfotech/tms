@@ -126,5 +126,9 @@ class Users extends Model {
         $result = Users::get();
         return $result;
     }
-
+    
+     public function getStaff() {
+        $result = Users::pluck('name', 'id')->toArray();
+        return $result;
+    }
 }

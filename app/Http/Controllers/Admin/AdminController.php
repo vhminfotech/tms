@@ -33,6 +33,7 @@ class AdminController extends Controller {
         $userList = $objUser->gtBeststafflist();
         $objWorkplaces = new workplaces();
         $data['getWorkPlace'] = $objWorkplaces->getWorkplaces();
+        $data['getStaff'] = $objUser->getStaff();
         $data['arrBeststaff'] = $userList;
         $data['css'] = array();
         $data['js'] = array('admin/dashboard.js');
@@ -145,6 +146,9 @@ class AdminController extends Controller {
             case 'getWorkplaceListData':
                 $this->getWorkplaceList($request->input('data'));
                 break;
+            case 'getStaffListData':
+                $this->getStaffListData($request->input('data'));
+                break;
         }
     }
 
@@ -152,6 +156,13 @@ class AdminController extends Controller {
         $objTimeheet = new Timesheet();
         $data['arrTimeheet'] = $objTimeheet->getWorkplaceListData($param);
         $resultList = view('admin.dashboard.workplace-list', $data)->render();
+        echo $resultList;
+        exit;
+    }
+    public function getStaffListData($param) {
+        $objTimeheet = new Timesheet();
+        $data['arrTimeheet'] = $objTimeheet->getWorkplaceListData($param);
+        $resultList = view('admin.dashboard.staff-list', $data)->render();
         echo $resultList;
         exit;
     }
