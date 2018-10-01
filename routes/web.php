@@ -55,6 +55,7 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
             
             Route::match(['get', 'post'], '/admin/workplacepdf', ['as' => 'workplacepdf', 'uses' => 'Admin\AdminController@workplacePDF']);
             Route::match(['get', 'post'], '/admin/staffworkpdf', ['as' => 'staffworkpdf', 'uses' => 'Admin\AdminController@staffworkPDF']);
+            Route::match(['get', 'post'], '/admin/infoBydatePDF', ['as' => 'infoBydatePDF', 'uses' => 'Admin\AdminController@infoBydatePDF']);
             
             Route::match(['get', 'post'], '/admin/user-list', ['as' => 'user-list', 'uses' => 'Admin\AdminController@getUserData']);
             Route::match(['get', 'post'], '/admin/add-user', ['as' => 'add-user', 'uses' => 'Admin\AdminController@addUser']);

@@ -32,6 +32,37 @@ var Dashboard = function() {
                 }
             });
         });
+        $('.findinfo').click(function() {
+            var months = $('.findinfoMonths').val();
+            var year = $('.findinfoYears').val();
+            $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+                url: baseurl + "admin/dashboard/ajaxAction",
+                data: {'action': 'getNewInfoData', 'data': {'months': months, 'year': year}},
+                success: function(data) {
+                     $('.c-modal__body').html(data);
+                }
+            });
+        });
+        $('.findinfobydate').click(function() {
+            var start_date = $('#datepicker_search1').val();
+            var end_date = $('#datepicker_search2').val();
+            var workplace = $('#informationWorkplace').val();
+            $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+                url: baseurl + "admin/dashboard/ajaxAction",
+                data: {'action': 'getNewInfoDataBydate', 'data': {'start_date': start_date, 'end_date': end_date,'workplace':workplace}},
+                success: function(data) {
+                     $('.c-modal__body').html(data);
+                }
+            });
+        });
         
         $('body').on('click', '.findBestOfice', function() {
             restWorkplace();
@@ -68,6 +99,14 @@ var Dashboard = function() {
             var year = $('#staffYear').val();
             $('.wpname').text(name);
             var url = baseurl + "admin/staffworkpdf?months="+months+"&year="+year+"&staffId="+staffId;
+           window.open(url, "_blank");
+        });
+        $('body').on('click', '.infoBydatePDF', function() {
+            var start_date = $('#datepicker_search1').val();
+            var end_date = $('#datepicker_search2').val();
+            var workplace = $('#informationWorkplace').val();
+            $('.wpname').text(name);
+            var url = baseurl + "admin/infoBydatePDF?start_date="+start_date+"&end_date="+end_date+"&workplace="+workplace;
            window.open(url, "_blank");
         });
 

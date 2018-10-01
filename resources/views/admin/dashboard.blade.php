@@ -103,7 +103,7 @@
                     <div class="row">
                         <div class="col-4">  
                             <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
-                            <select class="c-select" id="month2" name="month2">
+                            <select class="c-select findinfoMonths" id="month2" name="month2">
                                 <option value="01">01</option>
                                 <option value="02">02</option>
                                 <option value="03">03</option>
@@ -119,14 +119,14 @@
                             </select>
                         </div>
                         <div class="col-4">
-                            <select class="c-select filter year" id="year2" name="year2">
+                            <select class="c-select filter findinfoYears" name="year2">
                                 @for($i=date('Y'); $i<=2050; $i++)
                                 <option value="{{ $i }}">{{ $i }}</option>
                                 @endfor
                             </select>
                         </div>
                         <div class="col-4">
-                            <button type="submit" class="c-btn c-btn--info"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            <a type="button" data-toggle="modal" data-target="#newInformation" class="c-btn c-btn--info findinfo"><i class="fa fa-search" aria-hidden="true"></i></a>
                         </div>
                     </div>
 
@@ -152,7 +152,6 @@
                         <div class="row">
                             <div class="col u-mb-medium">
                                 <select class="c-select" name="informationWorkplace" id="informationWorkplace">
-                                    <option>Select Information</option>
                                     @foreach($getWorkPlace as $val => $row)
                                     <option value="{{ $val }}">{{ $val }}</option>
                                     @endforeach
@@ -161,38 +160,19 @@
                         </div>
                         <div class="row">
                             <div class="col u-mb-medium">
-                                <select class="c-select" id="month3" name="month3">
-                                    <option value="">Select Month</option>
-                                    <option value="01">01</option>
-                                    <option value="02">02</option>
-                                    <option value="03">03</option>
-                                    <option value="04">04</option>
-                                    <option value="05">05</option>
-                                    <option value="06">06</option>
-                                    <option value="07">07</option>
-                                    <option value="08">08</option>
-                                    <option value="09">09</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                </select>
+                                <input id="datepicker_search1" name="start_date" class="date c-input" type="text">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col u-mb-medium">
-                                <select class="c-select filter year" id="year3" name="year3">
-                                    <option value="">Select Year</option>
-                                    @for($i=date('Y'); $i<=2050; $i++)
-                                    <option value="{{ $i }}">{{ $i }}</option>
-                                    @endfor
-                                </select>
+                                <input id="datepicker_search2" name="end_date" class="date c-input" type="text">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col u-mb-medium">
                                 <div class="c-btn-group">
                                     <div class="col-4">
-                                        <a class="c-btn c-btn--success" href="javascript:;">
+                                        <a data-toggle="modal" data-target="#newInformation" class="c-btn c-btn--success findinfobydate" href="javascript:;">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     </div>
@@ -202,7 +182,7 @@
                                         </a>
                                     </div>
                                     <div class="col-4">
-                                        <a class="c-btn c-btn--success" href="javascript:;">
+                                        <a class="c-btn c-btn--success infoBydatePDF" href="javascript:;">
                                             <i class="fa fa-download"></i>
                                         </a>
                                     </div>
@@ -412,6 +392,20 @@
         </div>
     </div>
 
+    <div class="c-modal c-modal--huge modal fade" id='newInformation' style="display: none;" tabindex="-1" role="dialog" aria-labelledby="workPlaceList">
+         <div class="c-modal__dialog modal-dialog" role="document">
+            <div class="c-modal__content modal-content">
+                <div class="c-modal__header">
+                    <h3 class="c-modal__title">New Information</h3>
+                    <span class="c-modal__close" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-close"></i>
+                    </span>
+                </div>
+                <div class="c-modal__body staffListAppendPrint">
+                </div>
+            </div>
+        </div>
+    </div>
 </div><!-- // .container -->
 <style type="text/css">
     .success {

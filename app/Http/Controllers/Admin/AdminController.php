@@ -6,6 +6,7 @@ use App\User;
 use App\Model\Users;
 use App\Model\Worker;
 use App\Model\Timesheet;
+use App\Model\Information;
 use App\Model\workplaces;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -152,6 +153,12 @@ class AdminController extends Controller {
             case 'getStaffListData':
                 $this->getStaffListData($request->input('data'));
                 break;
+            case 'getNewInfoData':
+                $this->getNewInfoData($request->input('data'));
+                break;
+            case 'getNewInfoDataBydate':
+                $this->getNewInfoDataBydate($request->input('data'));
+                break;
         }
     }
 
@@ -191,6 +198,37 @@ class AdminController extends Controller {
         $pdf = PDF::loadView('admin.pdf.staffwork', $data);
         //  $pdf = PDF::loadView('admin.invoice.invoice-pdfV2');
         return $pdf->stream();
+        exit;
+    }
+    public function infoBydatePDF(){
+        
+        $param = $_GET;
+        $objTimeheet = new Information();
+        $data['arrInformation'] = $objTimeheet->getNewInfoDataBydate($param);
+        
+        $pdf = PDF::loadView('admin.pdf.infobydatepdf', $data);
+        //  $pdf = PDF::loadView('admin.invoice.invoice-pdfV2');
+        return $pdf->stream();
+        exit;
+    }
+    public function getNewInfoData($param){
+        
+        
+        $objTimeheet = new Information();
+        $data['arrInformation'] = $objTimeheet->getNewInfoData($param);
+        
+        $resultList = view('admin.dashboard.getnewinfo', $data)->render();
+        echo $resultList;
+        exit;
+    }
+    public function getNewInfoDataBydate($param){
+        
+        
+        $objTimeheet = new Information();
+        $data['arrInformation'] = $objTimeheet->getNewInfoDataBydate($param);
+        
+        $resultList = view('admin.dashboard.getnewinfo', $data)->render();
+        echo $resultList;
         exit;
     }
 

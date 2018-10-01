@@ -10,7 +10,7 @@ use Illuminate\Database\Query\Builder;
 use DB;
 use Auth;
 
-class information extends Model {
+class Information extends Model {
 
     protected $table = 'timesheet';
 
@@ -30,6 +30,7 @@ class information extends Model {
         
         return $result;
     }
+    
     public function searchinformationInfo($request, $id = NULL) {
         
         $fromDate = $request->input('start_date');
@@ -79,6 +80,50 @@ class information extends Model {
 
         //dd($results);
 
+        return $results;
+    }
+    
+    public function getNewInfoData($postData){
+        
+        $month = $postData['months'];
+        $year = $postData['year'];
+        
+        $fromDate = date($year . '-' . $month . '-01');
+        $toDate = date($year . '-' . $month . '-31');
+
+
+        $result = timesheet::select('timesheet.*','users.staffnumber','users.name');
+        $result->where('missing_hour', '0:00');
+        if($toDate != ""){
+            $result->whereRaw("c_date >= ? AND c_date <= ?", 
+                array($fromDate." 00:00:00", $toDate." 23:59:59")
+            );
+        }
+        
+        $results =  $result->join('users','timesheet.worker_id','=','users.id')->get();
+ 
+        return $results;
+    }
+    public function getNewInfoDataBydate($postData){
+        
+        
+        $workplace = $postData['workplace'];
+        
+        $fromDate = date('Y-m-d',  strtotime($postData['start_date']));
+        $toDate = date('Y-m-d', strtotime($postData['end_date']));
+
+
+        $result = timesheet::select('timesheet.*','users.staffnumber','users.name');
+        $result->where('timesheet.workplaces', $workplace);
+        $result->where('timesheet.missing_hour','!=', '0:00');
+        if($toDate != ""){
+            $result->whereRaw("c_date >= ? AND c_date <= ?", 
+                array($fromDate." 00:00:00", $toDate." 23:59:59")
+            );
+        }
+        
+        $results =  $result->join('users','timesheet.worker_id','=','users.id')->get();
+ 
         return $results;
     }
 
