@@ -12,6 +12,7 @@ use Auth;
 use Route;
 use APP;
 use Illuminate\Http\Request;
+use PDF;
 
 //use Illuminate\Foundation\Auth\AuthenticatesUsers;
 //use Illuminate\Http\Request;
@@ -28,6 +29,8 @@ class AdminController extends Controller {
 
     public function dashboard(Request $request) {
 
+       
+        
         $data['detail'] = $this->loginUser;
         $objUser = new Users();
         $userList = $objUser->gtBeststafflist();
@@ -161,9 +164,33 @@ class AdminController extends Controller {
     }
     public function getStaffListData($param) {
         $objTimeheet = new Timesheet();
-        $data['arrTimeheet'] = $objTimeheet->getWorkplaceListData($param);
+        $data['arrTimeheet'] = $objTimeheet->getStaffListData($param);
         $resultList = view('admin.dashboard.staff-list', $data)->render();
         echo $resultList;
+        exit;
+    }
+    
+    public function workplacePDF(){
+        
+        $param = $_GET;
+        $objTimeheet = new Timesheet();
+        $data['arrTimeheet'] = $objTimeheet->getWorkplaceListData($param);
+        
+        $pdf = PDF::loadView('admin.pdf.workplace', $data);
+        //  $pdf = PDF::loadView('admin.invoice.invoice-pdfV2');
+        return $pdf->stream();
+        exit;
+    }
+    
+    public function staffworkPDF(){
+        
+        $param = $_GET;
+        $objTimeheet = new Timesheet();
+        $data['arrTimeheet'] = $objTimeheet->getStaffListData($param);
+        
+        $pdf = PDF::loadView('admin.pdf.staffwork', $data);
+        //  $pdf = PDF::loadView('admin.invoice.invoice-pdfV2');
+        return $pdf->stream();
         exit;
     }
 

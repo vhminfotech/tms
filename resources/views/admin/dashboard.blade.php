@@ -269,7 +269,7 @@
                                         </a>
                                     </div>
                                     <div class="col-4">
-                                        <a class="c-btn c-btn--success" href="javascript:;">
+                                        <a class="c-btn c-btn--success workplacePDF" href="javascript:;">
                                             <i class="fa fa-download"></i>
                                         </a>
                                     </div>
@@ -336,7 +336,7 @@
                                         </a>
                                     </div>
                                     <div class="col-4">
-                                        <a class="c-btn c-btn--success" href="javascript:;">
+                                        <a class="c-btn c-btn--success staffworkPDF" href="javascript:;">
                                             <i class="fa fa-download"></i>
                                         </a>
                                     </div>

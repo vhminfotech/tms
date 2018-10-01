@@ -49,8 +49,13 @@ Route::group(['prefix' => $ageentPrefix, 'middleware' => ['agent']], function() 
 
 $adminPrefix = "";
 Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
+            
             Route::match(['get', 'post'], '/admin/admin-dashboard', ['as' => 'admin-dashboard', 'uses' => 'Admin\AdminController@dashboard']);
             Route::match(['get', 'post'], '/admin/dashboard/ajaxAction', ['as' => 'ajaxAction', 'uses' => 'Admin\AdminController@ajaxAction']);
+            
+            Route::match(['get', 'post'], '/admin/workplacepdf', ['as' => 'workplacepdf', 'uses' => 'Admin\AdminController@workplacePDF']);
+            Route::match(['get', 'post'], '/admin/staffworkpdf', ['as' => 'staffworkpdf', 'uses' => 'Admin\AdminController@staffworkPDF']);
+            
             Route::match(['get', 'post'], '/admin/user-list', ['as' => 'user-list', 'uses' => 'Admin\AdminController@getUserData']);
             Route::match(['get', 'post'], '/admin/add-user', ['as' => 'add-user', 'uses' => 'Admin\AdminController@addUser']);
             Route::match(['get', 'post'], '/admin/edit-user/{id}', ['as' => 'edit-user', 'uses' => 'Admin\AdminController@editUser']);

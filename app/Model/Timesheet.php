@@ -151,6 +151,33 @@ class Timesheet extends Model {
 //        print_r($postData);exit;
         $month = $postData['months'];
         $year = $postData['year'];
+        $staffId = $postData['name'];
+        $sql = timesheet::select('timesheet.*','users.name', 'workplaces.adresses')
+                ->join('users', 'timesheet.worker_id', '=', 'users.id')
+                ->join('workplaces', 'workplaces.company', '=', 'timesheet.workplaces');
+            $sql->where('timesheet.workplaces', $staffId);
+        if (!empty($year) && empty($month)) {
+            $sql->where(function($sql) use($year) {
+                        $sql->orWhere(function($sql) use($year) {
+                                    $sql->whereBetween('timesheet.c_date', [date($year . '-01-01'), date($year . '-12-31')]);
+                                });
+                    });
+        } 
+        if (!empty($year) && !empty($month)) {
+            $sql->where(function($sql) use($year, $month) {
+                        $sql->orWhere(function($sql) use($year, $month) {
+                                    $sql->whereBetween('timesheet.c_date', [date($year . '-' . $month . '-01'), date($year . '-' . $month . '-31')]);
+                                });
+                    });
+        }
+        $result = $sql->get()->toArray();
+        return $result;
+    }
+
+    public function getStaffListData($postData) {
+//        print_r($postData);exit;
+        $month = $postData['months'];
+        $year = $postData['year'];
         $staffId = $postData['staffId'];
         $sql = timesheet::select('timesheet.*','users.name', 'workplaces.adresses')
                 ->join('users', 'timesheet.worker_id', '=', 'users.id')
@@ -173,5 +200,4 @@ class Timesheet extends Model {
         $result = $sql->get()->toArray();
         return $result;
     }
-
 }

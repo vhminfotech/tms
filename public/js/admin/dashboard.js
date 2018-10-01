@@ -32,9 +32,11 @@ var Dashboard = function() {
                 }
             });
         });
+        
         $('body').on('click', '.findBestOfice', function() {
             restWorkplace();
         });
+        
         $('body').on('click', '.getWorkPlaceData', function() {
             var name = $('#workplaceName').val();
             var months = $('#workplaceMonth').val();
@@ -51,6 +53,22 @@ var Dashboard = function() {
                     $('.c-modal__body').html(data);
                 }
             });
+        });
+        $('body').on('click', '.workplacePDF', function() {
+            var name = $('#workplaceName').val();
+            var months = $('#workplaceMonth').val();
+            var year = $('#workplaceYear').val();
+            $('.wpname').text(name);
+            var url = baseurl + "admin/workplacepdf?months="+months+"&year="+year+"&name="+name;
+           window.open(url, "_blank");
+        });
+        $('body').on('click', '.staffworkPDF', function() {
+            var staffId = $('#staffId option:selected').val();
+            var months = $('#staffMonth').val();
+            var year = $('#staffYear').val();
+            $('.wpname').text(name);
+            var url = baseurl + "admin/staffworkpdf?months="+months+"&year="+year+"&staffId="+staffId;
+           window.open(url, "_blank");
         });
 
         function restWorkplace() {
