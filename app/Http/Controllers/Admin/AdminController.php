@@ -39,6 +39,10 @@ class AdminController extends Controller {
         $data['getWorkPlace'] = $objWorkplaces->getWorkplaces();
         $data['getStaff'] = $objUser->getStaff();
         $data['arrBeststaff'] = $userList;
+        
+        $objTimeheet = new Information();
+        $data['arrInformation'] = $objTimeheet->getNewInfoDataBytoday();
+        
         $data['css'] = array();
         $data['js'] = array('admin/dashboard.js');
         $data['funinit'] = array('Dashboard.init()');

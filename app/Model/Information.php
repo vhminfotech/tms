@@ -126,6 +126,23 @@ class Information extends Model {
  
         return $results;
     }
+    public function getNewInfoDataBytoday(){
+        
+        
+        $fromDate = date('Y-m-d');
+        
+        $result = timesheet::select('timesheet.*','users.staffnumber','users.name');
+        $result->where('timesheet.missing_hour','!=', '0:00');
+        if($fromDate != ""){
+            $result->whereRaw("c_date >= ? AND c_date <= ?", 
+                array($fromDate." 00:00:00", $fromDate." 23:59:59")
+            );
+        }
+        
+        $results =  $result->join('users','timesheet.worker_id','=','users.id')->get();
+ 
+        return $results;
+    }
 
         
 }

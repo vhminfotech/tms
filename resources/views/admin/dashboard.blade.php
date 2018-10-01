@@ -129,17 +129,41 @@
                             <a type="button" data-toggle="modal" data-target="#newInformation" class="c-btn c-btn--info findinfo"><i class="fa fa-search" aria-hidden="true"></i></a>
                         </div>
                     </div>
+                    <br/>
+                    <div  class="c-table-responsive" style="overflow-y:hidden;">
+                    <table class="c-table" id="datatable">
+                        <thead class="c-table__head c-table__head--slim">
+                            <tr class="c-table__row">
+                                <th class="c-table__cell c-table__cell--head">Staffnumber&nbsp;&nbsp;</th>
+                                <th class="c-table__cell c-table__cell--head">Worker&nbsp;&nbsp;</th>
+                                <th class="c-table__cell c-table__cell--head">Workplace</th>
+                                <th class="c-table__cell c-table__cell--head">Missing Time</th>
+                                <th class="c-table__cell c-table__cell--head no-sort">Reason</th>
+                            </tr>
 
-                    <div class="c-progress-card__item">
-                        <div class="c-progress-card__labels">Information 1</div>
-                        <button class="c-btn c-btn--success u-float-right">View</button>
-                    </div><!-- // .c-progress-card__item -->
+                        <tbody>
+                            @php
+                            $count = 1;
+                            @endphp
+                            @if(count($arrInformation) > 0)
+                            @for($i = 0 ;$i < count($arrInformation);$i++,$count++)
+                            <tr class="c-table__row">
+                                <td class="c-table__cell">{{ $arrInformation[$i]->staffnumber }}</td>
+                                <td class="c-table__cell">{{ $arrInformation[$i]->name }}</td>
+                                <td class="c-table__cell">{{ $arrInformation[$i]->workplaces }}</td>
+                                <td class="c-table__cell">{{ $arrInformation[$i]->missing_hour }}</td>
+                                <td class="c-table__cell">{{ $arrInformation[$i]->reason }}</td>
+                            </tr>
+                            @endfor
+                            @else
+                            <tr class="c-table__row">
+                                <td colspan="7" class="c-table__cell center" style="color: red;">No Record Found</td>
+                            </tr>
+                            @endif
+                        </tbody>
 
-                    <div class="c-progress-card__item">
-                        <div class="c-progress-card__labels">Information 2</div>
-                        <button class="c-btn c-btn--success u-float-right">View</button>
-                    </div><!-- // .c-progress-card__item -->
-
+                    </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -306,7 +330,7 @@
                             <div class="col u-mb-medium">
                                 <div class="c-btn-group">
                                     <div class="col-4">
-                                       <a data-toggle="modal" data-target="#staffPlaceList" class="c-btn c-btn--success getStaffData" href="javascript:;">
+                                        <a data-toggle="modal" data-target="#staffPlaceList" class="c-btn c-btn--success getStaffData" href="javascript:;">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     </div>
@@ -378,7 +402,7 @@
         </div>
     </div>
     <div id='staffToPrint' style="display: none;">
-         <div class="c-modal__dialog modal-dialog" role="document">
+        <div class="c-modal__dialog modal-dialog" role="document">
             <div class="c-modal__content modal-content">
                 <div class="c-modal__header">
                     <h3 class="c-modal__title">Staff List ( <b class="staffName"></b>)</h3>
@@ -393,7 +417,7 @@
     </div>
 
     <div class="c-modal c-modal--huge modal fade" id='newInformation' style="display: none;" tabindex="-1" role="dialog" aria-labelledby="workPlaceList">
-         <div class="c-modal__dialog modal-dialog" role="document">
+        <div class="c-modal__dialog modal-dialog" role="document">
             <div class="c-modal__content modal-content">
                 <div class="c-modal__header">
                     <h3 class="c-modal__title">New Information</h3>
@@ -436,8 +460,8 @@
     }
 </style>
 <script>
-    $(document).ready(function() {
-        $(".closebtn").click(function() {
+    $(document).ready(function () {
+        $(".closebtn").click(function () {
             $(".success").hide();
         });
     });
