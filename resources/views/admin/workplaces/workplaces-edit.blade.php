@@ -11,14 +11,14 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for=" company">Company Name</label> 
+                                        <label class="c-field__label" for=" company">{{ trans('words.company-name') }}</label> 
                                         <input class="c-input" type="text" name="company" value="{{ $workplacesDetail[0]['company'] }}" id="company" placeholder="Enter Company Name"> 
                                         <input type="hidden" name="user_id" value="{{ $workplacesDetail[0]['company'] }}"  class="form-control">
                                         <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
 										<input class="c-input" type="hidden" name="workplaces_id" id="workplaces_id" value="{{ $workplacesDetail[0]['id'] }}"> 
                                     </div>
 									<div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="adresses">Workplaces Address</label>   
+                                        <label class="c-field__label" for="adresses">{{ trans('words.enter-address') }}</label>   
                                         <textarea class="c-input" name="adresses" id="adresses" placeholder="Enter Adresses">{{ $workplacesDetail[0]['adresses'] }}</textarea>
                                     </div>
                                 </div>

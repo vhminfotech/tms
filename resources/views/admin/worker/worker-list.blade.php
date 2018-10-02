@@ -18,7 +18,7 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="type">Start Date</label>
+                                        <label class="c-field__label" for="type">{{ trans('words.start-date') }}</label>
                                            <input id="datepicker_search1" name="start_date" class="date c-input"type="date" />
                                            <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
 
@@ -26,14 +26,14 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="type">End Date</label>
+                                        <label class="c-field__label" for="type">{{ trans('words.end-date') }}</label>
                                            <input id="datepicker_search2" name="end_date" class="date c-input" type="date" />
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="col u-mb-medium">
-                                         <label class="c-field__label" for="type">Action</label>
-                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="Save">
+                                         <label class="c-field__label" for="type">{{ trans('words.action') }}</label>
+                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="{{ trans('words.save') }}">
                                     </div>
                                 </div>
                             </div>
@@ -55,23 +55,23 @@
             <div c-table-responsive>
                 <table class="c-table" id="datatable">
                     <caption class="c-table__title">
-                       Worker List
+                       {{ trans('words.worker-list') }}
 
-                        <a class="c-table__title-action c-tooltip c-tooltip--top" href="{{ route('worker-add') }}" aria-label="Add Worker">
+                        <a class="c-table__title-action c-tooltip c-tooltip--top" href="{{ route('worker-add') }}" aria-label="{{ trans('words.add-worker') }}">
                             <i class="fa fa-plus"></i>
                         </a>
                     </caption>
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">
-                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">ID</th>
-                            <th class="c-table__cell c-table__cell--head">Staff Number</th>
-                            <th class="c-table__cell c-table__cell--head">Name&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Surname&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Work Time&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Pause Time&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Last Login&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Total&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Action</th>
+                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">{{ trans('words.id') }}</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.staff-number') }}</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.name') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.surname') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.work-time') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.pause-time') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.last-login') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.total') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -197,10 +197,10 @@
                                     {
                                 @endphp
                                     <td class="c-table__cell">
-                                <a href=" {{ route('worker-edit',[$arrWorker[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
+                                <a href=" {{ route('worker-edit',[$arrWorker[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('words.edit') }}">
                                     <i class="fa fa-edit" ></i></span>
                                 </a>
-                                <a href="javascript:;" class="delete"  data-id="{{ $arrWorker[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
+                                <a href="javascript:;" class="delete"  data-id="{{ $arrWorker[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="{{ trans('words.delete') }}">
                                         <i class="fa fa-trash-o" ></i></span>
                                 </a>
                             </td>

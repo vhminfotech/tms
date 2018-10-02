@@ -11,7 +11,7 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for=" company">Workplaces Name</label> 
+                                        <label class="c-field__label" for=" company">{{ trans('words.workplaces') }} Name</label> 
                                         <input class="c-input" type="text" name="company" value="{{ $timesheetDetail[0]['workplaces'] }}" id="Workplaces" placeholder="Workplaces Name"> 
                                         <input type="hidden" name="user_id" value="{{ $timesheetDetail[0]['company'] }}"  class="form-control">
                                         <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
@@ -19,7 +19,7 @@
                                     </div>
 
 									<div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="adresses">Start Date</label>   
+                                        <label class="c-field__label" for="adresses">{{ trans('words.start-time') }}</label>   
                                         <input id="timesheet_edit_start_time" name="timesheet_edit_start_time" class="c-input" type="time" />
                                     </div>
 
@@ -31,7 +31,7 @@
                             <div class="row">
                                 <div class="col-lg-3">
                                     <div class="col u-mb-medium">
-                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="Edit">
+                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="{{ trans('words.edit') }}">
                                     </div>
                                 </div>
                             </div>

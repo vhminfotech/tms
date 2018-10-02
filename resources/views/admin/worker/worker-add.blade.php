@@ -19,21 +19,21 @@
                                         <input type="hidden" id="cstaffnumber" name="cstaffnumber" value="{{ $oldstaffnumber  = $arrUser[$i]->staffnumber  + 1}}" /></td>
                                     @endfor
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="staffnumber">Staff Number</label>   
+                                        <label class="c-field__label" for="staffnumber">{{ trans('words.staff-number') }}</label>   
                                         <input class="c-input" type="text" name="staffnumber" id="staffnumber" value="{{ $oldstaffnumber }}" placeholder="Enter Staffnumber" readonly> 
                                     </div>  
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="type">Member</label>
+                                        <label class="c-field__label" for="type">{{ trans('words.member') }}</label>
                                         <select class="c-input" id="type" name="type">
-                                                <option value="WORKER">Worker</option>
-                                                <option value="ADMIN">Administrator</option>
-                                                <option value="SUPERVISOR">Supervisor</option>
+                                                <option value="WORKER">{{ trans('words.wo-worker') }}</option>
+                                                <option value="ADMIN">{{ trans('words.administrator') }}</option>
+                                                <option value="SUPERVISOR">{{ trans('words.supervisior') }}</option>
                                         </select>
                                         <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
                                     </div>
 
                                     <div class="c-field u-mb-medium">
-                                        <label class="c-field__label" for="select3">Workplaces</label>
+                                        <label class="c-field__label" for="select3">{{ trans('words.Workplaces') }}</label>
                                          @php
                                         $count = 1;
                                         @endphp
@@ -49,15 +49,15 @@
 
                                 <div class="col-lg-6">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="name">Name</label>   
+                                        <label class="c-field__label" for="name">{{ trans('words.name') }}</label>   
                                         <input class="c-input" type="text" name="name" id="name" placeholder="Enter Name"> 
                                     </div>
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="productName">Surname</label> 
+                                        <label class="c-field__label" for="productName">{{ trans('words.surname') }}</label> 
                                         <input class="c-input" type="text" name="surname" id="surname" placeholder="Enter Surname"> 
                                     </div>
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="password">Password</label>   
+                                        <label class="c-field__label" for="password">{{ trans('words.password') }}</label>   
                                         <input class="c-input" type="text" name="password" id="password" placeholder="Enter Password"> 
                                     </div>                                      
                                 </div>
@@ -66,7 +66,7 @@
                             <div class="row">
                                 <div class="col-lg-3">
                                     <div class="col u-mb-medium">
-                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="Add">
+                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="{{ trans('words.add') }}">
                                     </div>
                                 </div>
                             </div>
