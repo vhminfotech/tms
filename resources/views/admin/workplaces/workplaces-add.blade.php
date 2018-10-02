@@ -11,12 +11,12 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="productName">Company Name</label> 
+                                        <label class="c-field__label" for="productName">{{ trans('words.company-name') }}</label> 
                                         <input class="c-input" type="text" name="company" id="company" placeholder="Enter Company Name"> 
                                         <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}" required> 
                                     </div>
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="adresses">Workplaces Address</label>   
+                                        <label class="c-field__label" for="adresses">{{ trans('words.enter-address') }}</label>   
                                         <textarea class="c-input" name="adresses" id="adresses" placeholder="Enter Address"></textarea>
                                     </div>
 
