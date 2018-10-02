@@ -20,7 +20,7 @@
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label" for="type">Select Date</label>
-                                           <input id="datepicker" name="c_date" class="date c-input"type="date" />
+                                           <input id="datepicker" name="c_date" class="date c-input" type="text" />
 
                                            <input class="c-input" type="hidden" name="worker_id" id="worker_id" value="{{ $detail['id'] }}"> 
 
@@ -50,13 +50,13 @@
                                 <div class="col-lg-2">
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label" for="type">Start Time</label>
-                                        <input id="start_time" name="start_time" class="c-input" type="time" />
+                                        <input id="start_time" name="start_time" class="c-input" type="text" />
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label" for="type">End Time</label>
-                                        <input id="end_time" name="end_time" class="c-input"type="time" />
+                                        <input id="end_time" name="end_time" class="c-input" type="text" />
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
@@ -190,8 +190,8 @@ if( count($arrTimesheet) !=null )
 
     <script type="text/javascript">
         /* time picker javascript*/
-/*            $('#start_time').timepicker();
-            $('#end_time').timepicker();*/
+            $('#start_time').timepicker('hh:mm:ss');
+            $('#end_time').timepicker('hh:mm:ss');
             $('#pausetime').timepicker('hh:mm:ss');
     </script>
 

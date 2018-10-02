@@ -15,35 +15,39 @@ class workplaces extends Model {
     public $timestamps = false;
 
     public function getWorkplacesList($id = NULL) {
-        if($id){
+        if ($id) {
             $result = workplaces::select('workplaces.*')
-                        ->where('workplaces.id', '=', $id)
-                        ->get();
-            
-        }else{
+                    ->where('workplaces.id', '=', $id)
+                    ->get();
+        } else {
             $result = workplaces::get();
         }
-        
+
         return $result;
     }
-	
-	public function saveWorkplacesInfo($request) {
+
+    public function saveWorkplacesInfo($request) {
         $objWorkplaces = new workplaces();
         $objWorkplaces->company = $request->input('company');
         $objWorkplaces->adresses = $request->input('adresses');
         $objWorkplaces->save();
         return TRUE;
     }
-	
-	public function updateWorkplacesInfo($request) {
-		// print_r($request->input('workplaces_id'));
-		// exit;
+
+    public function updateWorkplacesInfo($request) {
+        // print_r($request->input('workplaces_id'));
+        // exit;
         $workplacesId = $request->input('workplaces_id');
         $objWorkplaces = workplaces::find($workplacesId);
         $objWorkplaces->company = $request->input('company');
         $objWorkplaces->adresses = $request->input('adresses');
         $objWorkplaces->save();
         return TRUE;
+    }
+
+    public function getWorkplaces() {
+        $result = workplaces::pluck('company', 'company')->toArray();
+        return $result;
     }
 
 }

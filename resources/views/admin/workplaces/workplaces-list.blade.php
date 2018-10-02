@@ -17,9 +17,8 @@
                 @endif
                 <table class="c-table" id="datatable">
                     <caption class="c-table__title">
-                       Workplaces List
-
-                        <a class="c-table__title-action c-tooltip c-tooltip--top" href="{{ route('workplaces-add') }}" aria-label="Add Workplace">
+                       {{ trans('words.workplaces-list') }}
+                        <a class="c-table__title-action c-tooltip c-tooltip--top" href="{{ route('workplaces-add') }}" aria-label="{{ trans('words.add-workplace') }}">
                             <i class="fa fa-plus"></i>
                         </a>
                     </caption>
@@ -29,9 +28,9 @@
                                 <input value="0" type="checkbox" id="selectall"/>
                             </th>
                             <th class="c-table__cell c-table__cell--head">ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Company&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Adresses&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Action</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.company') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.adresses') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,10 +46,10 @@
                             <td class="c-table__cell">{{ $arrWorkplaces[$i]->company }}</td>
                             <td class="c-table__cell">{{ $arrWorkplaces[$i]->adresses }}</td>
                             <td class="c-table__cell">
-                                <a href=" {{ route('workplaces-edit',[$arrWorkplaces[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
+                                <a href=" {{ route('workplaces-edit',[$arrWorkplaces[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('words.edit') }}">
                                     <i class="fa fa-edit" ></i></span>
                                 </a>
-                                 <a href="javascript:;" class="delete"  data-id="{{ $arrWorkplaces[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
+                                 <a href="javascript:;" class="delete"  data-id="{{ $arrWorkplaces[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="{{ trans('words.delete') }}">
                                         <i class="fa fa-trash-o"></i></span>
                                 </a>
                             </td>
@@ -66,7 +65,7 @@
          <div class="col-12">
 
             <button id="delete_checkboxd" type="submit" class="delete_checkboxd"> 
-                    Delete Selected
+                    {{ trans('words.delete-selected') }}
             </button> 
         </div>
     </div>
