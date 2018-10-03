@@ -49,5 +49,12 @@ return [
     'end-time' => 'End Time',
     'timesheet-list' => 'Timesheet List',
     'timesheet' => 'Timesheet',
+    'missing-time' => 'Missing Time',
+    'reason' => 'Reason',
+    'logout' => 'Logout',
+    'time-sheet-system' => 'Time Sheet System',
+    'wo-reason' => 'Reason',
+    'select-date' => 'Select Date',
+    
     
 ];

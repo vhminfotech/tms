@@ -49,6 +49,11 @@ return [
     'end-time' => 'Endzeit',
     'timesheet-list' => 'Zeiterfassungsliste',
     'timesheet' => 'Zeiterfassung',
-    
+    'missing-time' => 'Stundenabzug',
+    'reason' => 'Grund/Erklärung',
+    'logout' => 'Ausloggen',
+    'time-sheet-system' => 'Zeiterfassung',
+    'wo-reason' => 'Anmerkung',
+    'select-date' => 'Datum auswählen',
     
 ];

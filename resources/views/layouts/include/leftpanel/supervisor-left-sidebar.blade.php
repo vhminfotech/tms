@@ -6,7 +6,7 @@ $currentRoute = Route::current()->getName();
     <div class="c-sidebar">
         <a class="c-sidebar__brand" href="{{ route('customer-dashboard') }}">
             <!-- <img class="c-sidebar__brand-img" src="img/logo.png" alt="Logo"> -->
-            <img class="c-sidebar__brand-img" src="{{ asset('img/logo.png') }}" alt="Logo">Dashboard
+            <img class="c-sidebar__brand-img" src="{{ asset('img/logo.png') }}" alt="Logo">{{ trans('words.Dashboard') }}
         </a>
         <h4 class="c-sidebar__title">{{ trans('words.Dashboard') }}</h4>
         <ul class="c-sidebar__list">

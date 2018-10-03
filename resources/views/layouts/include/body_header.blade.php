@@ -5,7 +5,7 @@
             <span class="c-sidebar-toggle__bar"></span>
         </button><!-- // .c-sidebar-toggle -->
 
-        <h2 class="c-navbar__title u-mr-auto"><b>Time Sheet System</b></h2>
+        <h2 class="c-navbar__title u-mr-auto"><b>{{ trans('words.time-sheet-system') }}</b></h2>
          @php
                     if($detail['type'] !== 'ADMIN')
                     {
@@ -132,7 +132,7 @@
                 @php
                     }
                 @endphp
-                <a class="c-dropdown__item dropdown-item" href="{{ route('logout') }}">Logout</a>
+                <a class="c-dropdown__item dropdown-item" href="{{ route('logout') }}">{{ trans('words.Logout') }}</a>
 <!--                <a class="c-dropdown__item dropdown-item" href="#">Manage Roles</a>-->
             </div>
         </div>
