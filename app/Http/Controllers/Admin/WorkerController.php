@@ -113,6 +113,8 @@ class WorkerController extends Controller {
     }
     
     public function deleteWorker($postData) {
+        
+        Timesheet::where('worker_id',$postData['id'])->delete();
         $result = Worker::find($postData['id'])->delete();
         if ($result) {
             $return['status'] = 'success';

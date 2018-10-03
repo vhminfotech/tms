@@ -10,8 +10,10 @@ var Workplaces = function() {
 
            $('#delete_checkboxd').click(function() {
              var delid = new Array();
+             var cname = new Array();
              $("input:checked").each(function() {
                    delid.push($(this).val());
+                   cname.push($(this).attr('data-name'));
                 });
 
                  if(delid == '')
@@ -28,7 +30,7 @@ var Workplaces = function() {
                         'X-CSRF-TOKEN': $('input[name="_token"]').val(),
                     },
                     url: baseurl + "admin/workplaces/ajaxActions",
-                    data: {'action': 'delWorkplaces', 'data': {'id': delid }},
+                    data: {'action': 'delWorkplaces', 'data': {'id': delid ,name:cname}},
                     success: function(data) {
                         handleAjaxResponse(data);
     //                    var data = JSON.parse(data);

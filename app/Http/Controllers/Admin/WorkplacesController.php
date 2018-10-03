@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\User;
 use App\Model\Workplaces;
+use App\Model\Timesheet;
 use App\Http\Controllers\Controller;
 use Auth;
 use Session;
@@ -93,7 +94,13 @@ class WorkplacesController extends Controller {
     }
 	
 	public function deleteWorkplaces($postData) {
-        $result = Workplaces::find($postData['id'])->delete();
+            
+        $getWorkplace = Workplaces::where('id',$postData['id']);
+        $a = $getWorkplace->get();
+        $workPalceName =  $a[0]['company'];
+        $deleteTimesheet = Timesheet::where('workplaces',$workPalceName)->delete();
+        
+        $result = $getWorkplace->delete();
         if ($result) {
             $return['status'] = 'success';
             $return['message'] = 'Workplaces Delete successfully.';
@@ -115,6 +122,9 @@ class WorkplacesController extends Controller {
     }
     public function delWorkplaces($postData) {
          $delete_id = $postData['id'];
+         $cname = $postData['name'];
+         Timesheet::whereIn('workplaces',$cname)->delete();
+         
          $result = Workplaces::whereIn('id', $delete_id)
          ->delete();
         if ($result) {

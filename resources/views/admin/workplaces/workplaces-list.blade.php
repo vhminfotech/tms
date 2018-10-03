@@ -40,7 +40,7 @@
                         @for($i = 0 ;$i < count($arrWorkplaces);$i++,$count++)
                         <tr class="c-table__row">
                             <td class="c-table__cell">
-                                <input class="case" type="checkbox" name="delid[]" value="{{ $arrWorkplaces[$i]->id }}" />
+                                <input class="case" type="checkbox" name="delid[]" data-name="{{$arrWorkplaces[$i]->company}}" value="{{ $arrWorkplaces[$i]->id }}" />
                             </td>
                             <td class="c-table__cell">{{ $count }}</td>
                             <td class="c-table__cell">{{ $arrWorkplaces[$i]->company }}</td>
