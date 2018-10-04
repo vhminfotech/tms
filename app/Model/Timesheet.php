@@ -28,6 +28,15 @@ class Timesheet extends Model {
         }
         return $result;
     }
+    
+    public function getTimesheetListAdmin($id) {
+       
+            $result = timesheet::select('timesheet.*')
+                    ->where('timesheet.id', '=', $id)
+                    ->get();
+        
+        return $result;
+    }
 
     public function searchtimesheetInfo($request, $id = NULL) {
 
@@ -199,5 +208,27 @@ class Timesheet extends Model {
         }
         $result = $sql->get()->toArray();
         return $result;
+    }
+    
+    public function updateTimesheetAdmin($request,$timesheetId){
+        
+        $objTime = Timesheet::find($timesheetId);
+        $objTime->start_time = $request->input('timesheet_edit_start_time');
+        $objTime->end_time = $request->input('timesheet_edit_end_time');
+        $objTime->pause_time = $request->input('timesheet_edit_push_time');
+        
+        $total_time = (new Carbon($objTime->end_time))->diff(new Carbon($objTime->start_time))->format('%h:%I');
+        $pause_times = (new Carbon(date($objTime->pause_time)))->format('h:i:s');
+
+        //$main_total_time = (new Carbon($pause_times))->diff(new Carbon($total_time))->format('%h:%I');
+
+        $policy_times = "09:00";
+        $policy_total_time = (new Carbon($policy_times))->diff(new Carbon($total_time))->format('%h:%I');
+
+        $objTime->missing_hour = $policy_total_time;
+        $objTime->total_time = $total_time;
+        $objTime->updated_at = date('Y-m-d H:i:s');
+        $objTime->save();
+        return TRUE;
     }
 }

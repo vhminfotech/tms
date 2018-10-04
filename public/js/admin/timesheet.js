@@ -44,7 +44,20 @@ var Timesheet = function() {
 
     };
 
+    var handleEditTimeSheet = function(){
+        var form = $('#editTimeSheet');
+        var rules = {
 
+            timesheet_edit_start_time: {required: true},
+            timesheet_edit_end_time: {required: true},
+            timesheet_edit_push_time: {required: true}
+        };
+        handleFormValidate(form, rules, function(form) {
+            handleAjaxFormSubmit(form);
+        });
+    }
+    
+    
     return{
         listInit: function() {
             list();
@@ -52,5 +65,8 @@ var Timesheet = function() {
         addInit: function() {
             add_timesheet();
         },
+        editInit : function(){
+            handleEditTimeSheet();
+        }        
     };
 }();

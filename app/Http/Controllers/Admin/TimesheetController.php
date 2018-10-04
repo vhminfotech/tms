@@ -45,7 +45,7 @@ class TimesheetController extends Controller {
         $data['funinit'] = array('Timesheet.listInit()');
      
         $data['arrTimesheet'] = $timesheetList;
-
+        
         return view('admin.timesheet.timesheet-list', $data);
     }
 
@@ -123,16 +123,16 @@ class TimesheetController extends Controller {
         return view('admin.timesheet.timesheet-add', $data);
     }*/
 
-     public function editTimesheet($userId , Request $request) {
+     public function editTimesheet($timesheetId , Request $request) {
         $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
 //            print_r($request->input());exit;
             $objWorkplaces = new Timesheet();
-            $objWorkplacesList = $objWorkplaces->updateWorkplacesInfo($request);
+            $objWorkplacesList = $objWorkplaces->updateTimesheetAdmin($request,$timesheetId);
             if ($objWorkplacesList) {
                 $return['status'] = 'success';
                 $return['message'] = 'Update Timesheet successfully.';
-                $return['redirect'] =  route('workplaces-list');
+                $return['redirect'] =  route('timesheet-list');
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';
@@ -147,7 +147,7 @@ class TimesheetController extends Controller {
         $data['funinit'] = array('Timesheet.editInit()');
         
         $objMuck = new Timesheet();
-        $muckDetail = $objMuck->getTimesheetList($userId);
+        $muckDetail = $objMuck->getTimesheetListAdmin($timesheetId);
         $data['timesheetDetail'] = $muckDetail;
         
         return view('admin.timesheet.timesheet-edit', $data);

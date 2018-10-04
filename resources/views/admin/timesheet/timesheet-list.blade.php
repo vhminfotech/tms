@@ -91,6 +91,7 @@
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.end-time') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.pause-time') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.total') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head no-sort"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -107,6 +108,11 @@
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->end_time }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->pause_time }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->total_time }}</td>
+                            <td class="c-table__cell">
+                                <a href=" {{ route('timesheet-edit',[$arrTimesheet[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('words.edit') }}">
+                                    <i class="fa fa-edit" ></i></span>
+                                </a>
+                            </td>
                         </tr>
                         @endfor
                     </tbody>

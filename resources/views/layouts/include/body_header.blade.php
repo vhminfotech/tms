@@ -12,7 +12,7 @@
                 @endphp
                     <span class="c-notification__icon">
                                 <i class="fa fa-street-view u-mr-xsmall"></i>
-                                Staffnumber :  {{ $detail['staffnumber'] }} &nbsp;&nbsp;&nbsp;
+                                {{ trans('words.staff-number') }} :  {{ $detail['staffnumber'] }} &nbsp;&nbsp;&nbsp;
                     </span>
                 @php
                     }

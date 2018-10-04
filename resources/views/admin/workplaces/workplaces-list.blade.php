@@ -30,7 +30,7 @@
                             <th class="c-table__cell c-table__cell--head">ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.company') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.adresses') }}&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.action') }}</th>
+                            <th class="c-table__cell c-table__cell--head no-sort"></th>
                         </tr>
                     </thead>
                     <tbody>
