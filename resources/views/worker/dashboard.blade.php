@@ -120,7 +120,7 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="col u-mb-medium">
-                                         <label class="c-field__label" for="type">{{ trans('words.action') }}</label>
+                                        <label class="c-field__label" for="type">&nbsp;</label>
                                         <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="{{ trans('words.save') }}">
                                     </div>
                                 </div>
@@ -151,10 +151,10 @@ if( count($arrTimesheet) !=null )
                             <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">{{ trans('words.id') }}</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.date') }}  </th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.workerplace') }} &nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Start Time&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">End Time&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Pause Time&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Total&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.start-time') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.end-time') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.pause-time') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.total') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.missing-time') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.wo-reason') }}</th>
                         </tr>

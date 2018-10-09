@@ -17,7 +17,7 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="type">Start Date</label>
+                                        <label class="c-field__label" for="type">{{ trans('words.start-date') }}</label>
                                            <input id="datepicker_search1" name="start_date" class="date c-input"type="date" />
                                            <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
 
@@ -25,14 +25,14 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="type">End Date</label>
+                                        <label class="c-field__label" for="type">{{ trans('words.end-date') }}</label>
                                            <input id="datepicker_search2" name="end_date" class="date c-input" type="date" />
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="col u-mb-medium">
-                                         <label class="c-field__label" for="type">Action</label>
-                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="Save">
+                                         <label class="c-field__label" for="type"></label>
+                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="{{ trans('words.save') }}">
                                     </div>
                                 </div>
                             </div>
@@ -56,13 +56,14 @@
                     </caption>
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">
-                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">ID</th>
-                            <th class="c-table__cell c-table__cell--head">Date&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Staffnumber&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Worker&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Workplace</th>
-                            <th class="c-table__cell c-table__cell--head">Missing Time</th>
-                            <th class="c-table__cell c-table__cell--head">Reason</th>
+                            
+                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">{{ trans('words.id') }}</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.date') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.staff-number') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.wo-worker') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.workerplace') }}</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.missing-time') }}</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.reason') }}</th>
                         </tr>
                     </thead>
                     <tbody>

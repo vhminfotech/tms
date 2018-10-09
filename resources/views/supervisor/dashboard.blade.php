@@ -17,7 +17,7 @@
                             <div class="row">
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="type">Select Date</label>
+                                        <label class="c-field__label" for="type">{{ trans('words.select-date') }}</label>
                                            <input id="datepicker" name="c_date" class="date c-input" type="text" />
 
                                            <input class="c-input" type="hidden" name="worker_id" id="worker_id" value="{{ $detail['id'] }}"> 
@@ -33,7 +33,7 @@
                                 @endphp
                                  <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="type">Workplaces</label>
+                                        <label class="c-field__label" for="type">{{ trans('words.workerplace') }}</label>
                                          @php
                                         $count = 1;
                                         @endphp
@@ -47,25 +47,25 @@
                                 </div> 
                                 <div class="col-lg-2">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="type">Start Time</label>
+                                        <label class="c-field__label" for="type">{{ trans('words.start-time') }}</label>
                                         <input id="start_time" name="start_time" class="c-input" type="text" />
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="type">End Time</label>
+                                        <label class="c-field__label" for="type">{{ trans('words.end-time') }}</label>
                                         <input id="end_time" name="end_time" class="c-input" type="text" />
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="type">Pause Time</label>
+                                        <label class="c-field__label" for="type">{{ trans('words.pause-time') }}</label>
                                        <input id="pause_time" name="pause_time" value="01:00" class="c-input" type="text" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="type">Reason</label>
+                                        <label class="c-field__label" for="type">{{ trans('words.wo-reason') }}</label>
                                         <input name="reason" class="c-input" type="text" />
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@
                             <div class="row">
                                 <div class="col-lg-3">
                                     <div class="col u-mb-medium">
-                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="Add">
+                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="{{ trans('words.add') }}">
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="type">Start Date</label>
+                                        <label class="c-field__label" for="type">{{ trans('words.start-date') }}</label>
                                            <input id="datepicker_search1" name="start_date" class="date c-input" type="text" />
                                            <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
 
@@ -108,15 +108,15 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="type">End Date</label>
+                                        <label class="c-field__label" for="type">{{ trans('words.end-date') }}</label>
                                            <input id="datepicker_search2" name="end_date" class="date c-input" type="text" />
                                            <input class="c-input" type="hidden" name="worker_id" id="worker_id" value="{{ $detail['id'] }}"/> 
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="col u-mb-medium">
-                                         <label class="c-field__label" for="type">Action</label>
-                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="Save">
+                                        <label class="c-field__label" for="type">&nbsp;</label>
+                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="{{ trans('words.save') }}">
                                     </div>
                                 </div>
                             </div>
@@ -139,19 +139,19 @@ if( count($arrTimesheet) !=null )
             <div c-table-responsive>
                 <table class="c-table" id="datatable">
                     <caption class="c-table__title">
-                       Timesheet List
+                        {{ trans('words.timesheet-list') }}
                     </caption>
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">
-                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">ID</th>
-                            <th class="c-table__cell c-table__cell--head">Date  </th>
-                            <th class="c-table__cell c-table__cell--head">Workplace &nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Start Time&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">End Time&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Pause Time&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Total&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Missing Time&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Reason</th>
+                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">{{ trans('words.id') }}</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.date') }}  </th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.workerplace') }} &nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.start-time') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.end-time') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.pause-time') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.total') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.missing-time') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.wo-reason') }}</th>
                         </tr>
                     </thead>
                     <tbody>
