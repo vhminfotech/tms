@@ -49,7 +49,7 @@
 <div class="container">
     <div class="row u-mb-large">
         <div class="col-12">
-            <div c-table-responsive>
+            <div class="c-table-responsive">
                 <table class="c-table" id="datatable">
                     <caption class="c-table__title">
                        Information List
@@ -95,6 +95,10 @@
         margin-left: 743px;
         margin-bottom: 41px;
     }*/
+.c-table-responsive .c-table {
+    display: inline-table !important;
+    overflow-y: hidden;
+}
 .c-table__title .c-tooltip{
     position: absolute;
 }

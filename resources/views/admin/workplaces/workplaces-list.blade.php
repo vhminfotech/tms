@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row u-mb-large">
         <div class="col-12">
-            <div c-table-responsive>
+            <div class="c-table-responsive">
             <form id="deleteWorkplaces" method="post"> 
                  {{ csrf_field() }}                
 
@@ -115,6 +115,10 @@ button{
     line-height: 18px;
     cursor: pointer;
     transition: 0.3s;
+}
+.c-table-responsive .c-table {
+    display: inline-table !important;
+    overflow-y: hidden;
 }
 </style>
 <script type="text/javascript">

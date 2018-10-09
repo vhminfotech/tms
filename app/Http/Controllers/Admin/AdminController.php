@@ -29,8 +29,6 @@ class AdminController extends Controller {
     }
 
     public function dashboard(Request $request) {
-
-       
         
         $data['detail'] = $this->loginUser;
         $objUser = new Users();
