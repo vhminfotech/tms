@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="col u-mb-medium">
-                                         <label class="c-field__label" for="type">{{ trans('words.action') }}</label>
+                                        <label class="c-field__label" for="type">&nbsp;</label>
                                         <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="{{ trans('words.search') }}">
                                     </div>
                                 </div>
