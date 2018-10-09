@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <h5 class="c-graph-card__number center staffName" >{{$arrBeststaff[0]->name}}</h5>
-                        <h4 class="center" ><b>Staffnumber</b>:<label class="staffnumber">{{ $arrBeststaff[0]->staffnumber }}</label></h4>
+                        <h4 class="center" ><b>{{ trans('words.staff-number') }}</b>:<label class="staffnumber">{{ $arrBeststaff[0]->staffnumber }}</label></h4>
                         <h4  class="center"><b class="totalHours">{{ $arrBeststaff[0]->total_houres }}</b>: hours</h4>    
                     </div>
                 </div>
@@ -55,7 +55,7 @@
             <div class="col-xl-4">
                 <div class="c-graph-card" data-mh="graph-cards">
                     <div class="c-graph-card__content">
-                        <h3 class="c-graph-card__title">Rest workplace</h3>
+                        <h3 class="c-graph-card__title">Rest {{ trans('words.Workplaces') }}</h3>
                         <div class="row">
                             <div class="col-4">
 
@@ -99,7 +99,7 @@
             </div>
             <div class="col-xl-4">
                 <div class="c-progress-card" data-mh="graph-cards">
-                    <h3 class="c-progress-card__title">New Information</h3>
+                    <h3 class="c-progress-card__title">New {{ trans('words.Information') }}</h3>
                     <div class="row">
                         <div class="col-4">  
                             <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
@@ -134,11 +134,11 @@
                     <table class="c-table" id="datatable">
                         <thead class="c-table__head c-table__head--slim">
                             <tr class="c-table__row">
-                                <th class="c-table__cell c-table__cell--head">Staffnumber&nbsp;&nbsp;</th>
-                                <th class="c-table__cell c-table__cell--head">Worker&nbsp;&nbsp;</th>
-                                <th class="c-table__cell c-table__cell--head">Workplace</th>
-                                <th class="c-table__cell c-table__cell--head">Missing Time</th>
-                                <th class="c-table__cell c-table__cell--head no-sort">Reason</th>
+                                <th class="c-table__cell c-table__cell--head">{{ trans('words.staff-number') }}&nbsp;&nbsp;</th>
+                                <th class="c-table__cell c-table__cell--head">{{ trans('words.Worker') }}&nbsp;&nbsp;</th>
+                                <th class="c-table__cell c-table__cell--head">{{ trans('words.Workplaces') }}</th>
+                                <th class="c-table__cell c-table__cell--head">{{ trans('words.missing-time') }}</th>
+                                <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.wo-reason') }}</th>
                             </tr>
 
                         <tbody>
@@ -172,7 +172,7 @@
             <div class="col-xl-4">
                 <div class="c-graph-card" data-mh="graph-cards">
                     <div class="c-graph-card__content">
-                        <h3 class="c-graph-card__title">Information</h3>
+                        <h3 class="c-graph-card__title">{{ trans('words.Information') }}</h3>
                         <div class="row">
                             <div class="col u-mb-medium">
                                 <select class="c-select" name="informationWorkplace" id="informationWorkplace">
@@ -220,7 +220,7 @@
             <div class="col-xl-4">
                 <div class="c-graph-card" data-mh="graph-cards">
                     <div class="c-graph-card__content">
-                        <h3 class="c-graph-card__title">Workplaces</h3>
+                        <h3 class="c-graph-card__title">{{ trans('words.Workplaces') }}</h3>
                         <div class="row">
                             <div class="col u-mb-medium">
                                 <select class="c-select" name="workplaceName" id="workplaceName">
