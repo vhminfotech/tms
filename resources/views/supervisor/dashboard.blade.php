@@ -18,7 +18,7 @@
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label" for="type">Select Date</label>
-                                           <input id="datepicker" name="c_date" class="date c-input"type="date" />
+                                           <input id="datepicker" name="c_date" class="date c-input" type="text" />
 
                                            <input class="c-input" type="hidden" name="worker_id" id="worker_id" value="{{ $detail['id'] }}"> 
 
@@ -48,19 +48,19 @@
                                 <div class="col-lg-2">
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label" for="type">Start Time</label>
-                                        <input id="timepicker1" name="start_time" class="c-input" type="time" />
+                                        <input id="start_time" name="start_time" class="c-input" type="text" />
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label" for="type">End Time</label>
-                                        <input id="start_timepicker" name="end_time" class="c-input"type="time" />
+                                        <input id="end_time" name="end_time" class="c-input" type="text" />
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label" for="type">Pause Time</label>
-                                       <input id="pausetime" name="pause_time" value="01:00" class="c-input" type="text" />
+                                       <input id="pause_time" name="pause_time" value="01:00" class="c-input" type="text" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -101,7 +101,7 @@
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label" for="type">Start Date</label>
-                                           <input id="datepicker_search1" name="start_date" class="date c-input"type="date" />
+                                           <input id="datepicker_search1" name="start_date" class="date c-input" type="text" />
                                            <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
 
                                     </div>
@@ -109,7 +109,7 @@
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label" for="type">End Date</label>
-                                           <input id="datepicker_search2" name="end_date" class="date c-input" type="date" />
+                                           <input id="datepicker_search2" name="end_date" class="date c-input" type="text" />
                                            <input class="c-input" type="hidden" name="worker_id" id="worker_id" value="{{ $detail['id'] }}"/> 
                                     </div>
                                 </div>
@@ -186,9 +186,9 @@ if( count($arrTimesheet) !=null )
 
     <script type="text/javascript">
         /* time picker javascript*/
-/*            $('#start_time').timepicker();
-            $('#end_time').timepicker();*/
-            $('#pausetime').timepicker('hh:mm:ss');
+            $('#start_time').timepicker();
+            $('#end_time').timepicker();
+            $('#pause_time').timepicker();
     </script>
 <style type="text/css">
     .success {
