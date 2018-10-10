@@ -57,7 +57,7 @@
                     <caption class="c-table__title">
                        {{ trans('words.worker-list') }}
 
-                        <a class="c-table__title-action c-tooltip c-tooltip--top" href="{{ route('worker-add') }}" aria-label="{{ trans('words.add-worker') }}">
+                        <a class="c-table__title-action c-tooltip c-tooltip--left" href="{{ route('worker-add') }}" aria-label="{{ trans('words.add-worker') }}">
                             <i class="fa fa-plus"></i>
                         </a>
                     </caption>

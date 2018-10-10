@@ -6,8 +6,8 @@
             <a class="c-card__icon" href="#!">
                 <img src="{{ asset('img/logo-login.svg') }}" alt="Dashboard UI Kit">
             </a>
-            <h1 class="u-h3 u-text-center u-mb-zero">Welcome To TMS</h1>
-            <h1 class="u-h3 u-text-center u-mb-zero">Please login.</h1>
+            <h1 class="u-h3 u-text-center u-mb-zero">Multiclean Sarbar GmbH & Co. KG</h1>
+            <h1 class="u-h3 u-text-center u-mb-zero">Bitte anmelden</h1>
         </header>
         <div id="errorSection" style="width:100% !important; padding: 20px 25px 0px 25px;">
             @if (session('session_error'))
@@ -34,7 +34,7 @@
         <form class="form-horizontal c-card__body" id="login" method="POST" action="{{ route('login') }}">
             {{ csrf_field() }}
             <div class="c-field u-mb-small {{ $errors->has('staffnumber') ? ' has-error' : '' }}">
-                <label class="c-field__label" for="input1">Log in with your staffnumber</label> 
+                <label class="c-field__label" for="input1">Personalnummer</label> 
                 <input class="c-input" type="text" name="staffnumber" value="{{ old('staffnumber') }}" id="input1" placeholder="1001"> 
                 @if ($errors->has('staffnumber'))
                 <span class="help-block">
@@ -44,15 +44,15 @@
             </div>
 
             <div class="c-field u-mb-small {{ $errors->has('password') ? ' has-error' : '' }}">
-                <label class="c-field__label" for="input2">Password</label> 
-                <input class="c-input" type="password" name="password" id="input2" placeholder="password"> 
+                <label class="c-field__label" for="input2">Passwort</label> 
+                <input class="c-input" type="password" name="password" id="input2" placeholder="passwort"> 
                 @if ($errors->has('password'))
                 <span class="help-block">
                     <strong>{{ $errors->first('password') }}</strong>
                 </span>
                 @endif
             </div>
-            <button class="c-btn c-btn--info c-btn--fullwidth" type="submit">Sign in to Dashboard</button>
+            <button class="c-btn c-btn--info c-btn--fullwidth" type="submit">Einloggen</button>
             <!-- <span class="c-divider c-divider--small has-text u-mv-medium"><b>Language</b></span>
             <div class="c-field u-mb-small">
                 <select class="c-input" id="language" name="language">

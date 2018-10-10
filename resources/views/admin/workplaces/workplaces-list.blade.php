@@ -18,7 +18,7 @@
                 <table class="c-table" id="datatable">
                     <caption class="c-table__title">
                        {{ trans('words.workplaces-list') }}
-                        <a class="c-table__title-action c-tooltip c-tooltip--top" href="{{ route('workplaces-add') }}" aria-label="{{ trans('words.add-workplace') }}">
+                        <a class="c-table__title-action c-tooltip c-tooltip--left" href="{{ route('workplaces-add') }}" aria-label="{{ trans('words.add-workplace') }}">
                             <i class="fa fa-plus"></i>
                         </a>
                     </caption>

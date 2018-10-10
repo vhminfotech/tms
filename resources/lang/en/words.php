@@ -8,6 +8,9 @@ return [
     'Add_time'      => 'Add Time',
     'Workplaces'   => 'Workplaces',
     'Worker'  => 'Worker',
+    'WORKER'  => 'Worker',
+    'ADMIN'  => 'ADMIN',
+    'reason'  => 'Reason',
     'Timesheet'      => 'Timesheet',
     'Information'   => 'Information',
     'Logout'        => 'Logout',
@@ -37,6 +40,7 @@ return [
     'save' => 'Save',
     'member' => 'Member',
     'supervisior' => 'Supervisior',
+    'SUPERVISOR' => 'Supervisior',
     'administrator' => 'Administrator',
     'password' => 'Password',
     'add' => 'Add',
@@ -55,6 +59,11 @@ return [
     'time-sheet-system' => 'Time Sheet System',
     'wo-reason' => 'Reason',
     'select-date' => 'Select Date',
+    'best-staff' => 'Best Staff',
+    'best-workplaces' => 'Best Workplaces',
+    'new-information' => 'New Information',
+    'staff' => 'Staff',
+    'Information-List' => 'Information List',
     
     
 ];

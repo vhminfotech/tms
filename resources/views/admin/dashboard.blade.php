@@ -15,7 +15,7 @@
             <div class="col-xl-4">
                 <div class="c-graph-card" data-mh="graph-cards">
                     <div class="c-graph-card__content">
-                        <h3 class="c-graph-card__title">Best Staff</h3>
+                        <h3 class="c-graph-card__title">{{ trans('words.best-staff') }}</h3>
                         <div class="row">
                             <div class="col-4">
                                 <select class="c-select staffMonths" id="month" name="month">
@@ -55,7 +55,7 @@
             <div class="col-xl-4">
                 <div class="c-graph-card" data-mh="graph-cards">
                     <div class="c-graph-card__content">
-                        <h3 class="c-graph-card__title">Rest {{ trans('words.Workplaces') }}</h3>
+                        <h3 class="c-graph-card__title"> {{ trans('words.best-workplaces') }}</h3>
                         <div class="row">
                             <div class="col-4">
 
@@ -99,7 +99,7 @@
             </div>
             <div class="col-xl-4">
                 <div class="c-progress-card" data-mh="graph-cards">
-                    <h3 class="c-progress-card__title">New {{ trans('words.Information') }}</h3>
+                    <h3 class="c-progress-card__title">{{ trans('words.new-information') }}</h3>
                     <div class="row">
                         <div class="col-4">  
                             <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
@@ -201,7 +201,7 @@
                                         </a>
                                     </div>
                                     <div class="col-4">
-                                        <a class="c-btn c-btn--success" href="javascript:;">
+                                        <a class="c-btn c-btn--success infoBydatePDF" href="javascript:;">
                                             <i class="fa fa-print"></i>
                                         </a>
                                     </div>
@@ -233,7 +233,7 @@
                         <div class="row">
                             <div class="col u-mb-medium">
                                 <select class="c-select" id="workplaceMonth" name="workplaceMonth">
-                                    <option value="">Select Month</option>
+                                    <option value="">Monat auswahlen</option>
                                     <option value="01">01</option>
                                     <option value="02">02</option>
                                     <option value="03">03</option>
@@ -252,7 +252,7 @@
                         <div class="row">
                             <div class="col u-mb-medium">
                                 <select class="c-select filter workplaceYear" id="workplaceYear" name="workplaceYear">
-                                    <option value="">Select Year</option>
+                                    <option value="">Jahr auswahlen</option>
                                     @for($i=date('Y'); $i<=2050; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
                                     @endfor
@@ -268,7 +268,7 @@
                                         </a>
                                     </div>
                                     <div class="col-4">
-                                        <a class="c-btn c-btn--success printDiv" href="javascript:;">
+                                        <a class="c-btn c-btn--success printDiv workplacePDF" href="javascript:;">
                                             <i class="fa fa-print"></i>
                                         </a>
                                     </div>
@@ -287,7 +287,7 @@
             <div class="col-xl-4">
                 <div class="c-graph-card" data-mh="graph-cards">
                     <div class="c-graph-card__content">
-                        <h3 class="c-graph-card__title">Staff</h3>
+                        <h3 class="c-graph-card__title">{{ trans('words.staff') }}</h3>
                         <div class="row">
                             <div class="col u-mb-medium">
                                 <select class="c-select" name="staffId" id="staffId">
@@ -300,7 +300,7 @@
                         <div class="row">
                             <div class="col u-mb-medium">
                                 <select class="c-select" id="staffMonth" name="staffMonth">
-                                    <option value="">Select Month</option>
+                                    <option value="">Monat auswahlen</option>
                                     <option value="01">01</option>
                                     <option value="02">02</option>
                                     <option value="03">03</option>
@@ -319,7 +319,7 @@
                         <div class="row">
                             <div class="col u-mb-medium">
                                 <select class="c-select filter staffYear" id="staffYear" name="staffYear">
-                                    <option value="">Select Year</option>
+                                    <option value="">Jahr auswahlen</option>
                                     @for($i=date('Y'); $i<=2050; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
                                     @endfor
@@ -335,7 +335,7 @@
                                         </a>
                                     </div>
                                     <div class="col-4">
-                                        <a class="c-btn c-btn--success printStaff" href="javascript:;">
+                                        <a class="c-btn c-btn--success printStaff staffworkPDF" href="javascript:;">
                                             <i class="fa fa-print"></i>
                                         </a>
                                     </div>

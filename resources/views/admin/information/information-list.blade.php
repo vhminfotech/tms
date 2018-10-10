@@ -52,7 +52,7 @@
             <div class="c-table-responsive">
                 <table class="c-table" id="datatable">
                     <caption class="c-table__title">
-                       Information List
+                       {{ trans('words.Information-List') }}
                     </caption>
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">

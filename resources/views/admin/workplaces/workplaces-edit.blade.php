@@ -29,7 +29,7 @@
                             <div class="row">
                                 <div class="col-lg-3">
                                     <div class="col u-mb-medium">
-                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="Edit">
+                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="{{ trans('words.edit') }}">
                                     </div>
                                 </div>
                             </div>

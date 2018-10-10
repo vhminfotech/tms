@@ -40,7 +40,7 @@
                                         $count = 1;
                                         @endphp
                                         <select class="c-input" id="workplaces" name="workplaces">
-                                        <option value="other">Other</option>
+                                        <!--<option value="other">Other</option>-->
                                         @for($i = 0 ;$i < count($workplaces_array);$i++,$count++)
                                         <option value="{{ $workplaces_array[$i] }}">{{ $workplaces_array[$i] }}</option>
                                         @endfor
@@ -141,7 +141,7 @@ if( count($arrTimesheet) !=null )
 <div class="container">
     <div class="row u-mb-large">
         <div class="col-12">
-            <div c-table-responsive>
+            <div class="c-table-responsive">
                 <table class="c-table" id="datatable">
                     <caption class="c-table__title">
                        {{ trans('words.timesheet-list') }}
@@ -194,5 +194,18 @@ if( count($arrTimesheet) !=null )
             $('#end_time').timepicker('hh:mm:ss');
             $('#pausetime').timepicker('hh:mm:ss');
     </script>
-
+<style>
+/*    a.c-board__btn.c-tooltip.c-tooltip--top {
+        position: absolute;
+        margin-left: 743px;
+        margin-bottom: 41px;
+    }*/
+.c-table__title .c-tooltip{
+    position: absolute;
+}
+.c-table-responsive .c-table {
+    display: inline-table !important;
+    overflow-y: hidden;
+}
+</style>
 @endsection
