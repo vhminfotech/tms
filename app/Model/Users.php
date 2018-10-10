@@ -131,4 +131,9 @@ class Users extends Model {
         $result = Users::pluck('name', 'id')->toArray();
         return $result;
     }
+     public function getDashboradStaff() {
+        $result = Users::where('type', '!=', 'ADMIN')->pluck('name', 'id')->toArray();
+        
+        return $result;
+    }
 }

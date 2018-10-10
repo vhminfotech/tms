@@ -35,7 +35,7 @@ class AdminController extends Controller {
         $userList = $objUser->gtBeststafflist();
         $objWorkplaces = new workplaces();
         $data['getWorkPlace'] = $objWorkplaces->getWorkplaces();
-        $data['getStaff'] = $objUser->getStaff();
+        $data['getStaff'] = $objUser->getDashboradStaff();
         $data['arrBeststaff'] = $userList;
         
         $objTimeheet = new Information();
