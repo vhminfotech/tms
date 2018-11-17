@@ -229,7 +229,8 @@ class Timesheet extends Model {
         $objTime->end_time = $request->input('timesheet_edit_end_time');
         $objTime->pause_time = $request->input('timesheet_edit_push_time');
         
-        $total_time = (new Carbon($objTime->end_time))->diff(new Carbon($objTime->start_time))->format('%h:%I');
+        $working_time = (new Carbon($objTime->end_time))->diff(new Carbon($objTime->start_time))->format('%h:%I');
+        $total_time=(new Carbon($working_time))->diff(new Carbon($objTime->pause_time))->format('%h:%I');
         $pause_times = (new Carbon(date($objTime->pause_time)))->format('h:i:s');
 
         //$main_total_time = (new Carbon($pause_times))->diff(new Carbon($total_time))->format('%h:%I');

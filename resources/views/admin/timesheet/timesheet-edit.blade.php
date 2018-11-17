@@ -11,7 +11,7 @@
                         <form name="edit-workplaces" id="editTimeSheet" action="{{ route('timesheet-edit',$timesheetDetail[0]['id']) }}" method="post">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
+                                    <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}" /> 
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label" for="adresses">{{ trans('words.start-time') }}</label>   
                                         <input id="start_time" name="timesheet_edit_start_time" class="c-input" type="text" value="{{ $timesheetDetail[0]['start_time'] }}"/>
