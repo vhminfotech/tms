@@ -9,6 +9,7 @@ return [
     'Worker'  => 'Sistem kullanıcıları',
     'Timesheet'      => 'müşteri',
     'Information'   => 'Adres defteri',
-    'Logout'        => 'Çıkış Yap'
+    'Logout'        => 'Çıkış Yap',
+    'total_time'=>'Total Time',
     
 ];

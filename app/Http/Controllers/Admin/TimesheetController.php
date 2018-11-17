@@ -35,10 +35,13 @@ class TimesheetController extends Controller {
         $objWorkplaces = new Workplaces();
         $workplacesList = $objWorkplaces->getWorkplacesList();
         $data['arrWorkplaces'] = $workplacesList;
-
+        
         $objTimesheet = new Timesheet();
         $timesheetList = $objTimesheet->getTimesheetList();
-
+        
+        $total_time = $objTimesheet->gettotaltime();
+        $data['total_time'] = $total_time;
+        
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/timesheet.js');

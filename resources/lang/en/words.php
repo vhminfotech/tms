@@ -54,16 +54,17 @@ return [
     'timesheet-list' => 'Timesheet List',
     'timesheet' => 'Timesheet',
     'missing-time' => 'Missing Time',
-    'reason' => 'Reason',
+    'reason' => 'Information Worker ',
     'logout' => 'Logout',
     'time-sheet-system' => 'Time Sheet System',
-    'wo-reason' => 'Reason',
+    'wo-reason' => 'Information Worker',
     'select-date' => 'Select Date',
     'best-staff' => 'Best Staff',
     'best-workplaces' => 'Best Workplaces',
     'new-information' => 'New Information',
     'staff' => 'Staff',
     'Information-List' => 'Information List',
+    'total_time'=>'Total Time',
     
     
 ];

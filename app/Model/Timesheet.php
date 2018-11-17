@@ -29,6 +29,18 @@ class Timesheet extends Model {
         return $result;
     }
     
+    public function gettotaltime($id = NULL){
+        if($id){
+            $result = timesheet::sum('total_time')
+                        ->where('users.worker_id', '=', $id);
+        }else{
+            $result= timesheet::sum('total_time');
+            
+        }
+        
+        return $result;
+    }
+    
     public function getTimesheetListAdmin($id) {
        
             $result = timesheet::select('timesheet.*')

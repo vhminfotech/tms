@@ -61,7 +61,7 @@
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.staff-number') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.wo-worker') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.workerplace') }}</th>
-                            <th class="c-table__cell c-table__cell--head">{{ trans('words.missing-time') }}</th>
+                            
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.reason') }}</th>
                         </tr>
                  
@@ -72,11 +72,14 @@
                         @for($i = 0 ;$i < count($arrInformation);$i++,$count++)
                         <tr class="c-table__row">
                             <td class="c-table__cell">{{ $count }}</td>
-                            <td class="c-table__cell">{{ $arrInformation[$i]->c_date }}</td>
+                            <td class="c-table__cell"><?php
+                                     
+                                     $newDate = date("d.m.Y", strtotime($arrInformation[$i]->c_date));
+                                     ?>{{ $newDate }}</td>
                             <td class="c-table__cell">{{ $arrInformation[$i]->staffnumber }}</td>
-                            <td class="c-table__cell">{{ $arrInformation[$i]->name }}</td>
+                            <td class="c-table__cell">{{ $arrInformation[$i]->name }}  {{ $arrInformation[$i]->surname }}</td>
                             <td class="c-table__cell">{{ $arrInformation[$i]->workplaces }}</td>
-                            <td class="c-table__cell">{{ $arrInformation[$i]->missing_hour }}</td>
+                            
                             <td class="c-table__cell">{{ $arrInformation[$i]->reason }}</td>
                         </tr>
                         @endfor

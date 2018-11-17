@@ -64,4 +64,5 @@ return [
     'new-information' => 'Neue Information',
     'staff' => 'Mitarbeiter',
     'Information-List' => 'Informationsliste',
+    'total_time'=>'Total Time',
 ];

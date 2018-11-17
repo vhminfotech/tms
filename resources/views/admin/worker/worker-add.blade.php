@@ -20,7 +20,7 @@
                                     @endfor
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label" for="staffnumber">{{ trans('words.staff-number') }}</label>   
-                                        <input class="c-input" type="text" name="staffnumber" id="staffnumber" value="{{ $oldstaffnumber }}" placeholder="Enter Staffnumber" readonly> 
+                                        <input class="c-input" type="text" name="staffnumber" id="staffnumber" value="{{ $oldstaffnumber }}" placeholder="Enter Staffnumber" > 
                                     </div>  
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label" for="type">{{ trans('words.member') }}</label>

@@ -166,7 +166,10 @@
                                     if($arrWorker[$i]->worker_id == null ) 
                                     {
                                 @endphp
-                                     <td class="c-table__cell">{{ $arrWorker[$i]->c_dates }}</td>
+                                     <td class="c-table__cell"><?php
+                                     $originalDate = "2010-03-21";
+                                     $newDate = date("d.m.Y", strtotime($arrWorker[$i]->c_dates));
+                                     ?>{{ $newDate }}</td>
                                 @php
                                     }
                                     else

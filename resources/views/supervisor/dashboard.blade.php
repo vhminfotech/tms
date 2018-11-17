@@ -150,7 +150,7 @@ if( count($arrTimesheet) !=null )
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.end-time') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.pause-time') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.total') }}&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">{{ trans('words.missing-time') }}&nbsp;&nbsp;</th>
+                            
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.wo-reason') }}</th>
                         </tr>
                     </thead>
@@ -167,7 +167,7 @@ if( count($arrTimesheet) !=null )
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->end_time }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->pause_time }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->total_time }}</td>
-                            <td class="c-table__cell">{{ $arrTimesheet[$i]->missing_hour }}</td>
+                            
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->reason }}</td>
                         </tr>
                          @endfor

@@ -79,8 +79,10 @@
             <div class="c-table-responsive">
                 <table class="c-table" id="datatable">
                     <caption class="c-table__title">
-                        {{ trans('words.timesheet-list') }}
+                        <span>{{ trans('words.timesheet-list') }}</span>
+                        <span class="pull-right">{{ trans('words.total_time') }} : {{ $total_time }}</span>
                     </caption>
+                    
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">
                             <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">{{ trans('words.id') }}</th>
@@ -102,7 +104,10 @@
                         @for($i = 0 ;$i < count($arrTimesheet);$i++,$count++)
                         <tr class="c-table__row">
                             <td class="c-table__cell">{{ $count }}</td>
-                            <td class="c-table__cell">{{ $arrTimesheet[$i]->c_date }}</td>
+                            <td class="c-table__cell"><?php
+                                     
+                                     $newDate = date("d.m.Y", strtotime($arrTimesheet[$i]->c_date));
+                                     ?>{{ $newDate }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->staffnumber }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->workplaces }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->start_time }}</td>

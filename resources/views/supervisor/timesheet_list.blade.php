@@ -94,6 +94,7 @@
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.end-time') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.pause-time') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.total') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.reason') }}&nbsp;&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -110,6 +111,7 @@
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->end_time }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->pause_time }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->total_time }}</td>
+                            <td class="c-table__cell">{{ $arrTimesheet[$i]->reason }}</td>
                         </tr>
                         @endfor
                     </tbody>

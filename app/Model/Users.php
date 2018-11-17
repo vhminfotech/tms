@@ -16,7 +16,7 @@ use PDF;
 class Users extends Model {
 
     protected $table = 'users';
-
+    
     public function gtUsrLlist($id = NULL) {
         if($id){
             $result = Users::select('users.*')
@@ -75,7 +75,8 @@ class Users extends Model {
         $objUser->pause_time = $request->input('pause_time');
         $objUser->reason = $request->input('reason');
         
-        $total_time = (new Carbon($objUser->end_time))->diff(new Carbon($objUser->start_time))->format('%h:%I');
+        $working_time = (new Carbon($objUser->end_time))->diff(new Carbon($objUser->start_time));
+        $total_time=(new Carbon($working_time))->diff(new Carbon($objUser->pause_time))->format('%h:%I');
         $pause_times = (new Carbon(date($objUser->pause_time)))->format('h:i:s');
 
 

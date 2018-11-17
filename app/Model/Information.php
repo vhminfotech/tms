@@ -23,7 +23,7 @@ class Information extends Model {
                         ->where('timesheet.id', '=', $id)
                         ->get(); 
         }else{
-            $result = timesheet::select('timesheet.*','users.staffnumber','users.name')
+            $result = timesheet::select('timesheet.*','users.staffnumber','users.name','users.surname')
                         ->join('users','timesheet.worker_id','=','users.id')
                         ->get(); 
         }
