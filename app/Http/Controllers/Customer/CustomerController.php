@@ -18,12 +18,10 @@ class CustomerController extends Controller {
 
     public function dashboard(Request $request) {
         
-             $data['detail'] = $this->loginUser;
+            $data['detail'] = $this->loginUser;
             $user_id = $this->loginUser['id'];
             $user = Users::find($user_id);
 
-            //$objWorkplaces = new Workplaces();
-            //$workplacesList = $objWorkplaces->getWorkplacesList();
             $data['arrWorkplaces'] = $user['workplaces'];
 
             $objUser = new Users();
@@ -39,13 +37,21 @@ class CustomerController extends Controller {
             /*print_r($request->input());
             exit;*/
             $workertimesheetList = $objUser->savetimesheetWorkerInfo($request); 
-            if ($workertimesheetList) {
+            
+            
+            if ($workertimesheetList=="Added") {
                 $return['status'] = 'success';
                 $return['message'] = 'Date and time created successfully.';
                 $return['redirect'] =  route('customer-dashboard');
             } else {
-                $return['status'] = 'error';
-                $return['message'] = 'something will be wrong.';
+                if($workertimesheetList=='dateAdded'){
+                    $return['status'] = 'error';
+                    $return['message'] = '2 objects same time not possible.';
+                    $return['redirect'] =  route('customer-dashboard');
+                }else{
+                    $return['status'] = 'error';
+                    $return['message'] = 'something will be wrong.';
+                }
             }
             echo json_encode($return);
             exit;

@@ -66,7 +66,13 @@ class Users extends Model {
 
     public function savetimesheetWorkerInfo($request) {
         $objUser = new timesheet();
-
+        $users = timesheet::where('c_date','=',$request->input('c_date'))
+                ->where('worker_id','=',$request->input('worker_id'))
+                ->count();
+    
+        if($users>0){
+            return "dateAdded";
+        }else{
         $objUser->worker_id = $request->input('worker_id');
         $objUser->c_date = $request->input('c_date');
         $objUser->workplaces = $request->input('workplaces');
@@ -75,7 +81,7 @@ class Users extends Model {
         $objUser->pause_time = $request->input('pause_time');
         $objUser->reason = $request->input('reason');
         
-        $working_time = (new Carbon($objUser->end_time))->diff(new Carbon($objUser->start_time));
+        $working_time = (new Carbon($objUser->end_time))->diff(new Carbon($objUser->start_time))->format('%h:%I');
         $total_time=(new Carbon($working_time))->diff(new Carbon($objUser->pause_time))->format('%h:%I');
         $pause_times = (new Carbon(date($objUser->pause_time)))->format('h:i:s');
 
@@ -91,7 +97,9 @@ class Users extends Model {
         $objUser->created_at = date('Y-m-d H:i:s');
         $objUser->updated_at = date('Y-m-d H:i:s');
         $objUser->save();
-        return TRUE;
+        
+        return "Added";
+        }
     }
 
     public function updateUserInfo($request) {

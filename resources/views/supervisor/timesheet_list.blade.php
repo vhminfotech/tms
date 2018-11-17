@@ -104,7 +104,9 @@
                         @for($i = 0 ;$i < count($arrTimesheet);$i++,$count++)
                         <tr class="c-table__row">
                             <td class="c-table__cell">{{ $count }}</td>
-                            <td class="c-table__cell">{{ $arrTimesheet[$i]->c_date }}</td>
+                            <td class="c-table__cell"><?php
+                                     $newDate = date("d.m.Y", strtotime($arrTimesheet[$i]->c_date));
+                                     ?>{{ $newDate }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->staffnumber }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->workplaces }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->start_time }}</td>

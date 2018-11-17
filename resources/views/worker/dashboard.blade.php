@@ -105,7 +105,7 @@
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label" for="type">{{ trans('words.start-date') }}</label>
-                                           <input id="datepicker_search1" name="start_date" class="date c-input"type="date" />
+                                           <input id="datepicker_search1" name="start_date" class="date c-input" type="date" />
                                            <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
 
                                     </div>
@@ -166,7 +166,9 @@ if( count($arrTimesheet) !=null )
                         @for($i = 0 ;$i < count($arrTimesheet);$i++,$count++)
                         <tr class="c-table__row">
                             <td class="c-table__cell">{{ $count }}</td>
-                            <td class="c-table__cell">{{ $arrTimesheet[$i]->c_date }}</td>
+                            <td class="c-table__cell"><?php
+                                     $newDate = date("d.m.Y", strtotime($arrTimesheet[$i]->c_date));
+                                     ?>{{ $newDate }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->workplaces }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->start_time }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->end_time }}</td>

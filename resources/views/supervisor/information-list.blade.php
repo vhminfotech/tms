@@ -73,7 +73,9 @@
                         @for($i = 0 ;$i < count($arrInformation);$i++,$count++)
                         <tr class="c-table__row">
                             <td class="c-table__cell">{{ $count }}</td>
-                            <td class="c-table__cell">{{ $arrInformation[$i]->c_date }}</td>
+                            <td class="c-table__cell"><?php
+                                     $newDate = date("d.m.Y", strtotime($arrInformation[$i]->c_date));
+                                     ?>{{ $newDate }}</td>
                             <td class="c-table__cell">{{ $arrInformation[$i]->staffnumber }}</td>
                             <td class="c-table__cell">{{ $arrInformation[$i]->name }} {{ $arrInformation[$i]->surname }}</td>
                             <td class="c-table__cell">{{ $arrInformation[$i]->workplaces }}</td>
