@@ -106,7 +106,7 @@ class Information extends Model {
     }
     public function getNewInfoDataBydate($postData){
         
-        
+     
         $workplace = $postData['workplace'];
         
         $fromDate = date('Y-m-d',  strtotime($postData['start_date']));

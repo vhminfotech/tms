@@ -136,8 +136,7 @@
                             <tr class="c-table__row">
                                 <th class="c-table__cell c-table__cell--head">{{ trans('words.staff-number') }}&nbsp;&nbsp;</th>
                                 <th class="c-table__cell c-table__cell--head">{{ trans('words.Worker') }}&nbsp;&nbsp;</th>
-                                <th class="c-table__cell c-table__cell--head">{{ trans('words.Workplaces') }}</th>
-                                <th class="c-table__cell c-table__cell--head">{{ trans('words.missing-time') }}</th>
+                                <th class="c-table__cell c-table__cell--head">{{ trans('words.Workplaces') }}</th>                                
                                 <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.wo-reason') }}</th>
                             </tr>
 
@@ -150,8 +149,7 @@
                             <tr class="c-table__row">
                                 <td class="c-table__cell">{{ $arrInformation[$i]->staffnumber }}</td>
                                 <td class="c-table__cell">{{ $arrInformation[$i]->name }}</td>
-                                <td class="c-table__cell">{{ $arrInformation[$i]->workplaces }}</td>
-                                <td class="c-table__cell">{{ $arrInformation[$i]->missing_hour }}</td>
+                                <td class="c-table__cell">{{ $arrInformation[$i]->workplaces }}</td>                                
                                 <td class="c-table__cell">{{ $arrInformation[$i]->reason }}</td>
                             </tr>
                             @endfor
@@ -184,12 +182,12 @@
                         </div>
                         <div class="row">
                             <div class="col u-mb-medium">
-                                <input id="datepicker_search1" name="start_date" class="date c-input" type="text">
+                                <input id="datepicker_search1" name="start_date" class="date  c-input" type="text">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col u-mb-medium">
-                                <input id="datepicker_search2" name="end_date" class="date c-input" type="text">
+                                <input id="datepicker_search2" name="end_date" class="date  c-input" type="text">
                             </div>
                         </div>
                         <div class="row">

@@ -1,6 +1,7 @@
 var Worker = function() {
     var list = function() {
-
+       
+          
         $('.delete').click(function() {
             var dataid = $(this).attr('data-id');
             var dataurl = $(this).attr('data-url');

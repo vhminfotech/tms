@@ -796,40 +796,40 @@ function dateFormate(field) {
 /* Date Picker javascript */
 $(function() 
 {
-    $( "#datepicker" ).datepicker({ format: 'yyyy-MM-dd' });
+    $( "#datepicker" ).datepicker({ format: 'dd.MM.yyyy' });
     $('#datepicker').datepicker('setDate', new Date());
 
-    $("#datepicker_search1" ).datepicker({ format: 'yyyy-MM-dd' });
+    $("#datepicker_search1" ).datepicker({ format: 'dd.MM.yyyy' });
     $('#datepicker_search1').datepicker('setDate', new Date());
 
-    $("#datepicker_search2" ).datepicker({ format: 'yyyy-MM-dd' });
+    $("#datepicker_search2" ).datepicker({ format: 'dd.MM.yyyy' });
     $('#datepicker_search2').datepicker('setDate', new Date());
 
-    $("#timesheet_edit_start_time" ).datepicker({ format: 'yyyy-MM-dd' });
+    $("#timesheet_edit_start_time" ).datepicker({ format: 'dd.MM.yyyy' });
     $('#timesheet_edit_start_time').datepicker('setDate', new Date());
 
-    $("#datepicker_search3" ).datepicker({ format: 'yyyy-MM-dd' });
+    $("#datepicker_search3" ).datepicker({ format: 'dd.MM.yyyy' });
     $('#datepicker_search3').datepicker('setDate', new Date());
 
-    $("#datepicker_search4" ).datepicker({ format: 'yyyy-MM-dd' });
+    $("#datepicker_search4" ).datepicker({ format: 'dd.MM.yyyy' });
     $('#datepicker_search4').datepicker('setDate', new Date());
 
-    $("#datepicker_search5" ).datepicker({ format: 'yyyy-MM-dd' });
+    $("#datepicker_search5" ).datepicker({ format: 'dd.MM.yyyy' });
     $('#datepicker_search5').datepicker('setDate', new Date());
 
-    $("#datepicker_search6" ).datepicker({ format: 'yyyy-MM-dd' });
+    $("#datepicker_search6" ).datepicker({ format: 'dd.MM.yyyy' });
     $('#datepicker_search6').datepicker('setDate', new Date());
 
-    $("#datepicker_search7" ).datepicker({ format: 'yyyy-MM-dd' });
+    $("#datepicker_search7" ).datepicker({ format: 'dd.MM.yyyy' });
     $('#datepicker_search7').datepicker('setDate', new Date());
 
-    $("#datepicker_search8" ).datepicker({ format: 'yyyy-MM-dd' });
+    $("#datepicker_search8" ).datepicker({ format: 'dd.MM.yyyy' });
     $('#datepicker_search8').datepicker('setDate', new Date());
 
-    $("#datepicker_search9" ).datepicker({ format: 'yyyy-MM-dd' });
+    $("#datepicker_search9" ).datepicker({ format: 'dd.MM.yyyy' });
     $('#datepicker_search9').datepicker('setDate', new Date());
 
-    $("#datepicker_search10" ).datepicker({ format: 'yyyy-MM-dd' });
+    $("#datepicker_search10" ).datepicker({ format: 'dd.MM.yyyy' });
     $('#datepicker_search10').datepicker('setDate', new Date());
 
 
