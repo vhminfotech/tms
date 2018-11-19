@@ -56,7 +56,10 @@ class TimesheetController extends Controller {
         $objUser = new Users();
         $userList = $objUser->gtUsrLlist();
         $data['arrUser'] = $userList;
-
+        $objTimesheet = new Timesheet();
+         $total_time = $objTimesheet->gettotaltime();
+        $data['total_time'] = $total_time;
+        
         $objWorkplaces = new Workplaces();
         $workplacesList = $objWorkplaces->getWorkplacesList();
         $data['arrWorkplaces'] = $workplacesList;

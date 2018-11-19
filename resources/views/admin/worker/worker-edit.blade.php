@@ -59,7 +59,7 @@
                                         <label class="c-field__label" for="staffnumber">{{ trans('words.staff-number') }}</label>   
                                     
                                     <td class="c-table__cell">
-                                         <input class="c-input" type="text" name="staffnumber" id="staffnumber" value="{{ $workerDetail[0]['staffnumber'] }}" placeholder="Enter Staffnumber" readonly> 
+                                         <input class="c-input" type="text" name="staffnumber" id="staffnumber" value="{{ $workerDetail[0]['staffnumber'] }}" placeholder="Enter Staffnumber" > 
                                     </div>  
                                                                       
                                 </div>
