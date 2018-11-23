@@ -25,7 +25,7 @@ class TimesheetController extends Controller {
     }
 
     public function getTimesheetList() {
-
+        $data['serchbardetails']=['','','',''];
         $data['detail'] = $this->loginUser;
         
         $objUser = new Users();
@@ -53,11 +53,13 @@ class TimesheetController extends Controller {
     }
 
     public function getTimesheetListsearch(Request $request) {
+        $data['serchbardetails']=[$request->input()['name'],$request->input()['workplaces'],$request->input()['start_date'],$request->input()['end_date']];
+        
         $objUser = new Users();
         $userList = $objUser->gtUsrLlist();
         $data['arrUser'] = $userList;
         $objTimesheet = new Timesheet();
-         $total_time = $objTimesheet->gettotaltime();
+        $total_time = $objTimesheet->gettotaltime($request);
         $data['total_time'] = $total_time;
         
         $objWorkplaces = new Workplaces();
@@ -65,13 +67,14 @@ class TimesheetController extends Controller {
         $data['arrWorkplaces'] = $workplacesList;
 
         $objTimesheet = new Timesheet();
-        $timesheetList = $objTimesheet->getTimesheetList();
+        $timesheetList = $objTimesheet->getTimesheetList($request);
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/timesheet.js');
         $data['funinit'] = array('Timesheet.listInit()');
      
         $data['arrTimesheet'] = $timesheetList;
+        
         $data['detail'] = $this->loginUser;
 
          if ($request->isMethod('post')) {

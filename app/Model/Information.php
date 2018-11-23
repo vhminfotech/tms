@@ -33,17 +33,20 @@ class Information extends Model {
     
     public function searchinformationInfo($request, $id = NULL) {
         
-        $fromDate = $request->input('start_date');
-        $toDate = $request->input('end_date');
+        $name=$request->input()['name'];
+        $workplaces=$request->input()['workplaces'];
+        
+        $fromDate = date("Y-m-d",strtotime($request->input()['start_date']));
+        $toDate = date("Y-m-d",strtotime($request->input()['end_date']));
 
 
         $result = timesheet::select('timesheet.*','users.staffnumber','users.name');
-        /*if($name != ""){
+        if($name != ""){
             $result->where('worker_id', 'LIKE', '%'.$name.'%');
         }
         if($workplaces != ""){
             $result->where('timesheet.workplaces', 'LIKE', '%'.$workplaces.'%');
-        }*/
+        }
         if($toDate != ""){
             $result->whereRaw("c_date >= ? AND c_date <= ?", 
                 array($fromDate." 00:00:00", $toDate." 23:59:59")

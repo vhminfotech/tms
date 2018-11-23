@@ -21,37 +21,45 @@ class Worker extends Model {
       return $this->hasMany('App\Model\Timesheet');
    }
 
-    public function getWorkerList($id = NULL) {
-
+    public function getWorkerList($request = NULL) {
+        
          //$results = worker::with('timesheet')->get();
         // $result = worker::with('timesheet')->get();
         
-        if($id){
-            $result = worker::select('users.*')
-                        ->where('users.id', '=', $id)
-                        ->get();
+        if($request){
+            $startnewDate = date("Y-m-d", strtotime($request->input()['start_date']));
+            $endnewDate = date("Y-m-d", strtotime($request->input()['end_date']));
             
+            $result = worker::select('users.id','users.staffnumber','users.name','users.surname',
+                   DB::raw('SUM(pause_time) as pause_houres'),
+                   DB::raw('SUM(total_time) as total_houres'),
+                   DB::raw('c_date as c_dates')
+               )
+               ->join('timesheet','users.id','=','timesheet.worker_id')
+               ->where('timesheet.c_date','>=',$startnewDate)
+               ->where('timesheet.c_date','<=',$endnewDate)
+               ->groupBy('users.id')
+               ->get(); 
         }else{
-            /*$result = worker::select('users.id','users.staffnumber','users.name','users.surname','timesheet.start_time','timesheet.pause_time',DB::raw('SUM(total_time) as total_houres'))
-                        ->join('timesheet','users.id','=','timesheet.worker_id')
-                        ->groupBy('users.id')
-                        ->get();
-*/
-                            $result = worker::select('users.id','users.staffnumber','users.name','users.surname',
-                            DB::raw('SUM(pause_time) as pause_houres'),
-                            DB::raw('SUM(total_time) as total_houres'),
-                            DB::raw('c_date as c_dates')
-                        )
-                        ->join('timesheet','users.id','=','timesheet.worker_id')
-                        ->groupBy('users.id')
-                        ->get();
- 
+            $result = worker::select('users.id','users.staffnumber','users.name','users.surname',
+                DB::raw('SUM(pause_time) as pause_houres'),
+                DB::raw('SUM(total_time) as total_houres'),
+                DB::raw('c_date as c_dates')
+            )
+            ->join('timesheet','users.id','=','timesheet.worker_id')
+            ->groupBy('users.id')
+            ->get();
         }
-        
         return $result;
     }
-	
-	public function saveWorkerInfo($request) {
+    public function getWorkerList1($id = NULL){
+        $result = worker::select('users.*')
+            ->where('users.id', '=', $id)
+            ->get();
+        return $result;
+    }
+
+    public function saveWorkerInfo($request) {
 
         $newpassword = ($request->input('password') != '') ? $request->input('password') : null;
         $newpass = Hash::make($newpassword);

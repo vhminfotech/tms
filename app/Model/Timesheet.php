@@ -29,16 +29,37 @@ class Timesheet extends Model {
         return $result;
     }
     
-    public function gettotaltime($id = NULL){
-        if($id){
-            $result = timesheet::sum('total_time')
-                        ->where('users.worker_id', '=', $id);
-        }else{
-            $result= timesheet::sum('total_time');
+    public function gettotaltime($request = NULL){
+        if($request){
+           
+            $useId=$request->input()['name'];
+            $workplace=$request->input()['workplaces'];
             
+            $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet where worker_id='".$useId."' AND workplaces='".$workplace."'";
+            if($useId == "" && $workplace == ""){
+                $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet ";
+            }else{
+                if($useId==""){
+                    $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet where  workplaces='".$workplace."'";
+                } 
+                if($workplace==""){
+                    $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet where  worker_id='".$useId."'";
+                }
+            }
+            
+           
+            $result=DB::select(DB::raw($qurey));
+//            $result = timesheet::sum('total_time')
+//                        ->where('users.worker_id', '=', $id);
+        }else{
+            
+            $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet";
+            $result=DB::select(DB::raw($qurey));
+          
         }
+       
+        return $result[0]->timeSum;
         
-        return $result;
     }
     
     public function getTimesheetListAdmin($id) {
@@ -52,36 +73,23 @@ class Timesheet extends Model {
 
     public function searchtimesheetInfo($request, $id = NULL) {
 
-        $name = $request->input('name');
-        $workplaces = $request->input('workplaces');
-        $fromDate = $request->input('start_date');
-        $toDate = $request->input('end_date');
-        /*
-          $result = timesheet::whereRaw("c_date >= ? AND c_date <= ?",
-          array($fromDate." 00:00:00", $toDate." 23:59:59")
-          )
-          ->where('timesheet.worker_id', '=', $name)
-          ->where('timesheet.workplaces', '=', $workplaces)
-          ->get(); */
-
-
-        $result = timesheet::select('timesheet.*', 'users.staffnumber', 'users.name');
-        if ($name != "") {
+        $name = $request->input()['name'];
+        $workplaces = $request->input()['workplaces'];
+        $fromDate = date("Y-m-d", strtotime($request->input()['start_date']));
+        $toDate = date("Y-m-d",  strtotime($request->input()['end_date']));
+        
+        $result = timesheet::select('timesheet.*', 'users.staffnumber')
+                    ->join('users', 'timesheet.worker_id', '=', 'users.id');
+         if ($name != "") {
             $result->where('worker_id', 'LIKE', '%' . $name . '%');
         }
         if ($workplaces != "") {
             $result->where('timesheet.workplaces', 'LIKE', '%' . $workplaces . '%');
         }
-        if ($toDate != "") {
-            $result->whereRaw("c_date >= ? AND c_date <= ?", array($fromDate . " 00:00:00", $toDate . " 23:59:59")
-            );
-        }
-
-        $results = $result->join('users', 'timesheet.worker_id', '=', 'users.id')->get();
-
-
-        //dd($results);
-
+        $result->where('c_date','>=',$fromDate);
+        $result->where('c_date','<=',$toDate);
+        $results=$result->get();
+        
         return $results;
     }
 

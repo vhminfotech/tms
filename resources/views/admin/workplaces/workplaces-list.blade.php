@@ -29,7 +29,7 @@
                             </th>
                             <th class="c-table__cell c-table__cell--head">ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.company') }}&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">{{ trans('words.adresses') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head" style="width:150px!important">{{ trans('words.adresses') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head no-sort"></th>
                         </tr>
                     </thead>
@@ -44,7 +44,7 @@
                             </td>
                             <td class="c-table__cell">{{ $count }}</td>
                             <td class="c-table__cell">{{ $arrWorkplaces[$i]->company }}</td>
-                            <td class="c-table__cell">{{ $arrWorkplaces[$i]->adresses }}</td>
+                            <td class="c-table__cell" style="width:130px">{{ $arrWorkplaces[$i]->adresses }}</td>
                             <td class="c-table__cell">
                                 <a href=" {{ route('workplaces-edit',[$arrWorkplaces[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('words.edit') }}">
                                     <i class="fa fa-edit" ></i></span>

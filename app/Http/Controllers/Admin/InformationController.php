@@ -26,6 +26,15 @@ class InformationController extends Controller {
     }
 
     public function getInformationList() {
+        $data['serchbardetails']=['','','',''];
+        
+        $objUser = new Users();
+        $userList = $objUser->gtUsrLlist();
+        $data['arrUser'] = $userList;
+        
+        $objWorkplaces = new Workplaces();
+        $workplacesList = $objWorkplaces->getWorkplacesList();
+        $data['arrWorkplaces'] = $workplacesList;
         
         $objInformation = new Information();
         $objinformationList = $objInformation->getTimesheetList();
@@ -66,7 +75,9 @@ class InformationController extends Controller {
         }
     }
     public function getInformationListsearch(Request $request) {
-
+        
+        $data['serchbardetails']=[$request->input()['name'],$request->input()['workplaces'],$request->input()['start_date'],$request->input()['end_date']];
+        
         $objInformation = new Information();
         $objinformationList = $objInformation->getTimesheetList();
         $data['css'] = array();
@@ -74,6 +85,13 @@ class InformationController extends Controller {
         $data['js'] = array('admin/information.js');
         $data['funinit'] = array('Information.listInit()');
      
+           $objUser = new Users();
+        $userList = $objUser->gtUsrLlist();
+        $data['arrUser'] = $userList;
+        
+        $objWorkplaces = new Workplaces();
+        $workplacesList = $objWorkplaces->getWorkplacesList();
+        $data['arrWorkplaces'] = $workplacesList;
         $data['arrInformation'] = $objinformationList;
         $data['detail'] = $this->loginUser;
 
@@ -106,6 +124,10 @@ class InformationController extends Controller {
             $data['arrInformation'] = $timesheetsearchList;
          }
         return view('admin.information.information-list', $data);
+    }
+    
+    public function informationEdit($id=''){
+        
     }
 
 }

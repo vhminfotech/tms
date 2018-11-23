@@ -15,22 +15,22 @@ $currentRoute = Route::current()->getName();
                 </a>
             </li>
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'workplaces-list' || $currentRoute == 'add-workplaces' || $currentRoute == 'edit-workplaces' ? 'is-active' : '') }}" href="{{ route('workplaces-list') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'workplaces-add' || $currentRoute == 'workplaces-edit' || $currentRoute == 'workplaces-list' || $currentRoute == 'add-workplaces' || $currentRoute == 'edit-workplaces' ? 'is-active' : '') }}" href="{{ route('workplaces-list') }}">
                     <i class="fa fa-newspaper-o u-mr-xsmall"></i>{{ trans('words.Workplaces') }}
                 </a>
             </li>
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'worker-list' || $currentRoute == 'system-add-user' || $currentRoute == 'system-edit-user' ? 'is-active' : '') }}" href="{{ route('worker-list') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'worker-list' || $currentRoute == 'worker-add' || $currentRoute == 'worker-list-search' || $currentRoute == 'worker-edit'  || $currentRoute == 'system-add-user' || $currentRoute == 'system-edit-user' ? 'is-active' : '') }}" href="{{ route('worker-list') }}">
                     <i class="fa fa-users u-mr-xsmall"></i>{{ trans('words.Worker') }}
                 </a>
             </li>
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute  == 'timesheet-list' || $currentRoute == 'timesheet-add' || $currentRoute == 'timesheet-edit' ? 'is-active' : '') }}" href="{{ route('timesheet-list') }}">
+                <a class="c-sidebar__link {{ ($currentRoute  == 'timesheet-list-search' || $currentRoute  == 'timesheet-list' || $currentRoute == 'timesheet-add' || $currentRoute == 'timesheet-edit' ? 'is-active' : '') }}" href="{{ route('timesheet-list') }}">
                     <i class="fa fa-calendar u-mr-xsmall"></i>{{ trans('words.Timesheet') }}
                 </a>
             </li>
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'information-list' || $currentRoute == 'information-add' || $currentRoute == 'information-edit' ? 'is-active' : '') }}" href="{{ route('information-list') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'information-list-search' || $currentRoute == 'information-list' || $currentRoute == 'information-add' || $currentRoute == 'information-edit' ? 'is-active' : '') }}" href="{{ route('information-list') }}">
                     <i class="fa fa-info-circle u-mr-xsmall"></i>{{ trans('words.Information') }}
                 </a>
             </li>

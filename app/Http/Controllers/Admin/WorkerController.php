@@ -106,7 +106,7 @@ class WorkerController extends Controller {
         $data['funinit'] = array('Worker.editInit()');
         
         $objMuck = new Worker();
-        $muckDetail = $objMuck->getWorkerList($userId);
+        $muckDetail = $objMuck->getWorkerList1($userId);
         $data['workerDetail'] = $muckDetail;
         
         return view('admin.worker.worker-edit', $data);
@@ -136,9 +136,10 @@ class WorkerController extends Controller {
         }
     }
     public function getWorkerListsearch(Request $request) {
-
+        
+        $data['dates']=[$request->input()['start_date'],$request->input()['end_date']];
         $objWorker = new Worker();
-        $workerList = $objWorker->getWorkerList();
+        $workerList = $objWorker->getWorkerList($request);
         //dd($workerList);exit;
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
@@ -146,6 +147,7 @@ class WorkerController extends Controller {
         $data['funinit'] = array('Worker.listInit()');
      
         $data['arrWorker'] = $workerList;
+        
         $data['detail'] = $this->loginUser;
 
         $userid = new Users;
@@ -163,12 +165,6 @@ class WorkerController extends Controller {
 
 
         $data['detail'] = $this->loginUser;
-
-         if ($request->isMethod('post')) {
-            $objWorker = new Worker();
-            $workerList = $objWorker->searchworkerInfo($request); 
-            $data['arrWorker'] = $workerList;
-         }
         return view('admin.worker.worker-list', $data);
     }
    

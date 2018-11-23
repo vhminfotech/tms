@@ -101,9 +101,10 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
             Route::match(['get', 'post'], '/admin/timesheet/ajaxAction', ['as' => 'ajaxAction', 'uses' => 'Admin\TimesheetController@ajaxAction']);
 
             /* Information route */
-
+            
             Route::match(['get', 'post'], '/admin/information-list', ['as' => 'information-list', 'uses' => 'Admin\InformationController@getInformationList']);
             Route::match(['get', 'post'], '/admin/information-list-search', ['as' => 'information-list-search', 'uses' => 'Admin\InformationController@getInformationListsearch']);
+            Route::match(['get', 'post'], '/admin/information-edit/{id}', ['as' => 'information-edit', 'uses' => 'Admin\InformationController@informationEdit']);
 
             /* Profile route */
 

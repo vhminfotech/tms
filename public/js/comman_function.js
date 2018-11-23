@@ -832,6 +832,11 @@ $(function()
     $("#datepicker_search10" ).datepicker({ format: 'dd.MM.yyyy' });
     $('#datepicker_search10').datepicker('setDate', new Date());
 
+    $("#datepicker_1search" ).datepicker({ format: 'dd.MM.yyyy' });
+    //$('#datepicker_1search').datepicker('setDate', new Date());
+
+    $("#datepicker_2search" ).datepicker({ format: 'dd.MM.yyyy' });
+    //$('#datepicker_2search').datepicker('setDate', new Date());
 
 });
 

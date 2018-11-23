@@ -15,10 +15,47 @@
                                         <h1><b></b></h1>
                                     </div>
                                 </div>
+                                <div class="col-lg-3" style="padding-left:0px">
+                                    <div class="c-field u-mb-small">
+                                        <label class="c-field__label" for="name">{{ trans('words.wo-worker') }}</label>
+                                         @php
+                                        $count = 1;
+                                        @endphp
+                                        <select class="c-input" id="name" name="name">
+                                        <option value="">{{ trans('words.all') }}</option>
+                                        @for($i = 0 ;$i < count($arrUser);$i++,$count++)
+                                        <option value="{{ $arrUser[$i]->id }}" {{ ($arrUser[$i]->id == $serchbardetails['0'] ? 'selected="selected"' : '') }}>{{ $arrUser[$i]->name }}</option>
+                                        @endfor
+                                        </select>
+                                        <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
+                                    </div>
+                                </div>
+                                <div class="col-lg-3" style="padding-left:0px">
+                                    <div class="c-field u-mb-small">
+                                        <label class="c-field__label" for="type">{{ trans('words.workerplace') }}</label>
+                                         @php
+                                        $count = 1;
+                                        @endphp
+                                        <select class="c-input" id="workplaces" name="workplaces">
+                                        <option value="">{{ trans('words.all') }}</option>
+                                        @for($i = 0 ;$i < count($arrWorkplaces);$i++,$count++)
+                                        <option value="{{ $arrWorkplaces[$i]->company }}" {{ ($arrWorkplaces[$i]->company == $serchbardetails['1'] ? 'selected="selected"' : '') }}>{{ $arrWorkplaces[$i]->company }}</option>
+                                        @endfor
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label" for="type">{{ trans('words.start-date') }}</label>
-                                           <input id="datepicker_search1" name="start_date" class="date c-input"type="date" />
+                                        @if($serchbardetails['2'] != '')
+                                            <input id="datepicker_1search" name="start_date" class="date c-input" type="text" value="{{ $serchbardetails['2'] }}"/>
+                                        
+                                        @else
+                                        <input id="datepicker_search1" name="start_date" class="date c-input"type="text" />
+                                        
+                                        @endif
+                                        
+                                           
                                            <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
 
                                     </div>
@@ -26,7 +63,15 @@
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label" for="type">{{ trans('words.end-date') }}</label>
-                                           <input id="datepicker_search2" name="end_date" class="date c-input" type="date" />
+                                        @if($serchbardetails['3'] != '')
+                                            <input id="datepicker_2search" name="end_date" class="date c-input" type="text" value="{{ $serchbardetails['3'] }}"/>
+                                        
+                                        @else
+                                        <input id="datepicker_search2" name="end_date" class="date c-input" type="text" />
+                                        
+                                        @endif
+                                        
+                                           
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
@@ -63,6 +108,7 @@
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.workerplace') }}</th>
                             
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.reason') }}</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.action') }}</th>
                         </tr>
                  
                     <tbody>
@@ -78,9 +124,13 @@
                                      ?>{{ $newDate }}</td>
                             <td class="c-table__cell">{{ $arrInformation[$i]->staffnumber }}</td>
                             <td class="c-table__cell">{{ $arrInformation[$i]->name }}  {{ $arrInformation[$i]->surname }}</td>
-                            <td class="c-table__cell">{{ $arrInformation[$i]->workplaces }}</td>
-                            
+                            <td class="c-table__cell">{{ $arrInformation[$i]->workplaces }}</td>                            
                             <td class="c-table__cell">{{ $arrInformation[$i]->reason }}</td>
+                            <td class="c-table__cell"><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('words.edit') }}">
+                                        <a href=" {{ route('information-edit',[$arrInformation[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('words.edit') }}">
+                                    <i class="fa fa-edit" ></i></span>
+                                </a></td>
+                            
                         </tr>
                         @endfor
                     </tbody>
