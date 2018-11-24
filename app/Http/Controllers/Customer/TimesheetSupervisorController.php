@@ -63,7 +63,7 @@ class TimesheetSupervisorController extends Controller {
         return view('supervisor.dashboard', $data);
     }
     public function timesheet_list(Request $request) {
-        
+        $data['serchlist']=['','','',''];
         $objUser = new Users();
         $userList = $objUser->gtUsrLlist();
         $data['arrUser'] = $userList;
@@ -90,7 +90,8 @@ class TimesheetSupervisorController extends Controller {
         return view('supervisor.timesheet_list', $data);
     }
     public function getsearchTimesheetList(Request $request) {
-        
+        $input=$request->input();
+        $data['serchlist']=[$input['name'],$input['workplaces'],$input['start_date'],$input['end_date']];
         $objUser = new Users();
         $userList = $objUser->gtUsrLlist();
         $data['arrUser'] = $userList;
@@ -118,7 +119,8 @@ class TimesheetSupervisorController extends Controller {
     }
 
     public function getsearchInformationList(Request $request) {
-
+            $input=$request->input();
+            $data['serchlist']=[$input['name'],$input['workplaces'],$input['start_date'],$input['end_date']];
             $data['detail'] = $this->loginUser; 
 
             $objUser = new Users();
@@ -175,7 +177,8 @@ class TimesheetSupervisorController extends Controller {
     }
 
     public function getdassearchInformationList(Request $request) {
-
+            
+            $data['dates']=[$request->input()['start_date'],$request->input()['end_date']];
             $data['detail'] = $this->loginUser; 
             $user_id = $this->loginUser['id'];
             $user = Users::find($user_id);

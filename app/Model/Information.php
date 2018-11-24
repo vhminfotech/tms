@@ -32,7 +32,7 @@ class Information extends Model {
     }
     
     public function searchinformationInfo($request, $id = NULL) {
-        
+      
         $name=$request->input()['name'];
         $workplaces=$request->input()['workplaces'];
         

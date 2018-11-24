@@ -37,11 +37,13 @@ $customerPrefix = "";
 Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], function() {
             Route::match(['get', 'post'], '/supervisor/supervisor-dashboard', ['as' => 'customer-dashboard', 'uses' => 'Customer\CustomerController@dashboard']);
             Route::match(['get', 'post'], '/supervisor/information_supervisor', ['as' => 'information_supervisor', 'uses' => 'Customer\InformationSupervisorController@dashboard']);
-            Route::match(['get', 'post'], '/supervisor/timesheet_list', ['as' => 'timesheet_list', 'uses' =>
-                'Customer\TimesheetSupervisorController@timesheet_list']);
+            Route::match(['get', 'post'], '/supervisor/timesheet_list', ['as' => 'timesheet_list', 'uses' =>'Customer\TimesheetSupervisorController@timesheet_list']);
             Route::match(['get', 'post'], '/supervisor/timesheet-search', ['as' => 'timesheet-search', 'uses' => 'Customer\TimesheetSupervisorController@getsearchTimesheetList']);
-            Route::match(['get', 'post'], '/supervisor/information-search-list', ['as' => 'information-search-list', 'uses' => 'Customer\TimesheetSupervisorController@getsearchInformationList']);
+            
+            Route::match(['get', 'post'], '/supervisor/information-search-list', ['as' => 'information-search-list', 'uses' => 'Customer\TimesheetSupervisorController@getsearchInformationList']);            
             Route::match(['get', 'post'], '/supervisor/dash-search-list', ['as' => 'dash-search-list', 'uses' => 'Customer\TimesheetSupervisorController@getdassearchInformationList']);
+            
+            Route::match(['get', 'post'], '/supervisor/information-supervisoer-edit/{id}', ['as' => 'information-supervisoer-edit', 'uses' => 'Customer\InformationSupervisorController@informationsupervisoeredit']);
         });
 
 $ageentPrefix = "";

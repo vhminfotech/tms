@@ -98,7 +98,13 @@
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label" for="type">{{ trans('words.start-date') }}</label>
-                                           <input id="datepicker_search1" name="start_date" class="date c-input "  type="text" />
+                                            @if(isset($dates))
+                                            <input id="datepicker_1search" name="start_date" class="date c-input" type="text" value="{{ $dates['0'] }}" >
+                                        
+                                        @else
+                                        <input id="datepicker_search1" name="start_date" class="date c-input" type="text"  placeholder="dd.mm.yyyy">
+                                        
+                                        @endif
                                            <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}" /> 
 
                                     </div>
@@ -106,7 +112,12 @@
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label" for="type">{{ trans('words.end-date') }}</label>
-                                           <input id="datepicker_search2" name="end_date" class="date c-input" type="text" />
+                                           @if(isset($dates))
+                                            <input id="datepicker_2search" name="end_date" class="date c-input" type="text" value="{{ $dates['1'] }}" >
+                                        @else
+                                            <input id="datepicker_search2" name="end_date" class="date c-input" type="text" placeholder="dd.mm.yyyy" >
+                                        
+                                        @endif
                                            <input class="c-input" type="hidden" name="worker_id" id="worker_id" value="{{ $detail['id'] }}"/> 
                                     </div>
                                 </div>

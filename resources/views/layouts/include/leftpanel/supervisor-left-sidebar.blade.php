@@ -11,17 +11,17 @@ $currentRoute = Route::current()->getName();
         <h4 class="c-sidebar__title">{{ trans('words.Dashboard') }}</h4>
         <ul class="c-sidebar__list">
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'customer-dashboard' ? 'is-active' : '') }}" href="{{ route('customer-dashboard') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'dash-search-list' || $currentRoute == 'customer-dashboard' ? 'is-active' : '') }}" href="{{ route('customer-dashboard') }}">
                     <i class="fa fa-home u-mr-xsmall"></i>{{ trans('words.Add_time') }}
                 </a>
             </li>
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'timesheet_list' ? 'is-active' : '') }}" href="{{ route('timesheet_list') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'timesheet-search'  || $currentRoute == 'timesheet_list' ? 'is-active' : '') }}" href="{{ route('timesheet_list') }}">
                     <i class="fa fa-calendar u-mr-xsmall"></i>{{ trans('words.Timesheet') }}
                 </a>
             </li>
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'information_supervisor' ? 'is-active' : '') }}" href="{{ route('information_supervisor') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'information-supervisoer-edit' || $currentRoute == 'information-search-list' || $currentRoute == 'information_supervisor' ? 'is-active' : '') }}" href="{{ route('information_supervisor') }}">
                     <i class="fa fa-info-circle u-mr-xsmall"></i>{{ trans('words.Information') }}
                 </a>
             </li>
