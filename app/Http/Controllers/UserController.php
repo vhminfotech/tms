@@ -70,7 +70,8 @@ class UserController extends Controller {
     }
 
     public function getworkersearchList(Request $request) {
-
+        
+        $data['serchbardetails']=$request->input();
         $data['detail'] = $this->loginUser; 
 
         $objUser = new Users();
@@ -101,5 +102,35 @@ class UserController extends Controller {
         $data['js'] = array('worker/tworker.js');
         $data['funinit'] = array('TWorker.addInit()');
         return view('worker.dashboard', $data);
+    }
+    
+    public function workerinformationedit(Request $request,$id=''){
+         $data['detail'] = $this->loginUser; 
+         
+        if ($request->isMethod('post')) {
+           $objInformation = new Information();
+           $saveinformation=$objInformation->editinformation($request);
+            
+           if($saveinformation) {
+                $return['status'] = 'success';
+                $return['message'] = 'Information edit successfully.';
+                $return['redirect'] = route('worker-dashboard');
+            }else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
+        }
+        
+        $objInformation = new Information();
+        $data['objinformationreason'] = $objInformation->getInformation($id);
+        $data['id']=$id;
+        
+        $data['css'] = array();
+        $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
+        $data['js'] = array('worker/tworker.js');
+        $data['funinit'] = array('TWorker.editInit()');
+        return view('worker.worker-edit-information', $data);
     }
 }

@@ -43,7 +43,19 @@ var Information = function() {
         });
 
     };
+    
+    
+     var edit_information = function() {
+         
+        var form = $('#editInformation');
+        var rules = {
+            reason: {required: false}
+        };
+        handleFormValidate(form, rules, function(form) {
+            handleAjaxFormSubmit(form);
+        });
 
+    };
 
     return{
         listInit: function() {
@@ -51,6 +63,9 @@ var Information = function() {
         },
         addInit: function() {
             add_information();
+        },
+        editInit:function(){
+            edit_information();
         },
     };
 }();

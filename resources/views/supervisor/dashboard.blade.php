@@ -14,16 +14,13 @@
                 <div class="c-tabs__content tab-content" id="nav-tabContent">
                     <div class="c-tabs__pane active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                         <form name="timesheet-add" id="addTimesheet" action="{{ route('customer-dashboard') }}" method="post">
-                            <div class="row">
+                            <div class="row"><input class="c-input" type="hidden" name="worker_id" id="worker_id" value="{{ $detail['id'] }}"> 
+                                           <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}" /> 
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="type">{{ trans('words.select-date') }}</label>
-                                           <input id="datepicker" name="c_date" class="date c-input" type="text" />
-
-                                           <input class="c-input" type="hidden" name="worker_id" id="worker_id" value="{{ $detail['id'] }}"> 
-
-
-                                           <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}" /> 
+                                           <label class="c-field__label" for="type">{{ trans('words.select-date') }}</label>
+                                           <input id="datepicker" name="select_date" class=" c-input" type="text" />
+                                           
                                     </div>
                                 </div>
                                 @php

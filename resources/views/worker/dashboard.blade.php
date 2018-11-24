@@ -20,7 +20,7 @@
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label" for="type">{{ trans('words.select-date') }}</label>
-                                           <input id="datepicker" name="c_date" class="date c-input" type="text" />
+                                           <input id="datepicker" name="select_date" class=" c-input" type="text" />
 
                                            <input class="c-input" type="hidden" name="worker_id" id="worker_id" value="{{ $detail['id'] }}"> 
 
@@ -102,19 +102,29 @@
                                         <h1><b></b></h1>
                                     </div>
                                 </div>
+                                 <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="type">{{ trans('words.start-date') }}</label>
-                                           <input id="datepicker_search1" name="start_date" class="date c-input" type="date" />
-                                           <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
-
+                                       <label class="c-field__label" for="type">{{ trans('words.start-date') }}</label>
+                                        @if(isset($serchbardetails))
+                                            <input id="datepicker_1search" name="start_date" class="date c-input" type="text" value="{{ $serchbardetails['start_date'] }}" >
+                                        
+                                        @else
+                                        <input id="datepicker_search1" name="start_date" class="date c-input"type="text" placeholder="mm.dd.yyyy" />
+                                        
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label" for="type">{{ trans('words.end-date') }}</label>
-                                           <input id="datepicker_search2" name="end_date" class="date c-input" type="date" />
-
+                                           @if(isset($serchbardetails))
+                                            <input id="datepicker_2search" name="end_date" class="date c-input" type="text" value="{{ $serchbardetails['end_date'] }}" >
+                                        
+                                        @else
+                                        <input id="datepicker_search2" name="end_date" class="date c-input"type="text" placeholder="mm.dd.yyyy" />
+                                        
+                                        @endif
                                            <input class="c-input" type="hidden" name="worker_id" id="worker_id" value="{{ $detail['id'] }}"/> 
                                     </div>
                                 </div>
@@ -157,6 +167,7 @@ if( count($arrTimesheet) !=null )
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.total') }}&nbsp;&nbsp;</th>
                             
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.wo-reason') }}</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -176,6 +187,10 @@ if( count($arrTimesheet) !=null )
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->total_time }}</td>
                             
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->reason }}</td>
+                            <td class="c-table__cell"><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('words.edit') }}">
+                                        <a href=" {{ route('information-worker-edit',[$arrTimesheet[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('words.edit') }}">
+                                    <i class="fa fa-edit" ></i></span>
+                                </a></td>
                         </tr>
                          @endfor
                     </tbody>

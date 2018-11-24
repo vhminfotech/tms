@@ -62,8 +62,8 @@ class Information extends Model {
     }
 
     public function search_date_workerInfo($request, $id = NULL) {        
-        $fromDate = $request->input('start_date');
-        $toDate = $request->input('end_date');
+        $fromDate = date('Y-m-d',  strtotime($request->input('start_date')));
+        $toDate = date('Y-m-d',  strtotime($request->input('end_date')));
         $user_id =  $request->input('worker_id');
 
         $result = timesheet::select();
@@ -146,6 +146,25 @@ class Information extends Model {
  
         return $results;
     }
-
+    
+    public function getInformation($id){
+        $result = timesheet::select('reason')
+                ->where('id','=',$id)
+                ->get()->toarray();
         
+        return $result[0]['reason'];
+    }
+    
+    public function editinformation($request){
+        $userId = $request->input()['informationid'];
+        $objUser = timesheet::find($userId);
+        $objUser->reason = $request->input()['reason'];
+        
+        if ($objUser->save()) {
+            return TRUE;
+        } else {
+
+            return FALSE;
+        }
+    }
 }

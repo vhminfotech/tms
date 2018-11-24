@@ -27,8 +27,10 @@ Route::match(['get', 'post'], 'register', ['as' => 'register', 'uses' => 'LoginC
 
 $userPrefix = "";
 Route::group(['prefix' => $userPrefix, 'middleware' => ['auth']], function() {
+    
             Route::match(['get', 'post'], 'worker/worker-dashboard', ['as' => 'worker-dashboard', 'uses' => 'UserController@dashboard']);
             Route::match(['get', 'post'], '/worker/workerdash-search-list', ['as' => 'workerdash-search-list', 'uses' => 'UserController@getworkersearchList']);
+            Route::match(['get', 'post'], '/worker/information-worker-edit/{id}', ['as' => 'information-worker-edit', 'uses' => 'UserController@workerinformationedit']);
         });
 
 $customerPrefix = "";

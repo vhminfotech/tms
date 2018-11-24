@@ -65,8 +65,10 @@ class Users extends Model {
     }
 
     public function savetimesheetWorkerInfo($request) {
+        
+        $date=date('Y-m-d',  strtotime($request->input()['select_date']));
         $objUser = new timesheet();
-        $users = timesheet::where('c_date','=',$request->input('c_date'))
+        $users = timesheet::where('c_date','=',$date)
                 ->where('worker_id','=',$request->input('worker_id'))
                 ->count();
     
@@ -74,7 +76,7 @@ class Users extends Model {
             return "dateAdded";
         }else{
         $objUser->worker_id = $request->input('worker_id');
-        $objUser->c_date = $request->input('c_date');
+        $objUser->c_date = $date;
         $objUser->workplaces = $request->input('workplaces');
         $objUser->start_time = $request->input('start_time');
         $objUser->end_time = $request->input('end_time');
