@@ -148,22 +148,38 @@ class Information extends Model {
     }
     
     public function getInformation($id){
-        $result = timesheet::select('reason')
+        $result = timesheet::select('reason','start_time','end_time','pause_time')
                 ->where('id','=',$id)
                 ->get()->toarray();
         
-        return $result[0]['reason'];
+        return $result;
     }
     
-    public function editinformation($request){
-        $userId = $request->input()['informationid'];
-        $objUser = timesheet::find($userId);
-        $objUser->reason = $request->input()['reason'];
+    public function editinformation($request ,$timesheetId){
         
-        if ($objUser->save()) {
+        $objTime = Timesheet::find($timesheetId);
+        $objTime->start_time = $request->input('timesheet_edit_start_time');
+        $objTime->end_time = $request->input('timesheet_edit_end_time');
+        $objTime->pause_time = $request->input('timesheet_edit_push_time');
+        
+       $working_time = (new Carbon($objTime->end_time))->diff(new Carbon($objTime->start_time))->format('%h:%I');
+        $total_time=(new Carbon($working_time))->diff(new Carbon($objTime->pause_time))->format('%h:%I');
+        $pause_times = (new Carbon(date($objTime->pause_time)))->format('h:i:s');
+        $information=$request->input('inforamtion');
+        //$main_total_time = (new Carbon($pause_times))->diff(new Carbon($total_time))->format('%h:%I');
+
+        $policy_times = "09:00";
+        $policy_total_time = (new Carbon($policy_times))->diff(new Carbon($total_time))->format('%h:%I');
+
+        $objTime->missing_hour = $policy_total_time;
+        $objTime->total_time = $total_time;
+        $objTime->reason = $information;
+        $objTime->updated_at = date('Y-m-d H:i:s');
+        
+        if ($objTime->save())
+        {
             return TRUE;
         } else {
-
             return FALSE;
         }
     }

@@ -62,4 +62,32 @@ class InformationSupervisorController extends Controller {
         return view('supervisor.worker-edit-information', $data);
     }
     
+    public function informationtimesheetedit(Request $request,$id=""){
+        $data['detail'] = $this->loginUser;
+        if ($request->isMethod('post')) {
+            
+           $objInformation = new Information();
+           $saveinformation=$objInformation->editinformation($request,$id);
+            
+           if($saveinformation) {
+                $return['status'] = 'success';
+                $return['message'] = 'Information edit successfully.';
+                $return['redirect'] = route('information_supervisor');
+            }else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit; 
+        }
+        $objInformation = new Information();
+        $data['objinformationreason'] = $objInformation->getInformation($id);
+        
+        $data['css'] = array();
+        $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
+        $data['js'] = array('superviseor/superviseor.js');
+        $data['funinit'] = array('Superviseor.informationInit()');
+        return view('supervisor.information_timesheetedit', $data);
+    
+    }
 }

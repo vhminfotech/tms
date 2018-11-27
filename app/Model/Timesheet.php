@@ -22,7 +22,7 @@ class Timesheet extends Model {
                     ->where('timesheet.worker_id', '=', $id)
                     ->get();
         } else {
-            $result = timesheet::select('timesheet.*', 'users.staffnumber')
+            $result = timesheet::select('timesheet.*', 'users.staffnumber','users.name','users.surname')
                     ->join('users', 'timesheet.worker_id', '=', 'users.id')
                     ->get();
         }
@@ -31,24 +31,27 @@ class Timesheet extends Model {
     
     public function gettotaltime($request = NULL){
         if($request){
-           
+          
             $useId=$request->input()['name'];
             $workplace=$request->input()['workplaces'];
+            $start_date=date('Y-m-d',  strtotime($request->input()['start_date']));
+            $end_date=date('Y-m-d',  strtotime($request->input()['end_date']));
             
-            $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet where worker_id='".$useId."' AND workplaces='".$workplace."'";
+            $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet where worker_id='".$useId."' AND workplaces='".$workplace."'AND c_date >='".$start_date."' AND c_date <='".$end_date."'";
             if($useId == "" && $workplace == ""){
                 $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet ";
             }else{
                 if($useId==""){
-                    $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet where  workplaces='".$workplace."'";
+                    $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet where  workplaces='".$workplace."'AND c_date >='".$start_date."' AND c_date <='".$end_date."'";
                 } 
                 if($workplace==""){
-                    $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet where  worker_id='".$useId."'";
+                    $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet where  worker_id='".$useId."'AND c_date >='".$start_date."' AND c_date <='".$end_date."'";
                 }
             }
             
            
             $result=DB::select(DB::raw($qurey));
+           
 //            $result = timesheet::sum('total_time')
 //                        ->where('users.worker_id', '=', $id);
         }else{
@@ -231,7 +234,7 @@ class Timesheet extends Model {
     }
     
     public function updateTimesheetAdmin($request,$timesheetId){
-        
+       
         $objTime = Timesheet::find($timesheetId);
         $objTime->start_time = $request->input('timesheet_edit_start_time');
         $objTime->end_time = $request->input('timesheet_edit_end_time');
@@ -240,7 +243,7 @@ class Timesheet extends Model {
         $working_time = (new Carbon($objTime->end_time))->diff(new Carbon($objTime->start_time))->format('%h:%I');
         $total_time=(new Carbon($working_time))->diff(new Carbon($objTime->pause_time))->format('%h:%I');
         $pause_times = (new Carbon(date($objTime->pause_time)))->format('h:i:s');
-
+        $information=$request->input('inforamtion');
         //$main_total_time = (new Carbon($pause_times))->diff(new Carbon($total_time))->format('%h:%I');
 
         $policy_times = "09:00";
@@ -248,8 +251,31 @@ class Timesheet extends Model {
 
         $objTime->missing_hour = $policy_total_time;
         $objTime->total_time = $total_time;
+        $objTime->reason = $information;
         $objTime->updated_at = date('Y-m-d H:i:s');
         $objTime->save();
         return TRUE;
+    }
+    
+    public function gettotaltime_worker($id){
+         $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet where  worker_id='".$id."'";
+         $result=DB::select(DB::raw($qurey));
+         
+         return $result['0']->timeSum;
+         
+    }
+    
+    public function gettotaltime_worker_serch($request){
+        
+        $start_date=date('Y-m-d',  strtotime($request->input('start_date')));
+        $end_date=date('Y-m-d',  strtotime($request->input('end_date')));
+        $worker_id=$request->input('worker_id');
+        
+        $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet where  worker_id='".$worker_id."' AND c_date >='".$start_date."' AND c_date <='".$end_date."'";
+      
+         $result=DB::select(DB::raw($qurey));
+         
+         return $result['0']->timeSum;
+        
     }
 }

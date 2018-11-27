@@ -92,19 +92,22 @@
             <div class="c-table-responsive">
                 <table class="c-table" id="datatable">
                     <caption class="c-table__title">
-                        {{ trans('words.timesheet-list') }}
+                        <span>{{ trans('words.timesheet-list') }}</span>
+                        <span class="pull-right">{{ trans('words.total_time') }} : {{ $total_time}} </span>
                     </caption>
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">
                             <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">{{ trans('words.id') }}</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.date') }}</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.staff-number') }}</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.name') }}</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.workerplace') }} &nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.start-time') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.end-time') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.pause-time') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.total') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.reason') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.edit') }}&nbsp;&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -118,12 +121,22 @@
                                      $newDate = date("d.m.Y", strtotime($arrTimesheet[$i]->c_date));
                                      ?>{{ $newDate }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->staffnumber }}</td>
+                            <td class="c-table__cell">{{ $arrTimesheet[$i]->name }} {{ $arrTimesheet[$i]->surname }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->workplaces }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->start_time }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->end_time }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->pause_time }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->total_time }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->reason }}</td>
+                            <td class="c-table__cell">
+                                <span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('words.edit') }}">
+                                        <a href=" {{ route('information-timesheet-edit',[$arrTimesheet[$i]->id])}} ">
+                                                <span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('words.edit') }}">
+                                                    <i class="fa fa-edit" ></i>
+                                                </span>
+                                        </a>
+                                </span>
+                            </td>
                         </tr>
                         @endfor
                     </tbody>

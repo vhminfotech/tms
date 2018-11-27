@@ -28,10 +28,26 @@ var Superviseor = function() {
         });
     };
     
+    var edit_information=function(){
+        var form = $('#editInformation');
+        var rules = {
+            timesheet_edit_start_time: {required: true},
+            timesheet_edit_end_time: {required: true},
+            timesheet_edit_push_time: {required: true},
+            
+        };
+        handleFormValidate(form, rules, function(form) {
+            handleAjaxFormSubmit(form);
+        });
+    };
+    
     return{
       
         editInit: function(){
             edit_timesheet();
+        },
+        informationInit:function(){
+            edit_information();
         },
     };
 }();

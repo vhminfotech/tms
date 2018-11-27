@@ -38,7 +38,11 @@ class UserController extends Controller {
             $objTimesheet = new Timesheet();
             $timesheetList = $objTimesheet->getTimesheetList($user_id);
             $data['arrTimesheet'] = $timesheetList;
-
+            
+            
+            $total_time = $objTimesheet->gettotaltime_worker($user_id = $this->loginUser['id']);
+            $data['total_time'] = $total_time;
+            
         if ($request->isMethod('post')) {
             /*print_r($request->input());
             exit;*/
@@ -70,7 +74,10 @@ class UserController extends Controller {
     }
 
     public function getworkersearchList(Request $request) {
-        
+         $objTimesheet = new Timesheet();
+         $total_time = $objTimesheet->gettotaltime_worker_serch($request);
+         $data['total_time'] = $total_time;
+         
         $data['serchbardetails']=$request->input();
         $data['detail'] = $this->loginUser; 
 
@@ -109,7 +116,7 @@ class UserController extends Controller {
          
         if ($request->isMethod('post')) {
            $objInformation = new Information();
-           $saveinformation=$objInformation->editinformation($request);
+           $saveinformation=$objInformation->editinformation($request,$id);
             
            if($saveinformation) {
                 $return['status'] = 'success';

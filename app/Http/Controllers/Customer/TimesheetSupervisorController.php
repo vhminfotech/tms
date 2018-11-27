@@ -55,7 +55,8 @@ class TimesheetSupervisorController extends Controller {
             echo json_encode($return);
             exit;
         }
-
+        
+        
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('worker/tworker.js');
@@ -67,7 +68,11 @@ class TimesheetSupervisorController extends Controller {
         $objUser = new Users();
         $userList = $objUser->gtUsrLlist();
         $data['arrUser'] = $userList;
-
+        
+        $objTimesheet = new Timesheet();
+        $total_time = $objTimesheet->gettotaltime();
+        $data['total_time'] = $total_time;
+        
         $objWorkplaces = new Workplaces();
         $workplacesList = $objWorkplaces->getWorkplacesList();
         $data['arrWorkplaces'] = $workplacesList;
@@ -80,6 +85,7 @@ class TimesheetSupervisorController extends Controller {
         $data['funinit'] = array('Timesheet.listInit()');
      
         $data['arrTimesheet'] = $timesheetList;
+        
         $data['detail'] = $this->loginUser;
 
          if ($request->isMethod('post')) {
@@ -95,7 +101,11 @@ class TimesheetSupervisorController extends Controller {
         $objUser = new Users();
         $userList = $objUser->gtUsrLlist();
         $data['arrUser'] = $userList;
-
+        
+        $objTimesheet = new Timesheet();
+        $total_time = $objTimesheet->gettotaltime($request);
+        $data['total_time'] = $total_time;
+        
         $objWorkplaces = new Workplaces();
         $workplacesList = $objWorkplaces->getWorkplacesList();
         $data['arrWorkplaces'] = $workplacesList;
@@ -208,5 +218,5 @@ class TimesheetSupervisorController extends Controller {
          }
         return view('supervisor.dashboard', $data);
     }
-
+    
 }

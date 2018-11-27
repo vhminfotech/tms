@@ -123,9 +123,9 @@
                             <td class="c-table__cell">{{ $arrInformation[$i]->workplaces }}</td>
                             <td class="c-table__cell">{{ $arrInformation[$i]->reason }}</td>
                             <td class="c-table__cell"><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('words.edit') }}">
-                                        <a href=" {{ route('information-supervisoer-edit',[$arrInformation[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('words.edit') }}">
-                                    <i class="fa fa-edit" ></i></span>
-                                </a></td>
+                                        <a href=" {{ route('information-timesheet-edit',[$arrInformation[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('words.edit') }}">
+                                    <i class="fa fa-edit" ></i>
+                                </a></span></td>
                         </tr>
                         @endfor
                     </tbody>

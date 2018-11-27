@@ -24,6 +24,11 @@
                                         <label class="c-field__label" for="adresses">{{ trans('words.pause-time') }}</label>   
                                         <input id="pausetime" name="timesheet_edit_push_time" class="c-input" type="text" value="{{ $timesheetDetail[0]['pause_time'] }}"/>
                                     </div>
+                                    
+                                    <div class="c-field u-mb-small">
+                                        <label class="c-field__label" for="adresses">{{ trans('words.reason') }}</label>   
+                                        <input id="inforamtion" name="inforamtion" class="c-input" type="text" value="{{ $timesheetDetail[0]['reason'] }}"/>
+                                    </div>
 
                                 </div>
 								

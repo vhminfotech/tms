@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 @include('layouts.include.body_header')
-
 <div class="container">
     <div class="row u-mb-large">
         <div class="col-12">

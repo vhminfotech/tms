@@ -103,6 +103,7 @@
                             <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">{{ trans('words.id') }}</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.date') }}</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.staff-number') }}</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.name') }}</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.workerplace') }} &nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.start-time') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.end-time') }}&nbsp;&nbsp;</th>
@@ -124,6 +125,7 @@
                                      $newDate = date("d.m.Y", strtotime($arrTimesheet[$i]->c_date));
                                      ?>{{ $newDate }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->staffnumber }}</td>
+                            <td class="c-table__cell">{{ $arrTimesheet[$i]->name }} {{ $arrTimesheet[$i]->surname}}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->workplaces }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->start_time }}</td>
                             <td class="c-table__cell">{{ $arrTimesheet[$i]->end_time }}</td>
