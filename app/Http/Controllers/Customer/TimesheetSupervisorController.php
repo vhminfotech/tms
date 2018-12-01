@@ -187,13 +187,13 @@ class TimesheetSupervisorController extends Controller {
     }
 
     public function getdassearchInformationList(Request $request) {
-            
+            $objTimesheet = new Timesheet();
             $data['dates']=[$request->input()['start_date'],$request->input()['end_date']];
             $data['detail'] = $this->loginUser; 
             $user_id = $this->loginUser['id'];
             $user = Users::find($user_id);
            
-
+            $data['totaltime'] = $objTimesheet->getTotallTime($user_id ,$data['dates']);
             $objUser = new Users();
             $userList = $objUser->gtUsrLlist();
             $data['arrUser'] = $userList;
@@ -205,9 +205,6 @@ class TimesheetSupervisorController extends Controller {
             $objUser = new Users();
             $userList = $objUser->gtUsrLlist();
             $data['arrWorker'] = $userList;
-
-
-            $objTimesheet = new Timesheet();
             $timesheetList = $objTimesheet->getTimesheetList();
             $data['arrTimesheet'] = $timesheetList;
 
@@ -216,6 +213,10 @@ class TimesheetSupervisorController extends Controller {
             $timesheetsearchList = $objTimesheet->search_date_workerInfo($request); 
             $data['arrTimesheet'] = $timesheetsearchList;
          }
+         $data['css'] = array();
+        $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
+        $data['js'] = array('worker/tworker.js');
+        $data['funinit'] = array('TWorker.addInit()');
         return view('supervisor.dashboard', $data);
     }
     

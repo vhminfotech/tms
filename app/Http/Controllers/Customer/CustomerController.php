@@ -32,7 +32,9 @@ class CustomerController extends Controller {
             $objTimesheet = new Timesheet();
             $timesheetList = $objTimesheet->getTimesheetList($user_id);
             $data['arrTimesheet'] = $timesheetList;
-
+            
+            $data['totaltime'] = $objTimesheet->getTotallTime($user_id);
+           
         if ($request->isMethod('post')) {
             /*print_r($request->input());
             exit;*/

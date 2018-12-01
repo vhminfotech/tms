@@ -72,7 +72,7 @@ class InformationSupervisorController extends Controller {
            if($saveinformation) {
                 $return['status'] = 'success';
                 $return['message'] = 'Information edit successfully.';
-                $return['redirect'] = route('information_supervisor');
+                $return['redirect'] = route('timesheet_list');
             }else {
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';

@@ -147,7 +147,8 @@ if( count($arrTimesheet) !=null )
             <div class="c-table-responsive">
                 <table class="c-table" id="datatable">
                     <caption class="c-table__title">
-                        {{ trans('words.timesheet-list') }}
+                         <span>{{ trans('words.timesheet-list') }}</span>
+                        <span class="pull-right">{{ trans('words.total_time') }} : {{ $totaltime}} </span>
                     </caption>
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">

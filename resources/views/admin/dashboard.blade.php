@@ -46,11 +46,11 @@
                                 <button type="button" class="c-btn c-btn--info findBestStaff"><i class="fa fa-search" aria-hidden="true"></i></button>     
                             </div>
                         </div>
-                        <h5 class="c-graph-card__number center staffName" >{{$arrBeststaff[0]->name}}</h5>
-                        <h4 class="center" ><b>{{ trans('words.staff-number') }}</b>:<label class="staffnumber">{{ $arrBeststaff[0]->staffnumber }}</label></h4>
-                        <h4  class="center"><b class="totalHours">{{ $arrBeststaff[0]->total_houres }}</b>: hours</h4>    
+                        <h5 class="c-graph-card__number center staffName" >@if(count($arrInformation) > 0){{$arrBeststaff[0]->name}} @endif</h5>
+                        <h4 class="center" ><b>{{ trans('words.staff-number') }}</b>:<label class="staffnumber">@if(count($arrInformation) > 0) {{ $arrBeststaff[0]->staffnumber }} @endif</label></h4>
+                        <h4  class="center"><b class="totalHours">@if(count($arrInformation) > 0) {{ $arrBeststaff[0]->total_houres }} @endif</b>: hours</h4>    
                     </div>
-                </div>
+                </div> 
             </div>	
             <div class="col-xl-4">
                 <div class="c-graph-card" data-mh="graph-cards">

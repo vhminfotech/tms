@@ -29,7 +29,23 @@ class Timesheet extends Model {
         return $result;
     }
     
-    public function gettotaltime($request = NULL){
+    public function getTotallTime($id,$dates = NULL){
+        if($dates){
+            $start_date=date('Y-m-d', strtotime($dates['0']));
+            $end_date=date('Y-m-d', strtotime($dates['1']));
+           
+            $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet where worker_id ='" .$id."' AND c_date >='".$start_date."' AND c_date <='".$end_date."'";
+            $result=DB::select(DB::raw($qurey)); 
+           
+        }else{
+         $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet where worker_id =" .$id;
+         $result=DB::select(DB::raw($qurey)); 
+        }
+         return $result[0]->timeSum;
+       
+    }
+
+        public function gettotaltime($request = NULL){
         if($request){
           
             $useId=$request->input()['name'];
