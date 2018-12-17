@@ -10,11 +10,13 @@
                     <div class="c-tabs__pane active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                         <form name="editInformation" id="editInformation" action="" method="post">
                             <div class="row">
+                                
+                                
                                 <div class="col-lg-6">
                                     <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}" /> 
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="reason">{{ trans('words.reason') }}</label>   
-                                        <input id="reason" name="reason" class="c-input" type="text" value="{{ $objinformationreason }}"/>
+                                        <label class="c-field__label" for="reason">{{ trans('words.Information') }} {{ trans('words.supervisior') }} </label>   
+                                        <input id="reason" name="sup_reason" class="c-input" type="text" value="{{ $objinformationreason[0]['supervisior_reson'] }}"/>
                                     </div>
                                 </div>
                                 <input class="c-input" type="hidden" name="informationid" id="id" value="{{ $id }}" /> 

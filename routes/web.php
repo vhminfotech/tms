@@ -46,6 +46,7 @@ Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], functi
             Route::match(['get', 'post'], '/supervisor/information-supervisoer-edit/{id}', ['as' => 'information-supervisoer-edit', 'uses' => 'Customer\InformationSupervisorController@informationsupervisoeredit']);
             
             Route::match(['get', 'post'], '/supervisor/information-timesheet-edit/{id}', ['as' => 'information-timesheet-edit', 'uses' => 'Customer\InformationSupervisorController@informationtimesheetedit']);
+            Route::match(['get', 'post'], '/supervisor/informationsupervisoredit/{id}', ['as' => 'informationsupervisoredit', 'uses' => 'Customer\InformationSupervisorController@informationsupervisoredit']);
         });
 
 $ageentPrefix = "";

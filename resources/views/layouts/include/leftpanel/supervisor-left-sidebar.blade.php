@@ -21,7 +21,7 @@ $currentRoute = Route::current()->getName();
                 </a>
             </li>
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ( $currentRoute == 'information-supervisoer-edit' || $currentRoute == 'information-search-list' || $currentRoute == 'information_supervisor' ? 'is-active' : '') }}" href="{{ route('information_supervisor') }}">
+                <a class="c-sidebar__link {{ ( $currentRoute == 'informationsupervisoredit' || $currentRoute == 'information-supervisoer-edit' || $currentRoute == 'information-search-list' || $currentRoute == 'information_supervisor' ? 'is-active' : '') }}" href="{{ route('information_supervisor') }}">
                     <i class="fa fa-info-circle u-mr-xsmall"></i>{{ trans('words.Information') }}
                 </a>
             </li>

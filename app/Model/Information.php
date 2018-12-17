@@ -148,7 +148,7 @@ class Information extends Model {
     }
     
     public function getInformation($id){
-        $result = timesheet::select('reason','start_time','end_time','pause_time')
+        $result = timesheet::select('reason','start_time','end_time','pause_time','supervisior_reson')
                 ->where('id','=',$id)
                 ->get()->toarray();
         
@@ -174,6 +174,22 @@ class Information extends Model {
         $objTime->missing_hour = $policy_total_time;
         $objTime->total_time = $total_time;
         $objTime->reason = $information;
+        $objTime->updated_at = date('Y-m-d H:i:s');
+        
+        if ($objTime->save())
+        {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+    
+    
+    public function editinformationadmin($request ,$timesheetId){
+        
+        $objTime = Timesheet::find($timesheetId);
+        
+        $objTime->supervisior_reson = $request->input('sup_reason');
         $objTime->updated_at = date('Y-m-d H:i:s');
         
         if ($objTime->save())

@@ -105,6 +105,8 @@
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.wo-worker') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.workerplace') }}</th>                            
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.reason') }}</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.Information') }} {{ trans('words.supervisior') }}</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.action') }}</th>
                             
                         </tr>
                     </thead>
@@ -122,7 +124,16 @@
                             <td class="c-table__cell">{{ $arrInformation[$i]->name }} {{ $arrInformation[$i]->surname }}</td>
                             <td class="c-table__cell">{{ $arrInformation[$i]->workplaces }}</td>
                             <td class="c-table__cell">{{ $arrInformation[$i]->reason }}</td>
-                            
+                            <td class="c-table__cell">{{ $arrInformation[$i]->supervisior_reson }}</td>
+                            <td class="c-table__cell">
+                                 <span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('words.edit') }}">
+                                        <a href=" {{ route('informationsupervisoredit',[$arrInformation[$i]->id])}} ">
+                                                <span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('words.edit') }}">
+                                                    <i class="fa fa-edit" ></i>
+                                                </span>
+                                        </a>
+                                </span>
+                            </td>
                         </tr>
                         @endfor
                     </tbody>

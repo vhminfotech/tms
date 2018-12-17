@@ -130,8 +130,9 @@ class InformationController extends Controller {
         
         $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
+          
            $objInformation = new Information();
-           $saveinformation=$objInformation->editinformation($request);
+           $saveinformation=$objInformation->editinformationadmin($request,$id);
             
            if($saveinformation) {
                 $return['status'] = 'success';
@@ -144,7 +145,6 @@ class InformationController extends Controller {
             echo json_encode($return);
             exit;
         }
-        
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/information.js');
