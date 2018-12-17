@@ -104,7 +104,7 @@
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.staff-number') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.wo-worker') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.workerplace') }}</th>                            
-                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.reason') }}</th>
+                            
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.Information') }} {{ trans('words.supervisior') }}</th>
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('words.action') }}</th>
                             
@@ -123,7 +123,7 @@
                             <td class="c-table__cell">{{ $arrInformation[$i]->staffnumber }}</td>
                             <td class="c-table__cell">{{ $arrInformation[$i]->name }} {{ $arrInformation[$i]->surname }}</td>
                             <td class="c-table__cell">{{ $arrInformation[$i]->workplaces }}</td>
-                            <td class="c-table__cell">{{ $arrInformation[$i]->reason }}</td>
+                           
                             <td class="c-table__cell">{{ $arrInformation[$i]->supervisior_reson }}</td>
                             <td class="c-table__cell">
                                  <span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('words.edit') }}">
