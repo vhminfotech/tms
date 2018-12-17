@@ -12,7 +12,7 @@
     <!-- Favicon -->
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="{{ asset("/img/logo.png") }}">
+    <link rel="icon" href="{{ asset("/img/logo11.png") }}">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ asset('css/main.min.css') }}">

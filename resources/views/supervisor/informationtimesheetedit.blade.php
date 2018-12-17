@@ -9,8 +9,6 @@
                     <div class="c-tabs__pane active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                         <form name="editInformation" id="editInformation" action="" method="post">
                             <div class="row">
-                                
-                                
                                 <div class="col-lg-6">
                                     <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}" /> 
                                     <div class="c-field u-mb-small">
