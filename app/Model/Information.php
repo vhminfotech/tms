@@ -18,6 +18,7 @@ class Information extends Model {
     public $timestamps = false;
 
     public function getTimesheetList($id = NULL) {
+        //
         if($id){
             $result = timesheet::select('timesheet.*')
                         ->where('timesheet.id', '=', $id)
@@ -28,6 +29,17 @@ class Information extends Model {
                         ->get(); 
         }
         
+        return $result;
+    }
+    
+    public function getAdminTimesheetList() {
+//        ->leftjoin('users as u1', 'services.user_id', '=', 'u1.id')
+//        ->leftjoin('users as u2', 'services.insurer', '=', 'u2.id')
+            $result = timesheet::select('timesheet.*','u1.staffnumber','u1.name','u1.surname','u2.name as sup_name','u2.surname as sup_surname','u2.id as sup_id')
+                        ->leftjoin('users as u1', 'timesheet.worker_id', '=', 'u1.id')
+                        ->leftjoin('users as u2', 'timesheet.supervisior_id', '=', 'u2.id')
+                        ->get(); 
+               
         return $result;
     }
     
@@ -162,6 +174,7 @@ class Information extends Model {
         $objTime->end_time = $request->input('timesheet_edit_end_time');
         $objTime->pause_time = $request->input('timesheet_edit_push_time');
         
+        
        $working_time = (new Carbon($objTime->end_time))->diff(new Carbon($objTime->start_time))->format('%h:%I');
         $total_time=(new Carbon($working_time))->diff(new Carbon($objTime->pause_time))->format('%h:%I');
         $pause_times = (new Carbon(date($objTime->pause_time)))->format('h:i:s');
@@ -185,11 +198,12 @@ class Information extends Model {
     }
     
     
-    public function editinformationadmin($request ,$timesheetId){
+    public function editinformationadmin($request ,$timesheetId,$sup_id){
         
         $objTime = Timesheet::find($timesheetId);
         
         $objTime->supervisior_reson = $request->input('sup_reason');
+        $objTime->supervisior_id = $sup_id;
         $objTime->updated_at = date('Y-m-d H:i:s');
         
         if ($objTime->save())

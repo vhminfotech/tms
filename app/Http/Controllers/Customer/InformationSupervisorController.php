@@ -64,6 +64,7 @@ class InformationSupervisorController extends Controller {
     
     public function informationtimesheetedit(Request $request,$id=""){
         $data['detail'] = $this->loginUser;
+       
         if ($request->isMethod('post')) {
             
            $objInformation = new Information();
@@ -95,7 +96,7 @@ class InformationSupervisorController extends Controller {
          $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
            $objInformation = new Information();
-           $saveinformation=$objInformation->editinformationadmin($request,$id);
+           $saveinformation=$objInformation->editinformationadmin($request,$id,$data['detail']['id']);
             
            if($saveinformation) {
                 $return['status'] = 'success';

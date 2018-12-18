@@ -37,7 +37,7 @@ class InformationController extends Controller {
         $data['arrWorkplaces'] = $workplacesList;
         
         $objInformation = new Information();
-        $objinformationList = $objInformation->getTimesheetList();
+        $objinformationList = $objInformation->getAdminTimesheetList();
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/information.js');
@@ -79,7 +79,7 @@ class InformationController extends Controller {
         $data['serchbardetails']=[$request->input()['name'],$request->input()['workplaces'],$request->input()['start_date'],$request->input()['end_date']];
         
         $objInformation = new Information();
-        $objinformationList = $objInformation->getTimesheetList();
+        $objinformationList = $objInformation->getAdminTimesheetList();
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/information.js');
@@ -132,7 +132,7 @@ class InformationController extends Controller {
         if ($request->isMethod('post')) {
           
            $objInformation = new Information();
-           $saveinformation=$objInformation->editinformationadmin($request,$id);
+           $saveinformation=$objInformation->editinformationadmin($request,$id,$data['detail']['id']);
             
            if($saveinformation) {
                 $return['status'] = 'success';

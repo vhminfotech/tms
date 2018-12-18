@@ -103,6 +103,7 @@
                         <tr class="c-table__row">
                             <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">{{ trans('words.id') }}</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.date') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.supervisior') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.staff-number') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.wo-worker') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.workerplace') }}</th>
@@ -119,10 +120,12 @@
                         @for($i = 0 ;$i < count($arrInformation);$i++,$count++)
                         <tr class="c-table__row">
                             <td class="c-table__cell">{{ $count }}</td>
-                            <td class="c-table__cell"><?php
-                                     
-                                     $newDate = date("d.m.Y", strtotime($arrInformation[$i]->c_date));
-                                     ?>{{ $newDate }}</td>
+                            <td class="c-table__cell">
+                                @php $newDate = date("d.m.Y", strtotime($arrInformation[$i]->c_date));
+                                @endphp
+                                {{ $newDate }}
+                            </td>
+                            <td class="c-table__cell">{{ $arrInformation[$i]->sup_name }} {{ $arrInformation[$i]->sup_surname }} </td>
                             <td class="c-table__cell">{{ $arrInformation[$i]->staffnumber }}</td>
                             <td class="c-table__cell">{{ $arrInformation[$i]->name }}  {{ $arrInformation[$i]->surname }}</td>
                             <td class="c-table__cell">{{ $arrInformation[$i]->workplaces }}</td>                            
