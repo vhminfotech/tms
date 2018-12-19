@@ -155,5 +155,8 @@ class InformationController extends Controller {
         $data['id']=$id;
         return view('admin.information.information-edit', $data);    
     }
-
 }
+//}app/Http/Controllers/Admin/InformationController.php
+//           app/Http/Controllers/Customer/InformationSupervisorController.php
+//           app/Model/Information.php
+//           resources/views/admin/information/information-list.blade.php

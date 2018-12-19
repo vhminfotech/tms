@@ -38,6 +38,7 @@ class Information extends Model {
             $result = timesheet::select('timesheet.*','u1.staffnumber','u1.name','u1.surname','u2.name as sup_name','u2.surname as sup_surname','u2.id as sup_id')
                         ->leftjoin('users as u1', 'timesheet.worker_id', '=', 'u1.id')
                         ->leftjoin('users as u2', 'timesheet.supervisior_id', '=', 'u2.id')
+                        ->where('timesheet.supervisior_reson','!='," ")
                         ->get(); 
                
         return $result;
