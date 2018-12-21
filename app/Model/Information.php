@@ -129,7 +129,7 @@ class Information extends Model {
         $toDate = date('Y-m-d', strtotime($postData['end_date']));
 
 
-        $result = timesheet::select('timesheet.*','users.staffnumber','users.name');
+        $result = timesheet::select('timesheet.*','users.staffnumber','users.name','u2.name as supervisorname');
         $result->where('timesheet.workplaces', $workplace);
         $result->where('timesheet.missing_hour','!=', '0:00');
         if($toDate != ""){
@@ -137,8 +137,9 @@ class Information extends Model {
                 array($fromDate." 00:00:00", $toDate." 23:59:59")
             );
         }
-        
-        $results =  $result->join('users','timesheet.worker_id','=','users.id')->get();
+        $results =  $result->join('users','timesheet.worker_id','=','users.id')
+                        ->leftjoin('users as u2', 'timesheet.supervisior_id', '=', 'u2.id')
+                        ->where('timesheet.supervisior_reson','!='," ")->get();
  
         return $results;
     }

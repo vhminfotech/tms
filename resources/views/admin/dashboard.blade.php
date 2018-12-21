@@ -15,7 +15,7 @@
             <div class="col-xl-4">
                 <div class="c-graph-card" data-mh="graph-cards">
                     <div class="c-graph-card__content">
-                        <h3 class="c-graph-card__title">{{ trans('words.best-staff') }}</h3>
+                        <h3 class="c-graph-card__title">{{ trans('words.best-worker') }}</h3>
                         <div class="row">
                             <div class="col-4">
                                 <select class="c-select staffMonths" id="month" name="month">
@@ -285,7 +285,7 @@
             <div class="col-xl-4">
                 <div class="c-graph-card" data-mh="graph-cards">
                     <div class="c-graph-card__content">
-                        <h3 class="c-graph-card__title">{{ trans('words.staff') }}</h3>
+                        <h3 class="c-graph-card__title">{{ trans('words.WORKER') }}</h3>
                         <div class="row">
                             <div class="col u-mb-medium">
                                 <select class="c-select" name="staffId" id="staffId">

@@ -65,6 +65,7 @@ return [
     'staff' => 'Staff',
     'Information-List' => 'Information List',
     'total_time'=>'Total Time',
+    'best-worker' => 'Best Worker',
     
     
 ];
