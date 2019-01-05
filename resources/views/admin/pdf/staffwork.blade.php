@@ -19,16 +19,17 @@ and open the template in the editor.
         </style>
     </head>
     <body>
-        <table class="c-table" id="datatable" border-colsafe="">
+            <center><h3><b>Mitarbeiter arbeiten</b></h3></center>
+        <table class="c-table" id="datatable" border-colsafe="" style="width:100%">
             <thead class="c-table__head c-table__head--slim">
                 <tr class="c-table__row">
-                    <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">Worker Name</th>
-                    <th class="c-table__cell c-table__cell--head">Date</th>
-                    <th class="c-table__cell c-table__cell--head">Start Time&nbsp;&nbsp;</th>
-                    <th class="c-table__cell c-table__cell--head">End Time&nbsp;&nbsp;</th>
-                    <th class="c-table__cell c-table__cell--head">Pause Time&nbsp;&nbsp;</th>
-                    <th class="c-table__cell c-table__cell--head">Total Time&nbsp;&nbsp;</th>
-                    <th class="c-table__cell c-table__cell--head" style="max-width: 10%;">Address&nbsp;&nbsp;</th>
+                    <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">Mitarbeiter </th>
+                    <th class="c-table__cell c-table__cell--head">Datum</th>
+                    <th class="c-table__cell c-table__cell--head">Startzeit Zeit&nbsp;&nbsp;</th>
+                    <th class="c-table__cell c-table__cell--head">Endzeit Zeit&nbsp;&nbsp;</th>
+                    <th class="c-table__cell c-table__cell--head">Pause Zeit&nbsp;&nbsp;</th>
+                    <th class="c-table__cell c-table__cell--head">Insgesamt Zeit&nbsp;&nbsp;</th>
+                    <th class="c-table__cell c-table__cell--head" style="max-width: 10%;">Adresse&nbsp;&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,6 +43,10 @@ and open the template in the editor.
                     <td class="c-table__cell">{{ $arrTimeheet[$i]['pause_time'] }}</td>
                     <td class="c-table__cell">{{ $arrTimeheet[$i]['total_time'] }}</td>
                     <td class="c-table__cell" style="max-width: 10% !important;width: 10% !important;">{!! wordwrap($arrTimeheet[$i]['adresses'],30,"<br>\n")  !!}</td>
+                </tr>
+                
+                <tr class="c-table__row">
+                    <td colspan="7" class="c-table__cell center" style=" text-align: right">Insgesamt Zeit : {{ $totaltime }}</td>
                 </tr>
                 @endfor
                 @else

@@ -219,7 +219,34 @@ class Timesheet extends Model {
                     });
         }
         $result = $sql->get()->toArray();
+        
         return $result;
+    }
+    
+    public function getWorkplaceTotalTime($postData){
+     
+        $month = $postData['months'];
+        $year = $postData['year'];
+        $staffId = $postData['name'];
+        if (!empty($year) && empty($month)) {
+            $startdate=date($year . '-' . $month . '-01');
+            $enddate=date($year . '-12-31');
+            $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet where  workplaces='".$staffId."' AND c_date BETWEEN '". $startdate ."'AND'". $enddate."'";
+        }
+        
+         if (!empty($year) && !empty($month)) {
+             $startdate=date($year . '-01-01');
+             $enddate=date($year . '-' . $month . '-31');
+             $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet where  workplaces='".$staffId."' AND c_date BETWEEN '". $startdate ."'AND'". $enddate."'";
+         }
+         
+          if (empty($year) && empty($month)) {
+              $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet where  workplaces='".$staffId."'";
+          }
+         
+        $result=DB::select(DB::raw($qurey));
+       
+        return $result['0']->timeSum;
     }
 
     public function getStaffListData($postData) {
@@ -249,6 +276,34 @@ class Timesheet extends Model {
         return $result;
     }
     
+    public function getStaffTotalTime($postData){
+        $month = $postData['months'];
+        $year = $postData['year'];
+        $staffId = $postData['staffId'];
+        
+          if (!empty($year) && empty($month)) {
+            $startdate=date($year . '-' . $month . '-01');
+            $enddate=date($year . '-12-31');
+            $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet where  worker_id='".$staffId."' AND c_date BETWEEN '". $startdate ."'AND'". $enddate."'";
+        }
+        
+         if (!empty($year) && !empty($month)) {
+             $startdate=date($year . '-01-01');
+             $enddate=date($year . '-' . $month . '-31');
+             $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet where  worker_id='".$staffId."' AND c_date BETWEEN '". $startdate ."'AND'". $enddate."'";
+         }
+         
+          if (empty($year) && empty($month)) {
+              $qurey="SELECT SEC_TO_TIME( SUM( TIME_TO_SEC( `total_time` ) ) ) AS timeSum FROM timesheet where  worker_id='".$staffId."'";
+          }
+         
+        $result=DB::select(DB::raw($qurey));
+       
+        return $result['0']->timeSum;
+        
+    }
+
+
     public function updateTimesheetAdmin($request,$timesheetId){
        
         $objTime = Timesheet::find($timesheetId);

@@ -185,6 +185,9 @@ class AdminController extends Controller {
         $objTimeheet = new Timesheet();
         $data['arrTimeheet'] = $objTimeheet->getWorkplaceListData($param);
         
+        $data['totaltime'] = $objTimeheet->getWorkplaceTotalTime($param);
+       
+        
         $pdf = PDF::loadView('admin.pdf.workplace', $data);
         //  $pdf = PDF::loadView('admin.invoice.invoice-pdfV2');
         return $pdf->stream();
@@ -196,7 +199,7 @@ class AdminController extends Controller {
         $param = $_GET;
         $objTimeheet = new Timesheet();
         $data['arrTimeheet'] = $objTimeheet->getStaffListData($param);
-        
+        $data['totaltime'] = $objTimeheet->getStaffTotalTime($param);
         $pdf = PDF::loadView('admin.pdf.staffwork', $data);
         //  $pdf = PDF::loadView('admin.invoice.invoice-pdfV2');
         return $pdf->stream();

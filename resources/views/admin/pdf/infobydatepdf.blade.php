@@ -19,38 +19,38 @@ and open the template in the editor.
         </style>
     </head>
     <body>
-    <center><h3><b>Info by date pdf</b></h3></center>
-    <table class="c-table" id="datatable" style="width:100%">
-            <thead class="c-table__head c-table__head--slim">
-                <tr class="c-table__row">
-                    <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">Supervisor</th>
-                    <th class="c-table__cell c-table__cell--head">Date&nbsp;&nbsp;</th>
-                    <th class="c-table__cell c-table__cell--head">Worker&nbsp;&nbsp;</th>
-                    <th class="c-table__cell c-table__cell--head">Workplace</th>
-                    <th class="c-table__cell c-table__cell--head no-sort">Information Supervisor</th>
-                </tr>
-
-            <tbody>
-                @php
-                $count = 1;
-                @endphp
-                @if(count($arrInformation) > 0)
-                @for($i = 0 ;$i < count($arrInformation);$i++,$count++)
-                <tr class="c-table__row">
-                    <td class="c-table__cell">{{ $arrInformation[$i]->supervisorname }}</td>
-                    <td class="c-table__cell">{{ $arrInformation[$i]->c_date }}</td>
-                    <td class="c-table__cell">{{ $arrInformation[$i]->name }}</td>
-                    <td class="c-table__cell">{{ $arrInformation[$i]->workplaces }}</td>
-                    <td class="c-table__cell">{{ $arrInformation[$i]->supervisior_reson }}</td>
-                </tr>
-                @endfor
-                @else
-                <tr class="c-table__row">
-                    <td colspan="7" class="c-table__cell center" style="color: red;">No Record Found</td>
-                </tr>
-                @endif
-            </tbody>
-
-        </table>
+                <center><h3><b>Infomaion by date pdf</b></h3></center>
+            <table class="c-table" id="datatable" border-colsafe="" style="width:100%">
+                <thead class="c-table__head c-table__head--slim">
+                    <tr class="c-table__row">
+                        <th class="c-table__cell c-table__cell--head">Objektleiter Name</th>
+                        <th class="c-table__cell c-table__cell--head">Datum</th>
+                        <th class="c-table__cell c-table__cell--head">Mitarbeiter</th>
+                        <th class="c-table__cell c-table__cell--head">Objekt</th>
+                        <th class="c-table__cell c-table__cell--head">Information Supervisior</th>
+                    </tr>
+                    
+                </thead>
+                    <tbody>
+                        @php
+                        $count = 1;
+                        @endphp
+                        @if(count($arrInformation) > 0)
+                        @for($i = 0 ;$i < count($arrInformation);$i++,$count++)
+                        <tr class="c-table__row">
+                            <td class="c-table__cell">{{ $arrInformation[$i]->supervisorname }}</td>
+                            <td class="c-table__cell">{{ $arrInformation[$i]->c_date }}</td>
+                            <td class="c-table__cell">{{ $arrInformation[$i]->name }}</td>
+                            <td class="c-table__cell">{{ $arrInformation[$i]->workplaces }}</td>
+                            <td class="c-table__cell">{{ $arrInformation[$i]->supervisior_reson }}</td>
+                        </tr>
+                        @endfor
+                        @else
+                        <tr class="c-table__row">
+                            <td colspan="5" class="c-table__cell center" style="color: red;">No Record Found</td>
+                        </tr>
+                        @endif
+                    </tbody>
+            </table>
     </body>
 </html>

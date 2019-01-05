@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('content')
 @include('layouts.include.body_header')
-
+@php $startyear = (date('Y')-5);
+@endphp 
 <div class="container-fluid">
     @if ( Session::has('flash_message') )
     <div class="c-alert c-alert--success alert fade show">
@@ -33,10 +34,11 @@
                                     <option value="12">12</option>
                                 </select>
                             </div>
+                            
                             <div class="col-4">
-
+                                
                                 <select class="c-select filter staffYears" id="year" name="year">
-                                    @for($i=date('Y'); $i<=2050; $i++)
+                                    @for($i=$startyear; $i<=($startyear+10); $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
                                     @endfor
                                 </select>
@@ -76,7 +78,7 @@
                             </div>
                             <div class="col-4">
                                 <select class="c-select filter restYears" id="year1" name="year1">
-                                    @for($i=date('Y'); $i<=2050; $i++)
+                                    @for($i=$startyear; $i<=($startyear+10); $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
                                     @endfor
                                 </select>
@@ -120,7 +122,7 @@
                         </div>
                         <div class="col-4">
                             <select class="c-select filter findinfoYears" name="year2">
-                                @for($i=date('Y'); $i<=2050; $i++)
+                                 @for($i=$startyear; $i<=($startyear+10); $i++)
                                 <option value="{{ $i }}">{{ $i }}</option>
                                 @endfor
                             </select>
@@ -251,7 +253,7 @@
                             <div class="col u-mb-medium">
                                 <select class="c-select filter workplaceYear" id="workplaceYear" name="workplaceYear">
                                     <option value="">Jahr auswahlen</option>
-                                    @for($i=date('Y'); $i<=2050; $i++)
+                                    @for($i=$startyear; $i<=($startyear+10); $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
                                     @endfor
                                 </select>
@@ -318,7 +320,7 @@
                             <div class="col u-mb-medium">
                                 <select class="c-select filter staffYear" id="staffYear" name="staffYear">
                                     <option value="">Jahr auswahlen</option>
-                                    @for($i=date('Y'); $i<=2050; $i++)
+                                    @for($i=$startyear; $i<=($startyear+10); $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
                                     @endfor
                                 </select>
