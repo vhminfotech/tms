@@ -29,7 +29,7 @@ and open the template in the editor.
                     <th class="c-table__cell c-table__cell--head">Endzeit Zeit&nbsp;&nbsp;</th>
                     <th class="c-table__cell c-table__cell--head">Pause Zeit&nbsp;&nbsp;</th>
                     <th class="c-table__cell c-table__cell--head">Insgesamt Zeit&nbsp;&nbsp;</th>
-                    <th class="c-table__cell c-table__cell--head" style="max-width: 10%;">Adresse&nbsp;&nbsp;</th>
+                   
                 </tr>
             </thead>
             <tbody>
@@ -42,7 +42,7 @@ and open the template in the editor.
                     <td class="c-table__cell">{{ $arrTimeheet[$i]['end_time'] }}</td>
                     <td class="c-table__cell">{{ $arrTimeheet[$i]['pause_time'] }}</td>
                     <td class="c-table__cell">{{ $arrTimeheet[$i]['total_time'] }}</td>
-                    <td class="c-table__cell" style="max-width: 10% !important;width: 10% !important;">{!! wordwrap($arrTimeheet[$i]['adresses'],30,"<br>\n")  !!}</td>
+                    
                 </tr>
                 
                 
