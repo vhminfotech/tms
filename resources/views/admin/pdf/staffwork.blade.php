@@ -45,10 +45,11 @@ and open the template in the editor.
                     <td class="c-table__cell" style="max-width: 10% !important;width: 10% !important;">{!! wordwrap($arrTimeheet[$i]['adresses'],30,"<br>\n")  !!}</td>
                 </tr>
                 
+                
+                @endfor
                 <tr class="c-table__row">
                     <td colspan="7" class="c-table__cell center" style=" text-align: right">Insgesamt Zeit : {{ $totaltime }}</td>
                 </tr>
-                @endfor
                 @else
                 <tr class="c-table__row">
                     <td colspan="7" class="c-table__cell center" style="color: red;">No Record Found</td>

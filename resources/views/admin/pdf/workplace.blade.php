@@ -38,10 +38,11 @@ and open the template in the editor.
                     <td class="c-table__cell">{{ $arrTimeheet[$i]['total_time'] }}</td>
                     <td class="c-table__cell" style="max-width: 10% !important;width: 10% !important;">{{ $arrTimeheet[$i]['reason'] }}</td>
                 </tr>
+                
+                @endfor
                 <tr class="c-table__row">
                     <td colspan="4" class="c-table__cell " style=" text-align: right">Insgesamt Zeit : {{ $totaltime }}</td>
                 </tr>
-                @endfor
                 @else
                 <tr class="c-table__row">
                     <td colspan="4" class="c-table__cell center" style="color: red;">No Record Found</td>
