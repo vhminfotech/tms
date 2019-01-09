@@ -48,11 +48,11 @@ and open the template in the editor.
                 
                 @endfor
                 <tr class="c-table__row">
-                    <td colspan="7" class="c-table__cell center" style=" text-align: right">Insgesamt Zeit : {{ $totaltime }}</td>
+                    <td colspan="6" class="c-table__cell center" style=" text-align: right">Insgesamt Zeit : {{ $totaltime }}</td>
                 </tr>
                 @else
                 <tr class="c-table__row">
-                    <td colspan="7" class="c-table__cell center" style="color: red;">No Record Found</td>
+                    <td colspan="6" class="c-table__cell center" style="color: red;">No Record Found</td>
                 </tr>
                 @endif
             </tbody>
