@@ -34,7 +34,7 @@ and open the template in the editor.
                 @for($i = 0 ;$i < count($arrTimeheet);$i++)
                 <tr class="c-table__row">
                     <td class="c-table__cell">{{ $arrTimeheet[$i]['name'] }}</td>
-                    <td class="c-table__cell">{{ $arrTimeheet[$i]['start_time'] }}</td>
+                    <td class="c-table__cell">{{ date("d.m.Y", strtotime($arrTimeheet[$i]['c_date'])) }}</td>
                     <td class="c-table__cell">{{ $arrTimeheet[$i]['total_time'] }}</td>
                     <td class="c-table__cell" style="max-width: 10% !important;width: 10% !important;">{{ $arrTimeheet[$i]['reason'] }}</td>
                 </tr>
