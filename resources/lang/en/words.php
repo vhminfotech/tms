@@ -66,6 +66,7 @@ return [
     'Information-List' => 'Information List',
     'total_time'=>'Total Time',
     'best-worker' => 'Best Worker',
-    
+    'month'=>'Select Month ',
+    'year'=>"Select Year",
     
 ];

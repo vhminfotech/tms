@@ -4,7 +4,7 @@ return [
 
     'test'     => 'test-gr',
     'Dashboard'     => 'Mitarbeiter Ubersicht',
-    'Overview'      => 'Überbsicht',
+    'Overview'      => 'Übersicht',
     'Add_time'      => 'Zeit hinzufügen',
     'Workplaces'   => 'Objekte',
     'Worker'  => 'Mitarbeiter',
@@ -66,4 +66,6 @@ return [
     'Information-List' => 'Informationsliste',
     'total_time'=>'Total Time',
     'best-worker' => 'Beste Mitarbeiter',
+    'month'=>'Monat auswählen',
+    'year'=>'Jahr auswählen',
 ];

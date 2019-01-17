@@ -167,6 +167,8 @@ class AdminController extends Controller {
     public function getWorkplaceList($param) {
         $objTimeheet = new Timesheet();
         $data['arrTimeheet'] = $objTimeheet->getWorkplaceListData($param);
+        $data['totaltime'] = $objTimeheet->getWorkplaceTotalTime($param);
+        
         $resultList = view('admin.dashboard.workplace-list', $data)->render();
         echo $resultList;
         exit;
@@ -174,6 +176,7 @@ class AdminController extends Controller {
     public function getStaffListData($param) {
         $objTimeheet = new Timesheet();
         $data['arrTimeheet'] = $objTimeheet->getStaffListData($param);
+        $data['totaltime'] = $objTimeheet->getStaffTotalTime($param);
         $resultList = view('admin.dashboard.staff-list', $data)->render();
         echo $resultList;
         exit;
@@ -184,10 +187,7 @@ class AdminController extends Controller {
         $param = $_GET;
         $objTimeheet = new Timesheet();
         $data['arrTimeheet'] = $objTimeheet->getWorkplaceListData($param);
-        
         $data['totaltime'] = $objTimeheet->getWorkplaceTotalTime($param);
-       
-        
         $pdf = PDF::loadView('admin.pdf.workplace', $data);
         //  $pdf = PDF::loadView('admin.invoice.invoice-pdfV2');
         return $pdf->stream();
@@ -231,6 +231,8 @@ class AdminController extends Controller {
         
         $objTimeheet = new Information();
         $data['arrInformation'] = $objTimeheet->getNewInfoDataBydate($param);
+        
+        $data['totaltime'] = $objTimeheet->getWorkplaceTotalTime($param);
         
         $resultList = view('admin.dashboard.getnewinfo', $data)->render();
         echo $resultList;

@@ -15,7 +15,7 @@
         @for($i = 0 ;$i < count($arrTimeheet);$i++)
         <tr class="c-table__row">
             <td class="c-table__cell">{{ $arrTimeheet[$i]['name'] }}</td>
-            <td class="c-table__cell">{{ $arrTimeheet[$i]['c_date'] }}</td>
+            <td class="c-table__cell">{{ date('d.m.Y',strtotime($arrTimeheet[$i]['c_date'])) }}</td>
             <td class="c-table__cell">{{ $arrTimeheet[$i]['start_time'] }}</td>
             <td class="c-table__cell">{{ $arrTimeheet[$i]['end_time'] }}</td>
             <td class="c-table__cell">{{ $arrTimeheet[$i]['pause_time'] }}</td>
@@ -23,6 +23,9 @@
             <td class="c-table__cell" style="max-width: 10% !important;width: 10% !important;">{!! wordwrap($arrTimeheet[$i]['adresses'],30,"<br>\n")  !!}</td>
         </tr>
         @endfor
+        <tr>
+            <td class="c-table__cell" colspan="7" style="text-align: right">Total Time : {{ $totaltime }}</td>
+        </tr>
         @else
         <tr class="c-table__row">
             <td colspan="7" class="c-table__cell center" style="color: red;">No Record Found</td>

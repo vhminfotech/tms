@@ -224,7 +224,7 @@ class Timesheet extends Model {
     }
     
     public function getWorkplaceTotalTime($postData){
-     
+        
         $month = $postData['months'];
         $year = $postData['year'];
         $staffId = $postData['name'];

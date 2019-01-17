@@ -233,7 +233,7 @@
                         <div class="row">
                             <div class="col u-mb-medium">
                                 <select class="c-select" id="workplaceMonth" name="workplaceMonth">
-                                    <option value="">Monat auswahlen</option>
+                                    <option value="">{{ trans('words.month') }}</option>
                                     <option value="01">01</option>
                                     <option value="02">02</option>
                                     <option value="03">03</option>
@@ -252,7 +252,7 @@
                         <div class="row">
                             <div class="col u-mb-medium">
                                 <select class="c-select filter workplaceYear" id="workplaceYear" name="workplaceYear">
-                                    <option value="">Jahr auswahlen</option>
+                                    <option value="">{{ trans('words.year') }}</option>
                                     @for($i=$startyear; $i<=($startyear+10); $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
                                     @endfor
@@ -300,7 +300,7 @@
                         <div class="row">
                             <div class="col u-mb-medium">
                                 <select class="c-select" id="staffMonth" name="staffMonth">
-                                    <option value="">Monat auswahlen</option>
+                                    <option value="">{{ trans('words.month') }}</option>
                                     <option value="01">01</option>
                                     <option value="02">02</option>
                                     <option value="03">03</option>
@@ -319,7 +319,7 @@
                         <div class="row">
                             <div class="col u-mb-medium">
                                 <select class="c-select filter staffYear" id="staffYear" name="staffYear">
-                                    <option value="">Jahr auswahlen</option>
+                                    <option value="">{{ trans('words.year') }}</option>
                                     @for($i=$startyear; $i<=($startyear+10); $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
                                     @endfor
