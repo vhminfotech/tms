@@ -50,6 +50,16 @@ class Worker extends Model {
             ->groupBy('users.id')
             ->get();
         }
+        
+        $res=$result->toarray();
+        
+        for($i=0;$i<count($res);$i++){
+            $lastlogin= DB::table('timesheet')
+                    ->where('worker_id',$res[$i]['id'])
+                    ->orderBy('created_at', 'desc')->first();
+            $result[$i]->lastlogin=$lastlogin->c_date;
+        }
+        
         return $result;
     }
     public function getWorkerList1($id = NULL){

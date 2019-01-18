@@ -1,13 +1,13 @@
 <table class="c-table" id="datatable">
     <thead class="c-table__head c-table__head--slim">
         <tr class="c-table__row">
-            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">Worker Name</th>
-            <th class="c-table__cell c-table__cell--head">Date</th>
-            <th class="c-table__cell c-table__cell--head">Start Time&nbsp;&nbsp;</th>
-            <th class="c-table__cell c-table__cell--head">End Time&nbsp;&nbsp;</th>
-            <th class="c-table__cell c-table__cell--head">Pause Time&nbsp;&nbsp;</th>
-            <th class="c-table__cell c-table__cell--head">Total Time&nbsp;&nbsp;</th>
-            <th class="c-table__cell c-table__cell--head" style="max-width: 10%;">Address&nbsp;&nbsp;</th>
+            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">{{ trans('words.Worker') }}</th>
+            <th class="c-table__cell c-table__cell--head">{{ trans('words.date') }}</th>
+            <th class="c-table__cell c-table__cell--head">{{ trans('words.start-date') }}&nbsp;&nbsp;</th>
+            <th class="c-table__cell c-table__cell--head">{{ trans('words.end-time') }}&nbsp;&nbsp;</th>
+            <th class="c-table__cell c-table__cell--head">{{ trans('words.pause-time') }}&nbsp;&nbsp;</th>
+            <th class="c-table__cell c-table__cell--head">{{ trans('words.total_time') }}&nbsp;&nbsp;</th>
+            <th class="c-table__cell c-table__cell--head" style="max-width: 10%;">{{ trans('words.reason') }}&nbsp;&nbsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -20,7 +20,7 @@
             <td class="c-table__cell">{{ $arrTimeheet[$i]['end_time'] }}</td>
             <td class="c-table__cell">{{ $arrTimeheet[$i]['pause_time'] }}</td>
             <td class="c-table__cell">{{ $arrTimeheet[$i]['total_time'] }}</td>
-            <td class="c-table__cell" style="max-width: 10% !important;width: 10% !important;">{!! wordwrap($arrTimeheet[$i]['adresses'],30,"<br>\n")  !!}</td>
+            <td class="c-table__cell">{{ $arrTimeheet[$i]['reason'] }}</td>
         </tr>
         @endfor
         <tr>

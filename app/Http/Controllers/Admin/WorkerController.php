@@ -37,6 +37,7 @@ class WorkerController extends Controller {
         $data['funinit'] = array('Worker.listInit()');
      
         $data['arrWorker'] = $workerList;
+       
         $data['detail'] = $this->loginUser;
         return view('admin.worker.worker-list', $data);
     }

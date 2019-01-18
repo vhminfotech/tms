@@ -29,6 +29,7 @@ and open the template in the editor.
                     <th class="c-table__cell c-table__cell--head">Endzeit Zeit&nbsp;&nbsp;</th>
                     <th class="c-table__cell c-table__cell--head">Pause Zeit&nbsp;&nbsp;</th>
                     <th class="c-table__cell c-table__cell--head">Insgesamt Zeit&nbsp;&nbsp;</th>
+                     <th class="c-table__cell c-table__cell--head">Grund/Erklärung&nbsp;&nbsp;</th>
                    
                 </tr>
             </thead>
@@ -42,17 +43,18 @@ and open the template in the editor.
                     <td class="c-table__cell">{{ $arrTimeheet[$i]['end_time'] }}</td>
                     <td class="c-table__cell">{{ $arrTimeheet[$i]['pause_time'] }}</td>
                     <td class="c-table__cell">{{ $arrTimeheet[$i]['total_time'] }}</td>
+                    <td class="c-table__cell">{{ $arrTimeheet[$i]['reason'] }}</td>
                     
                 </tr>
                 
                 
                 @endfor
                 <tr class="c-table__row">
-                    <td colspan="6" class="c-table__cell center" style=" text-align: right">Insgesamt Zeit : {{ $totaltime }}</td>
+                    <td colspan="7" class="c-table__cell center" style=" text-align: right">Insgesamt Zeit : {{ $totaltime }}</td>
                 </tr>
                 @else
                 <tr class="c-table__row">
-                    <td colspan="6" class="c-table__cell center" style="color: red;">No Record Found</td>
+                    <td colspan="7" class="c-table__cell center" style="color: red;">No Record Found</td>
                 </tr>
                 @endif
             </tbody>
