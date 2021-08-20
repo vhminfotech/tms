@@ -147,4 +147,19 @@ class Users extends Model {
         
         return $result;
     }
+	
+	/*code by dhaval*/
+	public function UpdatelastLogin($id)
+	{
+		return Users::where('id', '=', $id)->update(['last_login' => date('Y-m-d')]);
+	}
+	
+	public function GetUserByStaffNumber($staff_number)
+	{
+		$result = Users::where('staffnumber', '=', $staff_number)->pluck('name', 'id')->toArray();
+        
+        return $result;
+		
+	}
+	/*code by dhaval*/
 }

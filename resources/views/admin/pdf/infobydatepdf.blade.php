@@ -19,7 +19,7 @@ and open the template in the editor.
         </style>
     </head>
     <body>
-                <center><h3><b>Infomaion by date pdf</b></h3></center>
+                <center><h3><b>Objekte Information</b></h3></center>
             <table class="c-table" id="datatable" border-colsafe="" style="width:100%">
                 <thead class="c-table__head c-table__head--slim">
                     <tr class="c-table__row">
@@ -38,9 +38,9 @@ and open the template in the editor.
                         @if(count($arrInformation) > 0)
                         @for($i = 0 ;$i < count($arrInformation);$i++,$count++)
                         <tr class="c-table__row">
-                            <td class="c-table__cell">{{ $arrInformation[$i]->supervisorname }}</td>
+                            <td class="c-table__cell">{{ $arrInformation[$i]->supervisorname }} {{ $arrInformation[$i]->supervisorsurname }}</td>
                             <td class="c-table__cell">{{ date("d.m.Y", strtotime($arrInformation[$i]->c_date)) }}</td>
-                            <td class="c-table__cell">{{ $arrInformation[$i]->name }}</td>
+                            <td class="c-table__cell">{{ $arrInformation[$i]->name }} {{ $arrInformation[$i]->surname }}</td>
                             <td class="c-table__cell">{{ $arrInformation[$i]->workplaces }}</td>
                             <td class="c-table__cell">{{ $arrInformation[$i]->supervisior_reson }}</td>
                         </tr>

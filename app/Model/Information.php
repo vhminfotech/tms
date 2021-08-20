@@ -125,11 +125,18 @@ class Information extends Model {
      
         $workplace = $postData['workplace'];
         
-        $fromDate = date('Y-m-d',  strtotime($postData['start_date']));
-        $toDate = date('Y-m-d', strtotime($postData['end_date']));
+		$fromDateTemp = explode('.',$postData['start_date']);
+		$toDateTemp = explode('.',$postData['end_date']);
+		
+      //  $fromDate = date('Y-m-d',  strtotime($postData['start_date']));
+		//$fromDate = date_format($postData['start_date'],"Y-m-d");
+		$fromDate = $fromDateTemp[2].'-'.$fromDateTemp[1].'-'.$fromDateTemp[0];
+        //$toDate = date('Y-m-d', strtotime($postData['end_date']));
+		//$toDate = date_format($postData['end_date'],"Y-m-d");;
+		$toDate = $toDateTemp[2].'-'.$toDateTemp[1].'-'.$toDateTemp[0];
 
 
-        $result = timesheet::select('timesheet.*','users.staffnumber','users.name','u2.name as supervisorname');
+        $result = timesheet::select('timesheet.*','users.staffnumber','users.name','users.surname','u2.name as supervisorname','u2.surname as supervisorsurname');
         $result->where('timesheet.workplaces', $workplace);
         $result->where('timesheet.missing_hour','!=', '0:00');
         if($toDate != ""){

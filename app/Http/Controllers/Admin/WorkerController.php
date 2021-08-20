@@ -59,6 +59,19 @@ class WorkerController extends Controller {
 
         if ($request->isMethod('post')) {
 //            print_r($request->input());exit;
+
+			/*code by dhaval*/
+			$staffstatus = $objUser->GetUserByStaffNumber($request->input('staffnumber'));
+			if ($staffstatus)
+			{
+				$return['status'] = 'error';
+                $return['message'] = 'Staff number already taken';
+				echo json_encode($return);
+            	exit;	
+			}
+			/*code by dhaval*/
+
+
             $workerList = $objWorker->saveWorkerInfo($request); 
             if ($workerList) {
                 $return['status'] = 'success';

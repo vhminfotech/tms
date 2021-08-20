@@ -34,6 +34,7 @@ class CustomerController extends Controller {
             $data['arrTimesheet'] = $timesheetList;
             
             $data['totaltime'] = $objTimesheet->getTotallTime($user_id);
+			$last_login = $objUser->UpdatelastLogin($this->loginUser['id']);
            
         if ($request->isMethod('post')) {
             /*print_r($request->input());

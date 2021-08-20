@@ -41,6 +41,7 @@ class UserController extends Controller {
             
             
             $total_time = $objTimesheet->gettotaltime_worker($user_id = $this->loginUser['id']);
+			$last_login = $objUser->UpdatelastLogin($this->loginUser['id']);
             $data['total_time'] = $total_time;
             
         if ($request->isMethod('post')) {

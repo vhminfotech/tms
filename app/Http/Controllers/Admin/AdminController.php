@@ -232,7 +232,7 @@ class AdminController extends Controller {
         $objTimeheet = new Information();
         $data['arrInformation'] = $objTimeheet->getNewInfoDataBydate($param);
         
-        $data['totaltime'] = $objTimeheet->getWorkplaceTotalTime($param);
+       // $data['totaltime'] = $objTimeheet->getWorkplaceTotalTime($param);
         
         $resultList = view('admin.dashboard.getnewinfo', $data)->render();
         echo $resultList;

@@ -103,7 +103,7 @@
                             <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">{{ trans('words.id') }}</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.date') }}</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.staff-number') }}</th>
-                            <th class="c-table__cell c-table__cell--head">{{ trans('words.name') }}</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('words.name') }} {{ trans('words.surname') }}</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.workerplace') }} &nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.start-time') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('words.end-time') }}&nbsp;&nbsp;</th>

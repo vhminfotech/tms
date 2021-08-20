@@ -97,7 +97,7 @@ class Timesheet extends Model {
         $fromDate = date("Y-m-d", strtotime($request->input()['start_date']));
         $toDate = date("Y-m-d",  strtotime($request->input()['end_date']));
         
-        $result = timesheet::select('timesheet.*', 'users.staffnumber')
+        $result = timesheet::select('timesheet.*', 'users.staffnumber','users.name','users.surname')
                     ->join('users', 'timesheet.worker_id', '=', 'users.id');
          if ($name != "") {
             $result->where('worker_id', 'LIKE', '%' . $name . '%');
@@ -200,7 +200,7 @@ class Timesheet extends Model {
         $month = $postData['months'];
         $year = $postData['year'];
         $staffId = $postData['name'];
-        $sql = timesheet::select('timesheet.*','users.name', 'workplaces.adresses')
+        $sql = timesheet::select('timesheet.*','users.name','users.surname', 'workplaces.adresses')
                 ->join('users', 'timesheet.worker_id', '=', 'users.id')
                 ->join('workplaces', 'workplaces.company', '=', 'timesheet.workplaces');
             $sql->where('timesheet.workplaces', $staffId);
@@ -254,7 +254,7 @@ class Timesheet extends Model {
         $month = $postData['months'];
         $year = $postData['year'];
         $staffId = $postData['staffId'];
-        $sql = timesheet::select('timesheet.*','users.name', 'workplaces.adresses')
+        $sql = timesheet::select('timesheet.*','users.name','users.surname', 'workplaces.adresses')
                 ->join('users', 'timesheet.worker_id', '=', 'users.id')
                 ->join('workplaces', 'workplaces.company', '=', 'timesheet.workplaces');
             $sql->where('timesheet.worker_id', $staffId);
